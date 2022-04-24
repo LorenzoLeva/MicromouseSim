@@ -3,7 +3,14 @@ from plotly.subplots import make_subplots
 
 
 class Cell:
-    def __init__(self, x, y) -> None:
+    """TODO add doc"""
+    def __init__(self, x: int, y: int) -> None:
+        if type (x) is not int:
+            raise TypeError("Only integers are allowed. Recieved for x:", type (x), x)
+        
+        if type (y) is not int:
+            raise TypeError("Only integers are allowed. Recieved for y:", type (y), y)
+        
         self.x = x
         self.y = y
         self.width = 1
@@ -79,19 +86,19 @@ class Cell:
 c1 = Cell(0, 0)
 c2 = Cell(1, 1)
 
-shapes = []
-shapes += c1.getShape()
-shapes += c2.getShape()
+# shapes = []
+# shapes += c1.getShape()
+# shapes += c2.getShape()
 
-print(shapes)
+# print(shapes)
 
 
-# Create Subplots
-fig = make_subplots(rows=1, cols=1)
+# # Create Subplots
+# fig = make_subplots(rows=1, cols=1)
 
-fig.add_trace(go.Scatter(x=[], y=[]), row=1, col=1)
+# fig.add_trace(go.Scatter(x=[], y=[]), row=1, col=1)
 
-# Add shapes
-fig.update_layout(
-    shapes=shapes)
-fig.show()
+# # Add shapes
+# fig.update_layout(
+#     shapes=shapes)
+# fig.show()
