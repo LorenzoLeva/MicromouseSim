@@ -7,7 +7,7 @@ from plotly.subplots import make_subplots
 from Visualizer import Visualizer
 
 class MazeGenerator:
-    def __init__(self, rows, collums) -> None:
+    def __init__(self, rows: int, collums: int) -> None:
         self.rows = rows
         self.collums = collums
 
@@ -15,7 +15,7 @@ class MazeGenerator:
 
         for r in range(self.rows):
             for c in range(self.collums):
-                self.maze[r][c] = Cell(r,c)
+                self.maze[r][c] = Cell(c,r)
 
     def getVizShape(self) -> list:
         shape = []
