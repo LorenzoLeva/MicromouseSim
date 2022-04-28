@@ -6,10 +6,10 @@ class Cell:
     """TODO add doc"""
     def __init__(self, x: int, y: int) -> None:
         if type (x) is not int:
-            raise TypeError("Only integers are allowed. Recieved for x:", type (x), x)
+            raise TypeError("Only integers are allowed. Received for x:", type (x), x)
         
         if type (y) is not int:
-            raise TypeError("Only integers are allowed. Recieved for y:", type (y), y)
+            raise TypeError("Only integers are allowed. Received for y:", type (y), y)
         
         self.x = x
         self.y = y
