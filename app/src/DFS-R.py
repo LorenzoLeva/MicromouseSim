@@ -1,6 +1,4 @@
-from random import choices
-from re import S
-from sqlalchemy import false
+import random
 from MazeGenerator import MazeGenerator
 from Visualizer import Visualizer
 from Cell import Cell
@@ -18,6 +16,9 @@ class DFS_R(MazeGenerator):
     def isCoordinateInMaze(self, x, y):
         return (x >= 0 and x < self.x and y >= 0 and y < self.y)
 
+    def raiseNotInMazeIfApplicable(self, x, y):
+        if not self.isCoordinateInMaze(x, y):
+            raise IndexError(f'Cell isn\'t within the maze. X has to be between 0 and {self.x - 1}(included) and Y has to be between 0 and {self.y - 1}(included). Got X:{x}, Y:{y}')
     
     def getNotVisitedNeighbors(self, cell) -> list:
         if type(cell) is Cell:
@@ -30,30 +31,29 @@ class DFS_R(MazeGenerator):
         y = cell[1]
         del cell
         
-        if not self.isCoordinateInMaze(x, y):
-            raise IndexError(f'Cell isn\'t within the maze. X has to be between 0 and {self.x - 1}(included) and Y has to be between 0 and {self.y - 1}(included). Got X:{x}, Y:{y}')
+        self.raiseNotInMazeIfApplicable(x, y)
 
         choices = []
 
         # top
         if self.isCoordinateInMaze(x, y + 1):
             if not self.visited[y+1][x]:
-                choices.append("TOP")
+                choices.append((x, y + 1))
 
         # right
         if self.isCoordinateInMaze(x + 1, y):
             if not self.visited[y][x+1]:
-                choices.append("RIGHT")
+                choices.append((x + 1, y))
 
         # bottom
         if self.isCoordinateInMaze(x, y - 1):
             if not self.visited[y-1][x]:
-                choices.append("BOTTOM")
+                choices.append((x, y - 1))
 
         # left
         if self.isCoordinateInMaze(x-1, y):
             if not self.visited[y][x-1]:
-                choices.append("LEFT")
+                choices.append((x-1, y))
 
         return choices
 
@@ -72,14 +72,24 @@ class DFS_R(MazeGenerator):
             raise IndexError(f'Cell isn\'t within the maze. X has to be between 0 and {self.x - 1}(included) and Y has to be between 0 and {self.y - 1}(included). Got X:{x}, Y:{y}')
 
         choices = self.getNotVisitedNeighbors()
-
         
-
+        if len(choices) > 0:
+            return random.choice(choices)
+        else:
+            return None
 
     def generate(self, startX = 0, startY = 0):
         self.current = (startX, startY)
+        # Mark the current cell as visited
         self.visited[self.current[0]][self.current[1]] = True
-        # TODO implement algorithm
+        nextCell = self.choseRandomNeighbor(self.current)
+        if nextCell:
+            # Remove the wall between the current cell and the chosen cell
+            # Invoke the routine recursively for a chosen cell
+            pass
+        else:
+            # Backtrack to last cell with neighbors
+            print("Im stuck.")
     
     def visualize(self):
         viz = Visualizer()
@@ -93,6 +103,3 @@ print(maze.getNotVisitedNeighbors((8,0)))
 print(maze.getNotVisitedNeighbors((8,12)))
 print(maze.getNotVisitedNeighbors((0,12)))
 print(maze.getNotVisitedNeighbors((5,6)))
-maze.visualize()
-
-
