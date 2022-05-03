@@ -63,9 +63,21 @@ class MazeGenerator:
 
         return cellResult
 
+    def isCoordinateInMaze(self, x, y):
+        return (x >= 0 and x < self.x and y >= 0 and y < self.y)
+
+    def raiseNotInMazeIfApplicable(self, x, y):
+        if not self.isCoordinateInMaze(x, y):
+            raise IndexError(f'Cell isn\'t within the maze. X has to be between 0 and {self.x - 1}(included) and Y has to be between 0 and {self.y - 1}(included). Got X:{x}, Y:{y}')
+
     def getShape(self):
         # TODO make it better
         print("getShape self.y:", self.y, "y:", len(self.maze), "self.x:", self.x, "x:", len(self.maze[0]))
+
+    def getMazeCellFromTuple(self, cellTuple):
+        cellTuple = Cell.raiseIsNotCellIfApplicable(cellTuple)
+
+        return self.maze[cellTuple[1]][cellTuple[0]]
 
     def getVizShape(self) -> list:
         shape = []
@@ -76,6 +88,9 @@ class MazeGenerator:
         
         return shape
 
+    def visualize(self):
+        viz = Visualizer()
+        viz.genericShapes(self.getVizShape())
 
 
 # c1 = Cell(5,5)
@@ -83,15 +98,13 @@ class MazeGenerator:
 
 # print(MazeGenerator.raiseCellsAreNotNeighborIfApplicable(c1, c2))
 
-m = MazeGenerator(11,11)
+# m = MazeGenerator(11,11)
 # print(m.maze)
 
-m.deleteWallsBetween((5,5), (5,6))
-m.deleteWallsBetween((5,5), (5,4))
-m.deleteWallsBetween((5,5), (6,5))
-m.deleteWallsBetween((5,5), (4,5))
+# m.deleteWallsBetween((5,5), (5,6))
+# m.deleteWallsBetween((5,5), (5,4))
 
-print(m.maze[5][5].walls)
+# print(m.maze[5][5].walls)
 
-viz = Visualizer()
-viz.genericShapes(m.getVizShape())
+# viz = Visualizer()
+# viz.genericShapes(m.getVizShape())
