@@ -3,7 +3,8 @@
 | Directory / File | Description |
 |-----------|-------------|
 |Readme.md| This file.|
-|Jenkinsfile| File used to program CI/CD tool to automaticly test the app.
+|Jenkinsfile| File used to program CI/CD tool to automaticly test the app.|
+|.gitignore| File used to tell git what files/directorys to ignore.|
 | /app | The app is the directory containing all the sorcecode relevant to the project|
 | /app/src | The src is the directory containing the sorcecode of the application. |
 | /app/test | The test is the directory containing the unit test of the application. |
