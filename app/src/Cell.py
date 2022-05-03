@@ -41,6 +41,20 @@ class Cell:
         
         self.walls[wall] = True  
 
+    @staticmethod
+    def raiseIsNotCellIfApplicable(cell):
+        if type(cell) is Cell:
+            cell = (cell.x, cell.y)
+        
+        if type(cell) is not tuple:
+            raise TypeError(f'Only Cell or tuple are allowed. Received for cell: {type(cell)} of {cell}')
+
+        return cell 
+
+    def minus(self, cell):
+        cell = Cell.raiseIsNotCellIfApplicable(cell)
+        return (self.x - cell[0], self.y - cell[1])
+
     def getVizShape(self) -> list:
         """This function generates the list with 0-4 dict describing the walls so that they can be drawn in plotly.
         

@@ -21,11 +21,7 @@ class DFS_R(MazeGenerator):
             raise IndexError(f'Cell isn\'t within the maze. X has to be between 0 and {self.x - 1}(included) and Y has to be between 0 and {self.y - 1}(included). Got X:{x}, Y:{y}')
     
     def getNotVisitedNeighbors(self, cell) -> list:
-        if type(cell) is Cell:
-            cell = (cell.x, cell.y)
-        
-        if type(cell) is not tuple:
-            raise TypeError(f'Only Cell or tuple are allowed. Received for cell: {type(cell)} of {cell}')
+        cell = Cell.raiseIsNotCellIfApplicable(cell)
 
         x = cell[0]
         y = cell[1]
