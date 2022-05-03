@@ -19,6 +19,50 @@ class MazeGenerator:
             for c in range(self.x):
                 self.maze[r][c] = Cell(c,r)
 
+    def deleteWallsBetween(self, cellStart, cellEnd):
+        cellStart = Cell.raiseIsNotCellIfApplicable(cellStart)
+        cellEnd = Cell.raiseIsNotCellIfApplicable(cellEnd)
+
+        cellStart = self.maze[cellStart[1]][cellStart[0]]
+        cellEnd = self.maze[cellEnd[1]][cellEnd[0]]
+
+        cellResult = self.raiseCellsAreNotNeighborIfApplicable(cellStart, cellEnd)
+        
+        if cellResult[0] is 1 and cellResult[1] is 0:
+            cellStart.deleteWall("right")
+            cellEnd.deleteWall("left")
+        
+        if cellResult[0] is -1 and cellResult[1] is 0:
+            cellStart.deleteWall("left") # cellStart
+            cellEnd.deleteWall("right") # cellEnd
+
+        if cellResult[0] is 0 and cellResult[1] is 1:
+            cellStart.deleteWall("top") # cellStart
+            cellEnd.deleteWall("bottom") # cellEnd
+
+        if cellResult[0] is 0 and cellResult[1] is -1:
+            cellStart.deleteWall("bottom") # cellStart
+            cellEnd.deleteWall("top") # cellEnd
+    
+    @staticmethod
+    def raiseCellsAreNotNeighborIfApplicable(cellStart, cellEnd):
+        """Checks if two cells are neighbor and if returns the vector between them.
+
+        Returns:
+            cellResult is the vector decribing how to come the cellStart to the cellEnd
+        """
+        cellResult = cellEnd.minus(cellStart)
+
+        if not (
+            (cellResult[0] is 0  and cellResult[1] is 1 ) or 
+            (cellResult[0] is 0  and cellResult[1] is -1) or 
+            (cellResult[0] is 1  and cellResult[1] is 0 ) or 
+            (cellResult[0] is -1 and cellResult[1] is 0 )
+        ):
+            raise IndexError(f'Cells aren\'t neighbor. The coordinate difference is {cellResult}, but its only accepted [(0,1), (0,-1), (1, 0), (-1,0)].')
+
+        return cellResult
+
     def getShape(self):
         # TODO make it better
         print("getShape self.y:", self.y, "y:", len(self.maze), "self.x:", self.x, "x:", len(self.maze[0]))
@@ -34,8 +78,20 @@ class MazeGenerator:
 
 
 
-# m = MazeGenerator(32,32)
-# #print(m.maze)
+# c1 = Cell(5,5)
+# c2 = Cell(7,7)
 
-# viz = Visualizer()
-# viz.genericShapes(m.getVizShape())
+# print(MazeGenerator.raiseCellsAreNotNeighborIfApplicable(c1, c2))
+
+m = MazeGenerator(11,11)
+# print(m.maze)
+
+m.deleteWallsBetween((5,5), (5,6))
+m.deleteWallsBetween((5,5), (5,4))
+m.deleteWallsBetween((5,5), (6,5))
+m.deleteWallsBetween((5,5), (4,5))
+
+print(m.maze[5][5].walls)
+
+viz = Visualizer()
+viz.genericShapes(m.getVizShape())
