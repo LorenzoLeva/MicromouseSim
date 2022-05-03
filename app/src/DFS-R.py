@@ -12,6 +12,7 @@ class DFS_R(MazeGenerator):
         super().__init__(columns, rows)
         self.visited = [[False for x in range(self.x)] for y in range(self.y)]
         self.current = (0,0)
+        self.backlog = []
 
     def getNotVisitedNeighbors(self, cell) -> list:
         cell = Cell.raiseIsNotCellIfApplicable(cell)
@@ -73,16 +74,20 @@ class DFS_R(MazeGenerator):
         self.visited[self.current[1]][self.current[0]] = True
         nextCell = self.choseRandomNeighbor(self.current)
         if nextCell:
+            # Adds cell to backlog
+            self.backlog.append(self.current)
             # Remove the wall between the current cell and the chosen cell
             self.deleteWallsBetween(self.current, nextCell)
             # Invoke the routine recursively for a chosen cell
             self.generate(nextCell)
         else:
-            # TODO Backtrack to last cell with neighbors
-            print("Im stuck.")
+            # Backtrack to the last cell
+            if len(self.backlog) > 0:
+                self.generate(self.backlog.pop(-1))
     
 maze = DFS_R(16, 16)
 maze.generate((8,8))
+# print(maze.backlog)
 maze.visualize()
 # maze.getShape()
 # print(maze.getNotVisitedNeighbors((0,0)))
