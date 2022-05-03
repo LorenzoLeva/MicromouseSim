@@ -21,6 +21,26 @@ class Cell:
             "left" : True 
         }
 
+    def deleteWall(self, wall: str):
+        if type (wall) is not str:
+            raise TypeError("Only string are allowed. Received for wall: " + str(type (wall)) + " " + str(wall))
+        
+        wall = wall.lower()
+        if not wall in ["top", "right", "bottom", "left"]:
+            raise KeyError(str(wall) + " not a valid option. Valid options are: [top, right, bottom, left]")
+        
+        self.walls[wall] = False
+        
+    def buildWall(self, wall: str):
+        if type (wall) is not str:
+            raise TypeError("Only string are allowed. Received for wall: " + str(type (wall)) + " " + str(wall))
+        
+        wall = wall.lower()
+        if not wall in ["top", "right", "bottom", "left"]:
+            raise KeyError(str(wall) + " not a valid option. Valid options are: [top, right, bottom, left]")
+        
+        self.walls[wall] = True  
+
     def getVizShape(self) -> list:
         """This function generates the list with 0-4 dict describing the walls so that they can be drawn in plotly.
         
@@ -86,9 +106,12 @@ class Cell:
 # c1 = Cell(0, 0)
 # c2 = Cell(1, 1)
 
+# c1.deleteWall("Top")
+# c1.buildWall("top")
+
 # shapes = []
-# shapes += c1.getShape()
-# shapes += c2.getShape()
+# shapes += c1.getVizShape()
+# shapes += c2.getVizShape()
 
 # print(shapes)
 
