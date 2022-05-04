@@ -10,63 +10,8 @@ class DFS_R(MazeGenerator):
     """
     def __init__(self, columns: int, rows: int) -> None:
         super().__init__(columns, rows)
-        self.visited = [[False for x in range(self.x)] for y in range(self.y)]
         self.current = (0,0)
         self.backlog = []
-
-    def getNotVisitedNeighbors(self, cell) -> list:
-        cell = Cell.raiseIsNotCellIfApplicable(cell)
-
-        x = cell[0]
-        y = cell[1]
-        del cell
-        
-        self.raiseNotInMazeIfApplicable(x, y)
-
-        choices = []
-
-        # top
-        if self.isCoordinateInMaze(x, y + 1):
-            if not self.visited[y+1][x]:
-                choices.append((x, y + 1))
-
-        # right
-        if self.isCoordinateInMaze(x + 1, y):
-            if not self.visited[y][x+1]:
-                choices.append((x + 1, y))
-
-        # bottom
-        if self.isCoordinateInMaze(x, y - 1):
-            if not self.visited[y-1][x]:
-                choices.append((x, y - 1))
-
-        # left
-        if self.isCoordinateInMaze(x-1, y):
-            if not self.visited[y][x-1]:
-                choices.append((x-1, y))
-
-        return choices
-
-    def choseRandomNeighbor(self, cell) -> tuple:
-        if type(cell) is Cell:
-            cell = (cell.x, cell.y)
-        
-        if type(cell) is not tuple:
-            raise TypeError(f'Only Cell or tuple are allowed. Received for cell: {type (cell)} of {cell}')
-
-        x = cell[0]
-        y = cell[1]
-        del cell
-        
-        if not self.isCoordinateInMaze(x, y):
-            raise IndexError(f'Cell isn\'t within the maze. X has to be between 0 and {self.x - 1}(included) and Y has to be between 0 and {self.y - 1}(included). Got X:{x}, Y:{y}')
-
-        choices = self.getNotVisitedNeighbors((x,y))
-        
-        if len(choices) > 0:
-            return random.choice(choices)
-        else:
-            return None
 
     def generate(self, startCell= (0,0)):
         self.current = Cell.raiseIsNotCellIfApplicable(startCell)

@@ -1,4 +1,4 @@
-from sqlite3 import Date
+import random
 from Cell import Cell
 
 import plotly.graph_objects as go
@@ -12,12 +12,105 @@ class MazeGenerator:
         # TODO check type
         self.y = rows
         self.x = columns
-
+        self.visited = [[False for x in range(self.x)] for y in range(self.y)]
         self.maze = [[0 for x in range(self.x)] for y in range(self.y)]
 
         for r in range(self.y):
             for c in range(self.x):
                 self.maze[r][c] = Cell(c,r)
+    
+    # Raise exceptions
+    @staticmethod
+    def raiseCellsAreNotNeighborIfApplicable(cellStart, cellEnd):
+        """Checks if two cells are neighbor and if returns the vector between them.
+
+        Returns:
+            cellResult is the vector decribing how to come the cellStart to the cellEnd
+        """
+        cellResult = cellEnd.minus(cellStart)
+
+        if not (
+            (cellResult[0] is 0  and cellResult[1] is 1 ) or 
+            (cellResult[0] is 0  and cellResult[1] is -1) or 
+            (cellResult[0] is 1  and cellResult[1] is 0 ) or 
+            (cellResult[0] is -1 and cellResult[1] is 0 )
+        ):
+            raise IndexError(f'Cells aren\'t neighbor. The coordinate difference is {cellResult}, but its only accepted [(0,1), (0,-1), (1, 0), (-1,0)].')
+
+        return cellResult
+
+    def raiseNotInMazeIfApplicable(self, x, y):
+            if not self.isCoordinateInMaze(x, y):
+                raise IndexError(f'Cell isn\'t within the maze. X has to be between 0 and {self.x - 1}(included) and Y has to be between 0 and {self.y - 1}(included). Got X:{x}, Y:{y}')
+
+
+    # Manage Neighbors
+    def getNotVisitedNeighbors(self, cell) -> list:
+        cell = Cell.raiseIsNotCellIfApplicable(cell)
+
+        x = cell[0]
+        y = cell[1]
+        del cell
+        
+        self.raiseNotInMazeIfApplicable(x, y)
+
+        choices = []
+
+        # top
+        if self.isCoordinateInMaze(x, y + 1):
+            if not self.visited[y+1][x]:
+                choices.append((x, y + 1))
+
+        # right
+        if self.isCoordinateInMaze(x + 1, y):
+            if not self.visited[y][x+1]:
+                choices.append((x + 1, y))
+
+        # bottom
+        if self.isCoordinateInMaze(x, y - 1):
+            if not self.visited[y-1][x]:
+                choices.append((x, y - 1))
+
+        # left
+        if self.isCoordinateInMaze(x-1, y):
+            if not self.visited[y][x-1]:
+                choices.append((x-1, y))
+
+        return choices
+
+    def choseRandomNeighbor(self, cell) -> tuple:
+        if type(cell) is Cell:
+            cell = (cell.x, cell.y)
+        
+        if type(cell) is not tuple:
+            raise TypeError(f'Only Cell or tuple are allowed. Received for cell: {type (cell)} of {cell}')
+
+        x = cell[0]
+        y = cell[1]
+        del cell
+        
+        if not self.isCoordinateInMaze(x, y):
+            raise IndexError(f'Cell isn\'t within the maze. X has to be between 0 and {self.x - 1}(included) and Y has to be between 0 and {self.y - 1}(included). Got X:{x}, Y:{y}')
+
+        choices = self.getNotVisitedNeighbors((x,y))
+        
+        if len(choices) > 0:
+            return random.choice(choices)
+        else:
+            return None
+   
+    # General maze methods
+    def isCoordinateInMaze(self, x, y):
+        return (x >= 0 and x < self.x and y >= 0 and y < self.y)
+
+    def getShape(self):
+        # TODO make it better
+        print("getShape self.y:", self.y, "y:", len(self.maze), "self.x:", self.x, "x:", len(self.maze[0]))
+
+    def getMazeCellFromTuple(self, cellTuple):
+        cellTuple = Cell.raiseIsNotCellIfApplicable(cellTuple)
+
+        return self.maze[cellTuple[1]][cellTuple[0]]
 
     def deleteWallsBetween(self, cellStart, cellEnd):
         cellStart = Cell.raiseIsNotCellIfApplicable(cellStart)
@@ -43,42 +136,8 @@ class MazeGenerator:
         if cellResult[0] is 0 and cellResult[1] is -1:
             cellStart.deleteWall("bottom") # cellStart
             cellEnd.deleteWall("top") # cellEnd
-    
-    @staticmethod
-    def raiseCellsAreNotNeighborIfApplicable(cellStart, cellEnd):
-        """Checks if two cells are neighbor and if returns the vector between them.
-
-        Returns:
-            cellResult is the vector decribing how to come the cellStart to the cellEnd
-        """
-        cellResult = cellEnd.minus(cellStart)
-
-        if not (
-            (cellResult[0] is 0  and cellResult[1] is 1 ) or 
-            (cellResult[0] is 0  and cellResult[1] is -1) or 
-            (cellResult[0] is 1  and cellResult[1] is 0 ) or 
-            (cellResult[0] is -1 and cellResult[1] is 0 )
-        ):
-            raise IndexError(f'Cells aren\'t neighbor. The coordinate difference is {cellResult}, but its only accepted [(0,1), (0,-1), (1, 0), (-1,0)].')
-
-        return cellResult
-
-    def isCoordinateInMaze(self, x, y):
-        return (x >= 0 and x < self.x and y >= 0 and y < self.y)
-
-    def raiseNotInMazeIfApplicable(self, x, y):
-        if not self.isCoordinateInMaze(x, y):
-            raise IndexError(f'Cell isn\'t within the maze. X has to be between 0 and {self.x - 1}(included) and Y has to be between 0 and {self.y - 1}(included). Got X:{x}, Y:{y}')
-
-    def getShape(self):
-        # TODO make it better
-        print("getShape self.y:", self.y, "y:", len(self.maze), "self.x:", self.x, "x:", len(self.maze[0]))
-
-    def getMazeCellFromTuple(self, cellTuple):
-        cellTuple = Cell.raiseIsNotCellIfApplicable(cellTuple)
-
-        return self.maze[cellTuple[1]][cellTuple[0]]
-
+ 
+    # Visualize Maze
     def getVizShape(self) -> list:
         shape = []
 
