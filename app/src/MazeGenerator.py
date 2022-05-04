@@ -1,4 +1,5 @@
 import random
+import sys
 from Cell import Cell
 
 import plotly.graph_objects as go
@@ -7,7 +8,9 @@ from plotly.subplots import make_subplots
 from Visualizer import Visualizer
 
 class MazeGenerator:
+    """ TODO docs of class"""
     def __init__(self, columns: int, rows: int) -> None:
+        sys.setrecursionlimit(10**6)
         # TODO don't allow negative or 0 as size
         # TODO check type
         self.y = rows
@@ -21,11 +24,15 @@ class MazeGenerator:
     
     # Raise exceptions
     @staticmethod
-    def raiseCellsAreNotNeighborIfApplicable(cellStart, cellEnd):
-        """Checks if two cells are neighbor and if returns the vector between them.
+    def raiseCellsAreNotNeighborIfApplicable(cellStart: Cell, cellEnd: Cell):
+        """Checks if two cells are neighbor and if returns the vector between them. Otherwise it throws an exception.
+
+        Args:
+            cellStart (tuple | Cell): First cell to check
+            cellEnd (tuple | Cell): Second cell to check
 
         Returns:
-            cellResult is the vector decribing how to come the cellStart to the cellEnd
+            tuple: cellResult is the vector decribing how to come the cellStart to the cellEnd
         """
         cellResult = cellEnd.minus(cellStart)
 
@@ -40,12 +47,85 @@ class MazeGenerator:
         return cellResult
 
     def raiseNotInMazeIfApplicable(self, x, y):
-            if not self.isCoordinateInMaze(x, y):
-                raise IndexError(f'Cell isn\'t within the maze. X has to be between 0 and {self.x - 1}(included) and Y has to be between 0 and {self.y - 1}(included). Got X:{x}, Y:{y}')
+        """Checks if coordinate is in the Maze. Otherwise it throws an error
+        Args:
+            x (int): x coordinate to check
+            y (int): y coordinate to check
+        
+        """
+        if not self.isCoordinateInMaze(x, y):
+            raise IndexError(f'Cell isn\'t within the maze. X has to be between 0 and {self.x - 1}(included) and Y has to be between 0 and {self.y - 1}(included). Got X:{x}, Y:{y}')
 
+    # General maze methods
+    def isCoordinateInMaze(self, x: int, y: int) -> bool:
+        """Checks if coordinate is in Maze.
 
+        Returns:
+            bool: True if the coordinate is in the maze, and False if it is not.
+        """
+        if type(x) is not int or type(y) is not int:
+            raise TypeError(f'Only ints are allowed for x and y. Received for x: {type(x)} of {x} and for y: {type(y)} of {y}')
+        return (x >= 0 and x < self.x and y >= 0 and y < self.y)
+
+    def getShape(self):
+        """Prints the shape of the maze.
+        """
+        # TODO make it better
+        print("getShape self.y:", self.y, "y:", len(self.maze), "self.x:", self.x, "x:", len(self.maze[0]))
+
+    def getMazeCellFromTuple(self, cellTuple) -> Cell:
+        """Returns the cell of the maze with the same coordinates as the inputted cell | tuple
+        
+        Returns:
+            Cell: the cell of the maze with the same coordinates as the inputted cell | tuple
+        """
+        cellTuple = Cell.raiseIsNotCellIfApplicable(cellTuple)
+
+        return self.maze[cellTuple[1]][cellTuple[0]]
+
+    def deleteWallsBetween(self, cellStart, cellEnd):
+        """Deletes the walls between to cells that are neighbors.
+
+        Args:
+            cellStart (Cell | tuple): First cell to remove wall from
+            cellEnd (Cell | tuple): Second cell to remove wall from
+        """
+
+        cellStart = Cell.raiseIsNotCellIfApplicable(cellStart)
+        cellEnd = Cell.raiseIsNotCellIfApplicable(cellEnd)
+
+        cellStart = self.maze[cellStart[1]][cellStart[0]]
+        cellEnd = self.maze[cellEnd[1]][cellEnd[0]]
+
+        cellResult = self.raiseCellsAreNotNeighborIfApplicable(cellStart, cellEnd)
+        
+        if cellResult[0] is 1 and cellResult[1] is 0:
+            cellStart.deleteWall("right")
+            cellEnd.deleteWall("left")
+        
+        if cellResult[0] is -1 and cellResult[1] is 0:
+            cellStart.deleteWall("left") # cellStart
+            cellEnd.deleteWall("right") # cellEnd
+
+        if cellResult[0] is 0 and cellResult[1] is 1:
+            cellStart.deleteWall("top") # cellStart
+            cellEnd.deleteWall("bottom") # cellEnd
+
+        if cellResult[0] is 0 and cellResult[1] is -1:
+            cellStart.deleteWall("bottom") # cellStart
+            cellEnd.deleteWall("top") # cellEnd
+ 
     # Manage Neighbors
     def getNotVisitedNeighbors(self, cell) -> list:
+        """Gets all the not visited neighbors from a cell
+
+        Args:
+            cell (Cell): Cell from which to search the neighbors from.
+
+        Returns:
+            list: Returns a list of coordinates of all the neighbors, of the inputted cell, that weren't visited.
+        
+        """
         cell = Cell.raiseIsNotCellIfApplicable(cell)
 
         x = cell[0]
@@ -79,6 +159,14 @@ class MazeGenerator:
         return choices
 
     def choseRandomNeighbor(self, cell) -> tuple:
+        """Gets a random neighbor from a cell.
+
+        Args:
+            cell (Cell): Cell from which to search a neighbor from.
+
+        Returns:
+            tuple: Coordinates of randomly chosen neighbor.
+        """
         if type(cell) is Cell:
             cell = (cell.x, cell.y)
         
@@ -99,46 +187,13 @@ class MazeGenerator:
         else:
             return None
    
-    # General maze methods
-    def isCoordinateInMaze(self, x, y):
-        return (x >= 0 and x < self.x and y >= 0 and y < self.y)
-
-    def getShape(self):
-        # TODO make it better
-        print("getShape self.y:", self.y, "y:", len(self.maze), "self.x:", self.x, "x:", len(self.maze[0]))
-
-    def getMazeCellFromTuple(self, cellTuple):
-        cellTuple = Cell.raiseIsNotCellIfApplicable(cellTuple)
-
-        return self.maze[cellTuple[1]][cellTuple[0]]
-
-    def deleteWallsBetween(self, cellStart, cellEnd):
-        cellStart = Cell.raiseIsNotCellIfApplicable(cellStart)
-        cellEnd = Cell.raiseIsNotCellIfApplicable(cellEnd)
-
-        cellStart = self.maze[cellStart[1]][cellStart[0]]
-        cellEnd = self.maze[cellEnd[1]][cellEnd[0]]
-
-        cellResult = self.raiseCellsAreNotNeighborIfApplicable(cellStart, cellEnd)
-        
-        if cellResult[0] is 1 and cellResult[1] is 0:
-            cellStart.deleteWall("right")
-            cellEnd.deleteWall("left")
-        
-        if cellResult[0] is -1 and cellResult[1] is 0:
-            cellStart.deleteWall("left") # cellStart
-            cellEnd.deleteWall("right") # cellEnd
-
-        if cellResult[0] is 0 and cellResult[1] is 1:
-            cellStart.deleteWall("top") # cellStart
-            cellEnd.deleteWall("bottom") # cellEnd
-
-        if cellResult[0] is 0 and cellResult[1] is -1:
-            cellStart.deleteWall("bottom") # cellStart
-            cellEnd.deleteWall("top") # cellEnd
- 
     # Visualize Maze
     def getVizShape(self) -> list:
+        """Gets all the shape objects needed to visualize the maze with plotly.
+
+        Returns:
+            list: Returns a list containing all the shapes needed to visualize the maze.
+        """
         shape = []
 
         for row in self.maze:
@@ -148,6 +203,7 @@ class MazeGenerator:
         return shape
 
     def visualize(self):
+        """Visualizes the maze with plotly."""
         viz = Visualizer()
         viz.genericShapes(self.getVizShape())
 
