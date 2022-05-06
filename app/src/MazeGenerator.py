@@ -5,7 +5,20 @@ from Cell import Cell
 from Visualizer import Visualizer
 
 class MazeGenerator:
-    """ TODO docs of class"""
+    """Object that represents a maze.
+
+        Note: The coordinates of the maze start at 0 and go up.
+        
+        Args:
+            columns (int): amount of columns of the maze.
+            rows (int): amount of rows of the maze.
+
+        Attributes:
+            x (int): amount of columns of the maze.
+            y (int): amount of rows of the maze.
+            visited (bool[][]): Matrix describing if that field was visited.
+            maze (Cell[][]): Matrix containing all the Cells of the maze.
+    """
     def __init__(self, columns: int, rows: int) -> None:
         sys.setrecursionlimit(10**6)
         # TODO don't allow negative or 0 as size
@@ -186,7 +199,7 @@ class MazeGenerator:
    
     # Visualize Maze
     def getVizShape(self) -> list:
-        """Gets all the shape objects needed to visualize the maze with plotly.
+        """Generates all the shape objects needed to visualize the maze with plotly.
 
         Returns:
             list: Returns a list containing all the shapes needed to visualize the maze.
