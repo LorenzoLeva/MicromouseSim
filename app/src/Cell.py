@@ -43,11 +43,17 @@ class Cell:
 
     @staticmethod
     def raiseIsNotCellIfApplicable(cell):
+        def raiseError():
+            raise TypeError(f'Only Cell or tuple are allowed. Received for cell: {type(cell)} of {cell}')
+
         if type(cell) is Cell:
             cell = (cell.x, cell.y)
         
         if type(cell) is not tuple:
-            raise TypeError(f'Only Cell or tuple are allowed. Received for cell: {type(cell)} of {cell}')
+            raiseError()
+            
+        if len(cell) is not 2 or type(cell[0]) is not int or type(cell[1]) is not int:
+            raiseError()
 
         return cell 
 
