@@ -1,10 +1,20 @@
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-
 class Cell:
-    """TODO add doc"""
-    def __init__(self, x: int, y: int) -> None:
+    """Object that represents a cell of the maze.
+        
+        Args:
+            x (int): x coordinate of the cell. Can't be negative.
+            y (int): y coordinate of the cell. Can't be negative.
+
+        Attributes:
+            x (int): x coordinate of the cell. Can't be negative.
+            y (int): y coordinate of the cell. Can't be negative.
+            walls (dict of bool): Dictionary with ["top", "right", "bottom", "left"] keys that describe if there is a wall through an bool.
+            width (int): is the with of a cell. Used for visualization.
+    """
+    def __init__(self, x: int, y: int) -> None: 
         if type (x) is not int:
             raise TypeError("Only integers are allowed. Received for x:", type (x), x)
         
@@ -22,6 +32,11 @@ class Cell:
         }
 
     def deleteWall(self, wall: str):
+        """Sets the specified wall to False.
+
+        Args:
+            wall (str): The key of the wall to delete. Possible keys are: ["top", "right", "bottom", "left"]
+        """
         if type (wall) is not str:
             raise TypeError("Only string are allowed. Received for wall: " + str(type (wall)) + " " + str(wall))
         
@@ -32,6 +47,11 @@ class Cell:
         self.walls[wall] = False
         
     def buildWall(self, wall: str):
+        """Sets the specified wall to True.
+
+        Args:
+            wall (str): The key of the wall to delete. Possible keys are: ["top", "right", "bottom", "left"]
+        """
         if type (wall) is not str:
             raise TypeError("Only string are allowed. Received for wall: " + str(type (wall)) + " " + str(wall))
         
@@ -43,6 +63,14 @@ class Cell:
 
     @staticmethod
     def raiseIsNotCellIfApplicable(cell):
+        """Raises an error if the cell is not the right type. If everything is ok it passes the cell.
+
+        Args:
+            cell (tuple | Cell): the cell that has to be checked the type of.
+
+        Returns:
+            (tuple | Cell): if the type is correct it passes the cell as a tuple.
+        """
         def raiseError():
             raise TypeError(f'Only Cell or tuple are allowed. Received for cell: {type(cell)} of {cell}')
 
@@ -51,13 +79,21 @@ class Cell:
         
         if type(cell) is not tuple:
             raiseError()
-            
+
         if len(cell) is not 2 or type(cell[0]) is not int or type(cell[1]) is not int:
             raiseError()
 
         return cell 
 
     def minus(self, cell):
+        """Subtracts one cell from the other. 
+
+        Args:
+            cell (tuple | Cell): the cell to subtract from the self cell.
+
+        Returns:
+            tuple: difference from the cells that is also the vector from cell to self
+        """
         cell = Cell.raiseIsNotCellIfApplicable(cell)
         return (self.x - cell[0], self.y - cell[1])
 
@@ -114,34 +150,3 @@ class Cell:
             )
 
         return shape
-
-
-
-
-
-
-
-# # TODO remove this test section
-# # TODO create Unit test to test cell class
-# c1 = Cell(0, 0)
-# c2 = Cell(1, 1)
-
-# c1.deleteWall("Top")
-# c1.buildWall("top")
-
-# shapes = []
-# shapes += c1.getVizShape()
-# shapes += c2.getVizShape()
-
-# print(shapes)
-
-
-# # Create Subplots
-# fig = make_subplots(rows=1, cols=1)
-
-# fig.add_trace(go.Scatter(x=[], y=[]), row=1, col=1)
-
-# # Add shapes
-# fig.update_layout(
-#     shapes=shapes)
-# fig.show()
