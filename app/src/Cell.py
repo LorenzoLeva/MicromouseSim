@@ -15,11 +15,25 @@ class Cell:
             width (int): is the with of a cell. Used for visualization.
     """
     def __init__(self, x: int, y: int) -> None: 
-        if type (x) is not int:
-            raise TypeError("Only integers are allowed. Received for x:", type (x), x)
+        def raiseErrorOnlyInt(x, name=""):
+            if name is not "":
+                name = " for " + name
+            raise TypeError(f'Only integers are allowed. Received{name}:', type (x), x)
         
-        if type (y) is not int:
-            raise TypeError("Only integers are allowed. Received for y:", type (y), y)
+        def raiseNoNegativeInt(x, name=""):
+            if name is not "":
+                name = " for " + name
+            
+            if type (x) is not int:
+                raiseErrorOnlyInt(x, name)
+
+            if x < 0:
+                raise IndexError(f'No negative integer are allowed. Received{name}: {type (x)} = {x}')
+            
+        
+        raiseNoNegativeInt(x)
+        raiseNoNegativeInt(y)
+
         
         self.x = x
         self.y = y

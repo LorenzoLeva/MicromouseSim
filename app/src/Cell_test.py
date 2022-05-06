@@ -12,6 +12,12 @@ class TestCellInitialization(unittest.TestCase):
         self.assertRaises(TypeError, Cell, "x", 0)
         self.assertRaises(TypeError, Cell, True, True)
     
+    def test_invalid_input_range(self):
+        """Test if the Cell class raises IndexError when initialized with negative coordinates parameter type."""
+        self.assertRaises(IndexError, Cell, 0, -2)
+        self.assertRaises(IndexError, Cell, -2, 0)
+        self.assertRaises(IndexError, Cell, -2, -2)
+    
     def test_initialization(self):
         """Test if the Cell class initializes correctly an object with all its properties correctly."""
         x = 3
@@ -175,7 +181,7 @@ class TestCellMinusMethod(unittest.TestCase):
     def test_valid_input(self):
         """Test if the Cell.minus method returns the correct vector."""
         c1 = Cell(1,2)
-        c2 = Cell(-3,4)
+        c2 = Cell(3,4)
 
-        self.assertEqual(c1.minus(c2), (4, -2))
-        self.assertEqual(c2.minus(c1), (-4, 2))
+        self.assertEqual(c1.minus(c2), (-2, -2))
+        self.assertEqual(c2.minus(c1), (2, 2))
