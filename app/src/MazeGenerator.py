@@ -19,8 +19,19 @@ class MazeGenerator:
             visited (bool[][]): Matrix describing if that field was visited.
             maze (Cell[][]): Matrix containing all the Cells of the maze.
     """
-    def __init__(self, columns: int, rows: int) -> None:
+    def __init__(self, columns: int, rows: int, seed = None) -> None:
+        
         sys.setrecursionlimit(10**6)
+
+        # TODO check seed type
+        if seed is None:
+            self.seed = random.randrange(sys.maxsize)
+        else:
+            self.seed = seed
+
+        random.seed(self.seed)
+
+
         # TODO don't allow negative or 0 as size
         # TODO check type
         self.y = rows
