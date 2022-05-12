@@ -1,6 +1,8 @@
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
+from .ErrorRaiser import ErrorRaiser
+
 class Cell:
     """Object that represents a cell of the maze.
         
@@ -15,24 +17,8 @@ class Cell:
             width (int): is the with of a cell. Used for visualization.
     """
     def __init__(self, x: int, y: int) -> None: 
-        def raiseErrorOnlyInt(x, name=""):
-            if name is not "":
-                name = " for " + name
-            raise TypeError(f'Only integers are allowed. Received{name}:', type (x), x)
-        
-        def raiseNoNegativeInt(x, name=""):
-            if name is not "":
-                name = " for " + name
-            
-            if type (x) is not int:
-                raiseErrorOnlyInt(x, name)
-
-            if x < 0:
-                raise IndexError(f'No negative integer are allowed. Received{name}: {type (x)} = {x}')
-            
-        
-        raiseNoNegativeInt(x)
-        raiseNoNegativeInt(y)
+        ErrorRaiser.raiseNoNegativeInt(x)
+        ErrorRaiser.raiseNoNegativeInt(y)
 
         
         self.x = x
