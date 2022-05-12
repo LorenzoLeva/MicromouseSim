@@ -1,6 +1,4 @@
 import unittest
-
-from sqlalchemy import false
 from .Cell import Cell
 
 
@@ -8,6 +6,7 @@ class TestCellInitialization(unittest.TestCase):
     def test_invalid_input_types(self):
         """Test if the Cell class raises TypeError when initialized with the wrong parameter type."""
         self.assertRaises(TypeError, Cell, "x", "y")
+        self.assertRaises(TypeError, Cell, "3", "3")
         self.assertRaises(TypeError, Cell, 0, "y")
         self.assertRaises(TypeError, Cell, "x", 0)
         self.assertRaises(TypeError, Cell, True, True)
