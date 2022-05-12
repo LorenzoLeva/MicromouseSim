@@ -1,7 +1,7 @@
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-from ErrorRaiser import ErrorRaiser
+from app.src.ErrorRaiser import ErrorRaiser
 
 class Cell:
     """Object that represents a cell of the maze.

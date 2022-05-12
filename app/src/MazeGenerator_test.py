@@ -1,7 +1,7 @@
 import unittest
 
-from Cell import Cell
-from MazeGenerator import MazeGenerator
+from app.src.Cell import Cell
+from app.src.MazeGenerator import MazeGenerator
 
 class TestMazeGeneratorInitialization(unittest.TestCase):
     def test_invalid_input_types(self):
@@ -61,4 +61,13 @@ class TestMazeGeneratorInitialization(unittest.TestCase):
         self.assertEqual(len(maze.maze), rows)
         self.assertEqual(len(maze.maze[0]), columns)
         self.assertEqual(type(maze.maze[0][0]), Cell)
+
+class TestMazeGeneratorRaiseCellsAreNotNeighborIfApplicable(unittest.TestCase):
+    def test_invalid_input_types(self):
+        """Test if the MazeGenerator.raiseCellsAreNotNeighborIfApplicable method raises TypeError when called with the wrong parameter type."""
+        
+        self.assertRaises(TypeError, MazeGenerator.raiseCellsAreNotNeighborIfApplicable, 1, 1)
+        self.assertRaises(TypeError, MazeGenerator.raiseCellsAreNotNeighborIfApplicable, True, True)
+        self.assertRaises(TypeError, MazeGenerator.raiseCellsAreNotNeighborIfApplicable, ("1", "2"), ("2", "2"))
+
 

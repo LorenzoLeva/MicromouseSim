@@ -1,8 +1,8 @@
 import random
 import sys
-from Cell import Cell
-from ErrorRaiser import ErrorRaiser
-from Visualizer import Visualizer
+from app.src.Cell import Cell
+from app.src.ErrorRaiser import ErrorRaiser
+from app.src.Visualizer import Visualizer
 
 class MazeGenerator:
     """Object that represents a maze.
@@ -56,6 +56,9 @@ class MazeGenerator:
         Returns:
             tuple: cellResult is the vector decribing how to come the cellStart to the cellEnd
         """
+        Cell.raiseIsNotCellIfApplicable(cellStart)
+        Cell.raiseIsNotCellIfApplicable(cellEnd)
+
         cellResult = cellEnd.minus(cellStart)
 
         if not (
@@ -75,6 +78,7 @@ class MazeGenerator:
             y (int): y coordinate to check
         
         """
+        # TODO check that coordinates are int
         if not self.isCoordinateInMaze(x, y):
             raise IndexError(f'Cell isn\'t within the maze. X has to be between 0 and {self.x - 1}(included) and Y has to be between 0 and {self.y - 1}(included). Got X:{x}, Y:{y}')
 
