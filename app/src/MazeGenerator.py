@@ -1,6 +1,5 @@
 import random
 import sys
-from tkinter import E
 from Cell import Cell
 from ErrorRaiser import ErrorRaiser
 from Visualizer import Visualizer
