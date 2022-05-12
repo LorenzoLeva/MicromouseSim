@@ -1,8 +1,9 @@
 import random
 import sys
-from Cell import Cell
-
-from Visualizer import Visualizer
+from tkinter import E
+from .Cell import Cell
+from .ErrorRaiser import ErrorRaiser
+from .Visualizer import Visualizer
 
 class MazeGenerator:
     """Object that represents a maze.
@@ -20,20 +21,21 @@ class MazeGenerator:
             maze (Cell[][]): Matrix containing all the Cells of the maze.
     """
     def __init__(self, columns: int, rows: int, seed = None) -> None:
-        
-        sys.setrecursionlimit(10**6)
+        # Checks
+        if seed:
+            ErrorRaiser.raiseErrorOnlyInt(seed)
+        ErrorRaiser.raiseNoZeroNegativeInt(rows, "rows")
+        ErrorRaiser.raiseNoZeroNegativeInt(columns, "columns")
 
-        # TODO check seed type
+        # Configs
         if seed is None:
             self.seed = random.randrange(sys.maxsize)
         else:
             self.seed = seed
 
         random.seed(self.seed)
-
-
-        # TODO don't allow negative or 0 as size
-        # TODO check type
+        sys.setrecursionlimit(10**6) # TODO move to main class
+       
         self.y = rows
         self.x = columns
         self.visited = [[False for x in range(self.x)] for y in range(self.y)]
