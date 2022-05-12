@@ -1,7 +1,7 @@
 import unittest
 
-from app.src.Cell import Cell
-from .MazeGenerator import MazeGenerator
+from Cell import Cell
+from MazeGenerator import MazeGenerator
 
 class TestMazeGeneratorInitialization(unittest.TestCase):
     def test_invalid_input_types(self):

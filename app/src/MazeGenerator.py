@@ -1,9 +1,9 @@
 import random
 import sys
 from tkinter import E
-from .Cell import Cell
-from .ErrorRaiser import ErrorRaiser
-from .Visualizer import Visualizer
+from Cell import Cell
+from ErrorRaiser import ErrorRaiser
+from Visualizer import Visualizer
 
 class MazeGenerator:
     """Object that represents a maze.
