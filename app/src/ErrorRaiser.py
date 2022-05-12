@@ -8,6 +8,21 @@ class ErrorRaiser:
             return ""
 
     @staticmethod
+    def raiseIsNotTuple(tup, name=""):
+        name = ErrorRaiser.getNameText(name)
+
+        def raiseError():
+            raise TypeError(f'Only Cell or tuple are allowed. Received{name}: {type(tup)} of {tup}')
+
+        if type(tup) is not tuple:
+            raiseError()
+
+        if len(tup) is not 2 or type(tup[0]) is not int or type(tup[1]) is not int:
+            raiseError()
+        
+        return tup
+
+    @staticmethod
     def raiseErrorOnlyInt(x, name=""):
             name = ErrorRaiser.getNameText(name)
             

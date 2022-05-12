@@ -69,19 +69,12 @@ class Cell:
             cell (tuple | Cell): the cell that has to be checked the type of.
 
         Returns:
-            (tuple | Cell): if the type is correct it passes the cell as a tuple.
+            tuple: if the type is correct it passes the cell as a tuple.
         """
-        def raiseError():
-            raise TypeError(f'Only Cell or tuple are allowed. Received for cell: {type(cell)} of {cell}')
-
         if type(cell) is Cell:
             cell = (cell.x, cell.y)
         
-        if type(cell) is not tuple:
-            raiseError()
-
-        if len(cell) is not 2 or type(cell[0]) is not int or type(cell[1]) is not int:
-            raiseError()
+        cell = ErrorRaiser.raiseIsNotTuple(cell)
 
         return cell 
 
