@@ -56,8 +56,12 @@ class MazeGenerator:
         Returns:
             tuple: cellResult is the vector decribing how to come the cellStart to the cellEnd
         """
-        Cell.raiseIsNotCellIfApplicable(cellStart)
-        Cell.raiseIsNotCellIfApplicable(cellEnd)
+        cellStart = Cell.raiseIsNotCellIfApplicable(cellStart)
+        cellEnd = Cell.raiseIsNotCellIfApplicable(cellEnd)
+
+        # Allign to cell type to be able to use minus
+        cellStart = Cell(cellStart[0], cellStart[1])
+        cellEnd = Cell(cellEnd[0], cellEnd[1])
 
         cellResult = cellEnd.minus(cellStart)
 

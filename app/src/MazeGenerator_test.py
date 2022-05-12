@@ -70,4 +70,31 @@ class TestMazeGeneratorRaiseCellsAreNotNeighborIfApplicable(unittest.TestCase):
         self.assertRaises(TypeError, MazeGenerator.raiseCellsAreNotNeighborIfApplicable, True, True)
         self.assertRaises(TypeError, MazeGenerator.raiseCellsAreNotNeighborIfApplicable, ("1", "2"), ("2", "2"))
 
+    def test_valid_input(self):
+        """Test if the MazeGenerator.raiseCellsAreNotNeighborIfApplicable method passes correctly the tuple."""
+        # With Cells Neighbor
+        self.assertEqual(MazeGenerator.raiseCellsAreNotNeighborIfApplicable(Cell(1,1), Cell(1,2)), (0,1))
+        self.assertEqual(MazeGenerator.raiseCellsAreNotNeighborIfApplicable(Cell(1,1), Cell(1,0)), (0,-1))
+        self.assertEqual(MazeGenerator.raiseCellsAreNotNeighborIfApplicable(Cell(1,1), Cell(2,1)), (1,0))
+        self.assertEqual(MazeGenerator.raiseCellsAreNotNeighborIfApplicable(Cell(1,1), Cell(0,1)), (-1,0))
+
+        # With Cells not Neighbor
+        self.assertRaises(IndexError, MazeGenerator.raiseCellsAreNotNeighborIfApplicable, Cell(2,2), Cell(0,2))
+        self.assertRaises(IndexError, MazeGenerator.raiseCellsAreNotNeighborIfApplicable, Cell(2,2), Cell(4,2))
+        self.assertRaises(IndexError, MazeGenerator.raiseCellsAreNotNeighborIfApplicable, Cell(2,2), Cell(2,0))
+        self.assertRaises(IndexError, MazeGenerator.raiseCellsAreNotNeighborIfApplicable, Cell(2,2), Cell(2,4))
+
+        # With tuples Neighbor
+        self.assertEqual(MazeGenerator.raiseCellsAreNotNeighborIfApplicable((1,1), (1,2)), (0,1))
+        self.assertEqual(MazeGenerator.raiseCellsAreNotNeighborIfApplicable((1,1), (1,0)), (0,-1))
+        self.assertEqual(MazeGenerator.raiseCellsAreNotNeighborIfApplicable((1,1), (2,1)), (1,0))
+        self.assertEqual(MazeGenerator.raiseCellsAreNotNeighborIfApplicable((1,1), (0,1)), (-1,0))
+
+        # With tuples not Neighbor
+        self.assertRaises(IndexError, MazeGenerator.raiseCellsAreNotNeighborIfApplicable, (2,2), (0,2))
+        self.assertRaises(IndexError, MazeGenerator.raiseCellsAreNotNeighborIfApplicable, (2,2), (4,2))
+        self.assertRaises(IndexError, MazeGenerator.raiseCellsAreNotNeighborIfApplicable, (2,2), (2,0))
+        self.assertRaises(IndexError, MazeGenerator.raiseCellsAreNotNeighborIfApplicable, (2,2), (2,4))
+
+
 
