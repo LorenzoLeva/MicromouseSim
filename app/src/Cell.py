@@ -9,6 +9,7 @@ class Cell:
         Args:
             x (int): x coordinate of the cell. Can't be negative.
             y (int): y coordinate of the cell. Can't be negative.
+            type (str): is the type of the cell. It can be one of the following ["normal", "start", "end"]
 
         Attributes:
             x (int): x coordinate of the cell. Can't be negative.
@@ -16,10 +17,11 @@ class Cell:
             walls (dict of bool): Dictionary with ["top", "right", "bottom", "left"] keys that describe if there is a wall through an bool.
             width (int): is the with of a cell. Used for visualization.
     """
-    def __init__(self, x: int, y: int) -> None: 
-        ErrorRaiser.raiseNoNegativeInt(x)
-        ErrorRaiser.raiseNoNegativeInt(y)
+    def __init__(self, x: int, y: int, type: str= "normal") -> None: 
+        ErrorRaiser.raiseNoNegativeInt(x, "x")
+        ErrorRaiser.raiseNoNegativeInt(y, "y")
 
+        self.type = Cell.raiseNotCellType(type, "cell.type")
         
         self.x = x
         self.y = y
@@ -37,12 +39,7 @@ class Cell:
         Args:
             wall (str): The key of the wall to delete. Possible keys are: ["top", "right", "bottom", "left"]
         """
-        if type (wall) is not str:
-            raise TypeError("Only string are allowed. Received for wall: " + str(type (wall)) + " " + str(wall))
-        
-        wall = wall.lower()
-        if not wall in ["top", "right", "bottom", "left"]:
-            raise KeyError(str(wall) + " not a valid option. Valid options are: [top, right, bottom, left]")
+        wall = Cell.raiseNotWallType(wall)
         
         self.walls[wall] = False
         
@@ -52,12 +49,7 @@ class Cell:
         Args:
             wall (str): The key of the wall to delete. Possible keys are: ["top", "right", "bottom", "left"]
         """
-        if type (wall) is not str:
-            raise TypeError("Only string are allowed. Received for wall: " + str(type (wall)) + " " + str(wall))
-        
-        wall = wall.lower()
-        if not wall in ["top", "right", "bottom", "left"]:
-            raise KeyError(str(wall) + " not a valid option. Valid options are: [top, right, bottom, left]")
+        wall = Cell.raiseNotWallType(wall)
         
         self.walls[wall] = True  
 
@@ -77,6 +69,22 @@ class Cell:
         cell = ErrorRaiser.raiseIsNotTuple(cell)
 
         return cell 
+
+    @staticmethod
+    def raiseNotCellType(x: str, name=""):
+        possibleCellTypes = ["normal", "start", "end"]
+        ErrorRaiser.raiseErrorOnlyStr(x)
+        
+        x = x.lower()
+        return ErrorRaiser.raiseNotValidKey(x, possibleCellTypes, name)
+
+    @staticmethod
+    def raiseNotWallType(x: str, name=""):
+        possibleWallTypes = ["top", "right", "bottom", "left"]
+        ErrorRaiser.raiseErrorOnlyStr(x)
+
+        x = x.lower()
+        return ErrorRaiser.raiseNotValidKey(x, possibleWallTypes)
 
     def minus(self, cell):
         """Subtracts one cell from the other. 

@@ -5,11 +5,17 @@ from Cell import Cell
 class TestCellInitialization(unittest.TestCase):
     def test_invalid_input_types(self):
         """Test if the Cell class raises TypeError when initialized with the wrong parameter type."""
+        # Invalid Coordinates
         self.assertRaises(TypeError, Cell, "x", "y")
         self.assertRaises(TypeError, Cell, "3", "3")
         self.assertRaises(TypeError, Cell, 0, "y")
         self.assertRaises(TypeError, Cell, "x", 0)
         self.assertRaises(TypeError, Cell, True, True)
+
+        # Invalid Type
+        self.assertRaises(TypeError, Cell, 1, 1, 1)
+        self.assertRaises(TypeError, Cell, 1, 1, True)
+        self.assertRaises(KeyError, Cell, 1, 1, "Cat")
     
     def test_invalid_input_range(self):
         """Test if the Cell class raises IndexError when initialized with negative coordinates parameter type."""
@@ -22,16 +28,22 @@ class TestCellInitialization(unittest.TestCase):
         x = 3
         y = 4
 
-        cell = Cell(x, y)
+        cell1 = Cell(x, y)
+        cell2 = Cell(x, y, "Start")
+        cell3 = Cell(x, y, "End")
 
-        self.assertEqual(cell.x, x)
-        self.assertEqual(cell.y, y)
-        self.assertEqual(cell.walls, {
+
+        self.assertEqual(cell1.x, x)
+        self.assertEqual(cell1.y, y)
+        self.assertEqual(cell1.walls, {
             "top" : True,
             "right" : True,
             "bottom" : True,
             "left" : True 
         })
+        self.assertEqual(cell1.type, "normal")
+        self.assertEqual(cell2.type, "start")
+        self.assertEqual(cell3.type, "end")
 
 class TestCellDeleteWallMethod(unittest.TestCase):
     def test_invalid_input_types(self):
