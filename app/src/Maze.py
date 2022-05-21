@@ -86,6 +86,15 @@ class Maze:
         if not self.isCoordinateInMaze(x, y):
             raise IndexError(f'Cell isn\'t within the maze. X has to be between 0 and {self.x - 1}(included) and Y has to be between 0 and {self.y - 1}(included). Got X:{x}, Y:{y}')
 
+    @staticmethod
+    def raiseNotMaze(maze, name=""):
+        name = ErrorRaiser.getNameText(name)
+
+        if not issubclass(type(maze), Maze):
+            raise TypeError(f'Only Maze subclasses are allowed. Received{name}: {type(maze)} of {maze}')
+
+        return maze
+
     # General maze methods
     def isCoordinateInMaze(self, x: int, y: int) -> bool:
         """Checks if coordinate is in Maze.
