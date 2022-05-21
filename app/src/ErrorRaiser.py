@@ -7,6 +7,7 @@ class ErrorRaiser:
         else:
             return ""
 
+    # ToDo rename to raiseIsNotTupleOfInt
     @staticmethod
     def raiseIsNotTuple(tup, name=""):
         name = ErrorRaiser.getNameText(name)
@@ -21,6 +22,13 @@ class ErrorRaiser:
             raiseError()
         
         return tup
+
+    @staticmethod
+    def raiseErrorOnlyStr(x, name=""):
+        name = ErrorRaiser.getNameText(name)
+
+        if type (x) is not str:
+                raise TypeError(f'Only strings are allowed. Received{name}: {type (x)} = {x}')
 
     @staticmethod
     def raiseErrorOnlyInt(x, name=""):
@@ -46,3 +54,31 @@ class ErrorRaiser:
 
         if x <= 0:
             raise IndexError(f'No zero or negative integer are allowed. Received{name}: {type (x)} = {x}')
+
+    @staticmethod
+    def raiseIsNotListOfStr(x, name=""):
+        name = ErrorRaiser.getNameText(name)
+
+        def raiseError():
+            raise TypeError(f'Only Lists containing strings are allowed. Received{name}: {type(x)} of {x}')
+
+        if type(x) is not list:
+            raiseError()
+        
+        for i in x:
+            if type(i) is not str:
+                raiseError()
+        
+        return x
+
+    @staticmethod
+    def raiseNotValidKey(key, possibleKeys, name=""):
+        name = ErrorRaiser.getNameText(name)
+
+        ErrorRaiser.raiseErrorOnlyStr(key, name)
+        ErrorRaiser.raiseIsNotListOfStr(possibleKeys, name)
+
+        if key not in possibleKeys:
+            raise KeyError(f'{key} not a valid option. Valid options are: {possibleKeys}')
+
+        return key
