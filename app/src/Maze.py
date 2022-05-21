@@ -75,7 +75,7 @@ class Maze:
 
         return cellResult
 
-    def raiseNotInMazeIfApplicable(self, x, y):
+    def raiseNotInMazeIfApplicable(self, x: int, y: int):
         """Checks if coordinate is in the Maze. Otherwise it throws an error
         Args:
             x (int): x coordinate to check
