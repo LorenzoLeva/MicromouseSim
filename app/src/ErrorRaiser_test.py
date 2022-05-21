@@ -1,7 +1,7 @@
 import unittest
 
-from app.src.ErrorRaiser import ErrorRaiser
-from app.src.Cell import Cell
+from ErrorRaiser import ErrorRaiser
+from Cell import Cell
 
 class TestErrorRaiserRaiseIsNotTuple(unittest.TestCase):
     def test_invalid_input_types(self):

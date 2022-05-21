@@ -1,6 +1,5 @@
 import random
 from Maze import Maze
-from Visualizer import Visualizer
 from Cell import Cell
 
 

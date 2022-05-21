@@ -1,8 +1,8 @@
 from operator import imod
 import unittest
 
-from app.src.Mouse import Mouse
-from app.src.Maze import Maze
+from Mouse import Mouse
+from Maze import Maze
 
 class TestMouseInitialization(unittest.TestCase):
      def test_invalid_input_types(self):

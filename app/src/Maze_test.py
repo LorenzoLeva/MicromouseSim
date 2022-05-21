@@ -1,7 +1,7 @@
 import unittest
 
-from app.src.Cell import Cell
-from app.src.Maze import Maze
+from Cell import Cell
+from Maze import Maze
 
 class TestMazeInitialization(unittest.TestCase):
     def test_invalid_input_types(self):

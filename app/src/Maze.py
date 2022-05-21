@@ -1,8 +1,8 @@
 import random
 import sys
-from app.src.Cell import Cell
-from app.src.ErrorRaiser import ErrorRaiser
-from app.src.Visualizer import Visualizer
+from Cell import Cell
+from ErrorRaiser import ErrorRaiser
+from Visualizer import Visualizer
 
 class Maze:
     """Object that represents a maze.
