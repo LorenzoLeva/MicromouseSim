@@ -1,10 +1,10 @@
 import random
-from MazeGenerator import MazeGenerator
+from Maze import Maze
 from Visualizer import Visualizer
 from Cell import Cell
 
 
-class DFS_R(MazeGenerator):
+class DFS_R(Maze):
     """TODO add Doc
     https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_implementation
     """

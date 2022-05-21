@@ -4,7 +4,7 @@ from app.src.Cell import Cell
 from app.src.ErrorRaiser import ErrorRaiser
 from app.src.Visualizer import Visualizer
 
-class MazeGenerator:
+class Maze:
     """Object that represents a maze.
 
         Note: The coordinates of the maze start at 0 and go up.
@@ -241,9 +241,9 @@ class MazeGenerator:
 # c1 = Cell(5,5)
 # c2 = Cell(7,7)
 
-# print(MazeGenerator.raiseCellsAreNotNeighborIfApplicable(c1, c2))
+# print(Maze.raiseCellsAreNotNeighborIfApplicable(c1, c2))
 
-# m = MazeGenerator(11,11)
+# m = Maze(11,11)
 # print(m.maze)
 
 # m.deleteWallsBetween((5,5), (5,6))
