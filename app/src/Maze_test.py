@@ -96,5 +96,34 @@ class TestMazeRaiseCellsAreNotNeighborIfApplicable(unittest.TestCase):
         self.assertRaises(IndexError, Maze.raiseCellsAreNotNeighborIfApplicable, (2,2), (2,0))
         self.assertRaises(IndexError, Maze.raiseCellsAreNotNeighborIfApplicable, (2,2), (2,4))
 
+class TestIsCoordinateInEndArea(unittest.TestCase):
+    def test_invalid_input_types(self):
+        """Test if the Maze.isCoordinateInEndArea method raises TypeError when called with the wrong parameter type."""
+        
+        self.assertRaises(TypeError, Maze.raiseCellsAreNotNeighborIfApplicable, "1", "1")
+        self.assertRaises(TypeError, Maze.raiseCellsAreNotNeighborIfApplicable, True, True)
+        self.assertRaises(TypeError, Maze.raiseCellsAreNotNeighborIfApplicable, ("1", "2"), ("2", "2"))
+
+    def test_valid_input(self):
+        """Test if the Maze.raiseCellsAreNotNeighborIfApplicable method passes correctly the tuple."""
+        
+        maze = Maze(6,6, None, (0,0), (2,2), (3,3))
+
+        # Is in finish area
+        self.assertEqual(maze.isCoordinateInEndArea(2,2), True)
+        self.assertEqual(maze.isCoordinateInEndArea(2,3), True)
+        self.assertEqual(maze.isCoordinateInEndArea(3,3), True)
+        self.assertEqual(maze.isCoordinateInEndArea(3,2), True)
+
+        # Is not in finish area
+        self.assertEqual(maze.isCoordinateInEndArea(0,0), False)
+        self.assertEqual(maze.isCoordinateInEndArea(0,5), False)
+        self.assertEqual(maze.isCoordinateInEndArea(5,5), False)
+        self.assertEqual(maze.isCoordinateInEndArea(5,0), False)
+
+
+
+
+
 
 

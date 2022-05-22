@@ -1,5 +1,7 @@
 import random
 import sys
+
+from sqlalchemy import between
 from Cell import Cell
 from ErrorRaiser import ErrorRaiser
 from Visualizer import Visualizer
@@ -12,6 +14,9 @@ class Maze:
         Args:
             columns (int): amount of columns of the maze.
             rows (int): amount of rows of the maze.
+            seed (int): seed for the random module.
+            startCell: Cell from which the bot starts
+            endCell1, endCell2 (Cell): corner Cells that contain the finish area of the maze. Can be the same if the finish area is a single cell.
 
         Attributes:
             x (int): amount of columns of the maze.
@@ -19,12 +24,26 @@ class Maze:
             visited (bool[][]): Matrix describing if that field was visited.
             maze (Cell[][]): Matrix containing all the Cells of the maze.
     """
-    def __init__(self, columns: int, rows: int, seed = None) -> None:
+    def __init__(self, columns: int, rows: int, seed = None, startCell = (0,0), endCell1 = None, endCell2 = None) -> None:
         # Checks
         if seed:
-            ErrorRaiser.raiseErrorOnlyInt(seed)
+            ErrorRaiser.raiseErrorOnlyInt(seed, "maze.seed")
         ErrorRaiser.raiseNoZeroNegativeInt(rows, "rows")
         ErrorRaiser.raiseNoZeroNegativeInt(columns, "columns")
+    
+        # TODO Handle None types
+        if startCell is not None:
+            self.startCell = Cell.raiseIsNotCellIfApplicable(startCell)
+
+        if endCell1 is not None:
+            self.endCell1 = Cell.raiseIsNotCellIfApplicable(endCell1)
+        else:
+            self.endCell1 = (1,1) #TODO make center of maze
+
+        if endCell2 is not None:
+            self.endCell2 = Cell.raiseIsNotCellIfApplicable(endCell2)
+        else:
+            self.endCell2 = self.endCell1
 
         # Configs
         if seed is None:
@@ -42,7 +61,11 @@ class Maze:
 
         for r in range(self.y):
             for c in range(self.x):
-                self.maze[r][c] = Cell(c,r)
+                cellType = "normal"
+                if r is self.startCell[0] and c is self.startCell[1]:
+                    cellType = "start"
+
+                self.maze[r][c] = Cell(c,r, cellType)
     
     # Raise exceptions
     @staticmethod
@@ -105,6 +128,21 @@ class Maze:
         if type(x) is not int or type(y) is not int:
             raise TypeError(f'Only ints are allowed for x and y. Received for x: {type(x)} of {x} and for y: {type(y)} of {y}')
         return (x >= 0 and x < self.x and y >= 0 and y < self.y)
+
+    def isCoordinateInEndArea(self, x: int, y:int) -> bool:
+        """Checks if coordinate is part of the finish area of the maze.
+
+        Returns:
+            bool: True if the coordinate is part of the finish area of the maze, and False if it is not.
+        """
+        ErrorRaiser.raiseErrorOnlyInt(x, "x")
+        ErrorRaiser.raiseErrorOnlyInt(y, "y")
+
+        return (
+            (self.endCell1[0] <= x <= self.endCell2[0] or self.endCell2[0] <= x <= self.endCell1[0]) and 
+            (self.endCell1[1] <= y <= self.endCell2[1] or self.endCell2[1] <= y <= self.endCell1[1])
+        )
+            
 
     def getShape(self):
         """Prints the shape of the maze.
