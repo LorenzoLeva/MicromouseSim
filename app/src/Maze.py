@@ -1,3 +1,4 @@
+from math import floor
 import random
 import sys
 
@@ -25,37 +26,41 @@ class Maze:
             maze (Cell[][]): Matrix containing all the Cells of the maze.
     """
     def __init__(self, columns: int, rows: int, seed = None, startCell = (0,0), endCell1 = None, endCell2 = None) -> None:
-        # Checks
-        if seed:
-            ErrorRaiser.raiseErrorOnlyInt(seed, "maze.seed")
-        ErrorRaiser.raiseNoZeroNegativeInt(rows, "rows")
-        ErrorRaiser.raiseNoZeroNegativeInt(columns, "columns")
-    
-        # TODO Handle None types
-        if startCell is not None:
-            self.startCell = Cell.raiseIsNotCellIfApplicable(startCell)
-
-        if endCell1 is not None:
-            self.endCell1 = Cell.raiseIsNotCellIfApplicable(endCell1)
-        else:
-            self.endCell1 = (1,1) #TODO make center of maze
-
-        if endCell2 is not None:
-            self.endCell2 = Cell.raiseIsNotCellIfApplicable(endCell2)
-        else:
-            self.endCell2 = self.endCell1
-
-        # Configs
+        # Random function config
         if seed is None:
             self.seed = random.randrange(sys.maxsize)
         else:
+            ErrorRaiser.raiseErrorOnlyInt(seed, "maze.seed")
             self.seed = seed
 
         random.seed(self.seed)
-        sys.setrecursionlimit(10**6) # TODO move to main class
-       
+        
+        # Maze size
+        ErrorRaiser.raiseNoZeroNegativeInt(rows, "rows")
+        ErrorRaiser.raiseNoZeroNegativeInt(columns, "columns")
         self.y = rows
         self.x = columns
+
+        # Start Cell
+        self.startCell = Cell.raiseIsNotCellIfApplicable(startCell)
+
+        # Finish Area
+        if endCell1 is not None:
+            self.endCell1 = Cell.raiseIsNotCellIfApplicable(endCell1)
+        else:
+            x = Maze.getMiddleCoordinate(self.x)
+            y = Maze.getMiddleCoordinate(self.y)
+
+            self.endCell1 = (x["min"], y["min"])
+            self.endCell2 = (x["max"], y["max"])
+
+        if endCell2 is not None:
+            self.endCell2 = Cell.raiseIsNotCellIfApplicable(endCell2)
+
+
+        # Configs
+        sys.setrecursionlimit(10**6) # TODO move to main class
+       
         self.visited = [[False for x in range(self.x)] for y in range(self.y)]
         self.maze = [[0 for x in range(self.x)] for y in range(self.y)]
 
@@ -67,6 +72,31 @@ class Maze:
 
                 self.maze[r][c] = Cell(c,r, cellType)
     
+    @staticmethod
+    def getMiddleCoordinate(x):
+        ''' Returns a object with the min and max coordinate of the middle of a size.
+
+            Returns:  
+                dict: An dictionary containing the min and max coordinate the middle of a size.
+                    
+                Note:
+                    When the size is odd the middle is one cell wide. (Exp.: 7 => {min: 3, max: 3})
+                    When the size is even the middle is two cell wide. (Exp.: 8 => {min: 3, max: 4})
+        '''
+        ErrorRaiser.raiseNoNegativeInt(x)
+
+        x = x / 2 # Even: 8/2 = 4   Odd: 7/2 = 3.5
+
+        minX = x - 0.1 # Even: 4 - 0.1 = 3.9   Odd: 3.5 - 0.1 = 3.4
+        maxX = x + 0.1 # Even: 4 + 0.1 = 4.1   Odd: 3.5 + 0.1 = 3.6
+
+        minX = floor(minX) # Even: floor(3.9) = 3  Odd: floor(3.4) = 3
+        maxX = floor(maxX) # Even: floor(4.1) = 4  Odd: floor(3.6) = 3
+
+        return {"min": minX, "max": maxX}
+
+
+
     # Raise exceptions
     @staticmethod
     def raiseCellsAreNotNeighborIfApplicable(cellStart: Cell, cellEnd: Cell):

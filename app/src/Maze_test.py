@@ -4,6 +4,7 @@ from Cell import Cell
 from Maze import Maze
 
 class TestMazeInitialization(unittest.TestCase):
+    # TODO add tests for startCell and endCells
     def test_invalid_input_types(self):
         """Test if the Maze class raises TypeError when initialized with the wrong parameter type."""
         # No seed
@@ -120,6 +121,32 @@ class TestIsCoordinateInEndArea(unittest.TestCase):
         self.assertEqual(maze.isCoordinateInEndArea(0,5), False)
         self.assertEqual(maze.isCoordinateInEndArea(5,5), False)
         self.assertEqual(maze.isCoordinateInEndArea(5,0), False)
+
+class TestGetMiddleCoordinate(unittest.TestCase):
+    def test_invalid_input_types(self):
+        """Test if the Maze.getMiddleCoordinate method raises TypeError when called with the wrong parameter type."""
+        
+        self.assertRaises(IndexError, Maze.getMiddleCoordinate, -1)
+        self.assertRaises(TypeError, Maze.getMiddleCoordinate, "1")
+        self.assertRaises(TypeError, Maze.getMiddleCoordinate, True)
+
+    def test_valid_input(self):
+        """Test if the Maze.getMiddleCoordinate method returns correct values."""
+
+        # Even
+        self.assertEqual(Maze.getMiddleCoordinate(8), {'min': 3, 'max': 4})
+        self.assertEqual(Maze.getMiddleCoordinate(16), {'min': 7, 'max': 8})
+        self.assertEqual(Maze.getMiddleCoordinate(32), {'min': 15, 'max': 16})
+
+        # Odd
+        self.assertEqual(Maze.getMiddleCoordinate(7), {'min': 3, 'max': 3})
+        self.assertEqual(Maze.getMiddleCoordinate(15), {'min': 7, 'max': 7})
+        self.assertEqual(Maze.getMiddleCoordinate(31), {'min': 15, 'max': 15})
+
+
+
+
+        
 
 
 
