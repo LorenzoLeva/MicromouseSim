@@ -2,7 +2,6 @@ from math import floor
 import random
 import sys
 
-from sqlalchemy import between
 from Cell import Cell
 from ErrorRaiser import ErrorRaiser
 from Visualizer import Visualizer
@@ -67,8 +66,12 @@ class Maze:
         for r in range(self.y):
             for c in range(self.x):
                 cellType = "normal"
-                if r is self.startCell[0] and c is self.startCell[1]:
+                if c is self.startCell[0] and r is self.startCell[1]:
                     cellType = "start"
+                
+                if self.isCoordinateInEndArea(c, r):
+                    self.visited[r][c] = True
+                    cellType = "end"
 
                 self.maze[r][c] = Cell(c,r, cellType)
     
@@ -320,7 +323,8 @@ class Maze:
 
 # print(Maze.raiseCellsAreNotNeighborIfApplicable(c1, c2))
 
-# m = Maze(11,11)
+# m = Maze(8,8)
+# print(m.maze[4][4].type)
 # print(m.maze)
 
 # m.deleteWallsBetween((5,5), (5,6))

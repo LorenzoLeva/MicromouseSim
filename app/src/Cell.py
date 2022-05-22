@@ -106,47 +106,87 @@ class Cell:
         """
         shape = []
 
-        # Bottom
+        # Corners
+        bottomLeft= {
+            'x': self.x,
+            'y': self.y
+        }
+
+        bottomRight = {
+            'x': self.x + self.width,
+            'y': self.y
+        }
+
+        topLeft = {
+            'x': self.x,
+            'y': self.y + self.width
+        }
+
+        topRight = {
+            'x': self.x + self.width,
+            'y': self.y + self.width
+        }
+
+        if self.type != "normal":
+            color = "grey"
+
+            if self.type == "start":
+                color = "green"
+            elif self.type == "end":
+                color = "red"
+            shape.append(
+                dict(type="rect", xref="x", yref="y", line_width=0, fillcolor=color,
+                    x0 = bottomLeft["x"], 
+                    x1 = topRight["x"],
+                    y0 = bottomLeft["y"],
+                    y1 = topRight["y"]
+                )
+
+            )
+
+
+
+        # Bottom Wall
         if self.walls["bottom"]:
             shape.append(
                 dict(type="line", xref="x", yref="y", line_width=3, line_color="green",
-                    x0=self.x, 
-                    y0=self.y, 
-                    x1=self.x + self.width, 
-                    y1=self.y
+                    x0=bottomLeft["x"], 
+                    y0=bottomLeft["y"], 
+                    x1=bottomRight["x"], 
+                    y1=bottomRight["y"]
                 )
             )
 
-        # Right
+        # Right Wall
         if self.walls["right"]:
             shape.append(
                 dict(type="line", xref="x", yref="y", line_width=3, line_color="red",
-                    x0=self.x + self.width, 
-                    y0=self.y, 
-                    x1=self.x + self.width, 
-                    y1=self.y + self.width
+                    x0=bottomRight["x"], 
+                    y0=bottomRight["y"], 
+                    x1=topRight["x"], 
+                    y1=topRight["y"]
                 )
             )
 
-        # Top
+        # Top Wall
         if self.walls["top"]:
             shape.append(
                 dict(type="line", xref="x", yref="y", line_width=3, line_color="blue",
-                    x0=self.x + self.width, 
-                    y0=self.y + self.width, 
-                    x1=self.x, 
-                    y1=self.y + self.width
+                    x0=topLeft["x"], 
+                    y0=topLeft["y"], 
+                    x1=topRight["x"], 
+                    y1=topRight["y"]
                 )
             )
 
-        # Left
+        # Left Wall
         if self.walls["left"]:
             shape.append(
                 dict(type="line", xref="x", yref="y", line_width=3, line_color="orange",
-                    x0=self.x, 
-                    y0=self.y + self.width, 
-                    x1=self.x, 
-                    y1=self.y
+                    x0=bottomLeft["x"], 
+                    y0=bottomLeft["y"], 
+                    x1=topLeft["x"], 
+                    y1=topLeft["y"]
                 )
             )
 
