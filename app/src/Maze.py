@@ -2,6 +2,8 @@ from math import floor
 import random
 import sys
 
+from requests import delete
+
 from Cell import Cell
 from ErrorRaiser import ErrorRaiser
 from Visualizer import Visualizer
@@ -74,6 +76,8 @@ class Maze:
                     cellType = "end"
 
                 self.maze[r][c] = Cell(c,r, cellType)
+        
+        self.deleteWallsBetween(self.endCell1, self.endCell2)
     
     @staticmethod
     def getMiddleCoordinate(x):
@@ -97,8 +101,6 @@ class Maze:
         maxX = floor(maxX) # Even: floor(4.1) = 4  Odd: floor(3.6) = 3
 
         return {"min": minX, "max": maxX}
-
-
 
     # Raise exceptions
     @staticmethod
@@ -194,37 +196,48 @@ class Maze:
         return self.maze[cellTuple[1]][cellTuple[0]]
 
     def deleteWallsBetween(self, cellStart, cellEnd):
-        """Deletes the walls between to cells that are neighbors.
+        """Deletes all walls between cells.
 
         Args:
-            cellStart (Cell | tuple): First cell to remove wall from
-            cellEnd (Cell | tuple): Second cell to remove wall from
+            cellStart (Cell | tuple): First cell in one corner to remove wall from
+            cellEnd (Cell | tuple): Second cell in other corner to remove wall from
         """
 
         cellStart = Cell.raiseIsNotCellIfApplicable(cellStart)
         cellEnd = Cell.raiseIsNotCellIfApplicable(cellEnd)
 
-        cellStart = self.maze[cellStart[1]][cellStart[0]]
-        cellEnd = self.maze[cellEnd[1]][cellEnd[0]]
+        minX = 0
+        maxX = 0
+        minY = 0
+        maxY = 0
 
-        cellResult = self.raiseCellsAreNotNeighborIfApplicable(cellStart, cellEnd)
+        if cellStart[0] < cellEnd[0]:
+            minX = cellStart[0]
+            maxX = cellEnd[0]
+        else:
+            minX = cellEnd[0]
+            maxX= cellStart[0]
         
-        if cellResult[0] is 1 and cellResult[1] is 0:
-            cellStart.deleteWall("right")
-            cellEnd.deleteWall("left")
+        if cellStart[1] < cellEnd[1]:
+            minY = cellStart[1]
+            maxY = cellEnd[1]
+        else:
+            minY = cellEnd[1]
+            maxY = cellStart[1]
         
-        if cellResult[0] is -1 and cellResult[1] is 0:
-            cellStart.deleteWall("left") # cellStart
-            cellEnd.deleteWall("right") # cellEnd
+        for x in range(minX, maxX + 1):
+            for y in range(minY, maxY + 1):
+                cell = self.maze[y][x]
 
-        if cellResult[0] is 0 and cellResult[1] is 1:
-            cellStart.deleteWall("top") # cellStart
-            cellEnd.deleteWall("bottom") # cellEnd
-
-        if cellResult[0] is 0 and cellResult[1] is -1:
-            cellStart.deleteWall("bottom") # cellStart
-            cellEnd.deleteWall("top") # cellEnd
- 
+                if x != minX:
+                    cell.deleteWall("left")
+                if x != maxX:
+                    cell.deleteWall("right")
+                if y != minY:
+                    cell.deleteWall("bottom")
+                if y != maxY:
+                    cell.deleteWall("top")
+                 
     # Manage Neighbors
     def getNotVisitedNeighbors(self, cell) -> list:
         """Gets all the not visited neighbors from a cell

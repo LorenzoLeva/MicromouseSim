@@ -143,14 +143,87 @@ class TestGetMiddleCoordinate(unittest.TestCase):
         self.assertEqual(Maze.getMiddleCoordinate(15), {'min': 7, 'max': 7})
         self.assertEqual(Maze.getMiddleCoordinate(31), {'min': 15, 'max': 15})
 
+class TestDeleteWallsBetween(unittest.TestCase):
+    def test_invalid_input_types(self):
+        """Test if the Maze.deleteWallsBetween method raises TypeError when called with the wrong parameter type."""
 
+        maze = Maze(10,10)
 
+        self.assertRaises(TypeError, maze.deleteWallsBetween, "1", "1")
+        self.assertRaises(TypeError, maze.deleteWallsBetween, True, True)
+        self.assertRaises(TypeError, maze.deleteWallsBetween, ("1", "2"), ("2", "2"))
 
-        
+    
+    def test_valid_input(self):
+        """Test if the Maze.deleteWallsBetween method deletes the correct walls."""
 
+        maze = Maze(10,10)
 
+        c1 = (0,0)
+        c2 = (2,0)
+        c3 = (0,2)
+        c4 = (2,2)
 
+        maze.deleteWallsBetween(c1, c1)
 
+        self.assertEqual(maze.maze[c1[1]][c1[0]].walls, {
+            "top" : True,
+            "right" : True,
+            "bottom" : True,
+            "left" : True 
+        })
 
+        self.assertEqual(maze.maze[1][1].walls, {
+            "top" : True,
+            "right" : True,
+            "bottom" : True,
+            "left" : True 
+        })
 
+        maze.deleteWallsBetween(c1, c2)
 
+        self.assertEqual(maze.maze[c1[1]][c1[0]].walls, {
+            "top" : True,
+            "right" : False,
+            "bottom" : True,
+            "left" : True 
+        })
+
+        self.assertEqual(maze.maze[1][1].walls, {
+            "top" : True,
+            "right" : True,
+            "bottom" : True,
+            "left" : True 
+        })
+
+        maze.deleteWallsBetween(c1, c3)
+
+        self.assertEqual(maze.maze[c1[1]][c1[0]].walls, {
+            "top" : False,
+            "right" : False,
+            "bottom" : True,
+            "left" : True 
+        })
+
+        self.assertEqual(maze.maze[1][1].walls, {
+            "top" : True,
+            "right" : True,
+            "bottom" : True,
+            "left" : True 
+        })
+
+        maze.deleteWallsBetween(c1, c4)
+
+        self.assertEqual(maze.maze[c1[1]][c1[0]].walls, {
+            "top" : False,
+            "right" : False,
+            "bottom" : True,
+            "left" : True 
+        })
+
+        self.assertEqual(maze.maze[1][1].walls, {
+            "top" : False,
+            "right" : False,
+            "bottom" : False,
+            "left" : False 
+        })

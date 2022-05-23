@@ -147,7 +147,7 @@ class Cell:
             elif self.type == "end":
                 color = "red"
             shape.append(
-                dict(type="rect", xref="x", yref="y", line_width=0, fillcolor=color,
+                dict(type="rect", xref="x", yref="y", line_width=0, fillcolor=color, opacity=0.2,
                     x0 = bottomLeft["x"], 
                     x1 = topRight["x"],
                     y0 = bottomLeft["y"],
