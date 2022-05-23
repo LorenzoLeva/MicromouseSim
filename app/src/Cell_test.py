@@ -45,6 +45,32 @@ class TestCellInitialization(unittest.TestCase):
         self.assertEqual(cell2.type, "start")
         self.assertEqual(cell3.type, "end")
 
+class TestCellDeleteAllWallsMethod(unittest.TestCase):
+     def test_valid_input(self):
+        """Test if the Cell.deleteAllWalls method deletes correctly all the walls."""
+        cell = Cell(0,0)
+        
+        cell.deleteAllWalls()
+        self.assertEqual(cell.walls, {
+            "top" : False,
+            "right" : False,
+            "bottom" : False,
+            "left" : False 
+        })
+
+class TestCellBuildAllWallsMethod(unittest.TestCase):
+     def test_valid_input(self):
+        """Test if the Cell.buildAllWalls method builds correctly all the walls."""
+        cell = Cell(0,0)
+        
+        cell.buildAllWalls()
+        self.assertEqual(cell.walls, {
+            "top" : True,
+            "right" : True,
+            "bottom" : True,
+            "left" : True 
+        })
+
 class TestCellDeleteWallMethod(unittest.TestCase):
     def test_invalid_input_types(self):
         """Test if the Cell.deleteWall method raises TypeError when called with the wrong parameter type."""

@@ -33,6 +33,12 @@ class Cell:
             "left" : True 
         }
 
+    def deleteAllWalls(self):
+        '''Sets all walls to False.'''
+
+        for w in self.walls:
+            self.deleteWall(w)
+
     def deleteWall(self, wall: str):
         """Sets the specified wall to False.
 
@@ -42,7 +48,13 @@ class Cell:
         wall = Cell.raiseNotWallType(wall)
         
         self.walls[wall] = False
-        
+
+    def buildAllWalls(self):
+        '''Sets all walls to True.'''
+
+        for w in self.walls:
+            self.buildWall(w)
+
     def buildWall(self, wall: str):
         """Sets the specified wall to True.
 
