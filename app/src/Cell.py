@@ -1,3 +1,5 @@
+from random import choices
+import random
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
@@ -84,6 +86,13 @@ class Cell:
         
         return result
 
+    def deleteRandomWall(self):
+        '''Deletes randomly one of the standing walls'''
+
+        choices = self.getAllWalls()
+        wall = random.choice(choices)
+        self.deleteWall(wall)
+        
     @staticmethod
     def raiseIsNotCellIfApplicable(cell):
         """Raises an error if the cell is not the right type. If everything is ok it passes the cell.
