@@ -222,3 +222,22 @@ class TestCellMinusMethod(unittest.TestCase):
 
         self.assertEqual(c1.minus(c2), (-2, -2))
         self.assertEqual(c2.minus(c1), (2, 2))
+
+
+class TestCellGetAllWalls(unittest.TestCase):
+    def test_invalid_input_types(self):
+        """Test if the Cell.getAllWalls method raises TypeError when called with the wrong parameter type."""
+        cell = Cell(0,0)
+        
+        self.assertRaises(TypeError, cell.getAllWalls, 1)
+        self.assertRaises(TypeError, cell.getAllWalls, (0,0))
+
+    def test_valid_input(self):
+        """Test if the Cell.getAllWalls method returns correctly the keys of the walls."""
+        cell = Cell(0,0)
+        
+        cell.deleteWall("Top")
+        cell.deleteWall("right")
+
+        self.assertEqual(cell.getAllWalls(True), ["bottom", "left"])
+        self.assertEqual(cell.getAllWalls(False), ["top", "right"])

@@ -65,6 +65,25 @@ class Cell:
         
         self.walls[wall] = True  
 
+    def getAllWalls(self, standing=True):
+        '''Returns all walls that are standing or not.
+        Args:
+            standing (bool): Type of wall either standing with True or not standing with False.
+
+        Returns:
+            list: of str of keys of all walls with the property set by standing.
+        '''
+
+        ErrorRaiser.raiseIsNotType(bool, standing)
+
+        result = []
+
+        for w in self.walls:
+            if self.walls[w] == standing:
+                result.append(w)
+        
+        return result
+
     @staticmethod
     def raiseIsNotCellIfApplicable(cell):
         """Raises an error if the cell is not the right type. If everything is ok it passes the cell.
