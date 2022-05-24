@@ -1,5 +1,6 @@
 from math import floor
 import random
+from secrets import choice
 import sys
 
 from requests import delete
@@ -177,6 +178,18 @@ class Maze:
             (self.endCell1[0] <= x <= self.endCell2[0] or self.endCell2[0] <= x <= self.endCell1[0]) and 
             (self.endCell1[1] <= y <= self.endCell2[1] or self.endCell2[1] <= y <= self.endCell1[1]))
 
+    def getRandomEndAreaBorderCell(self):
+        '''Returns a random border cell coordinate of the end area.
+    
+        Returns:
+            tuple: coordinate of a random border cell of the end area.
+        '''
+
+        choices = Maze.getBorderCellsOfArea(self.endCell1, self.endCell2)
+
+        return random.choice(choices)
+
+
     @staticmethod
     def getBorderCellsOfArea(cornerCell1, cornerCell2) -> tuple:
         '''Returns a list of tuples with the coordinates of the cells at the border of an area.
@@ -204,7 +217,6 @@ class Maze:
             borderCells.append((minMaxEndArea["maxX"], y))
         
         return borderCells
-
 
     @staticmethod
     def getMinMaxCoordinatesOfCells(cells: list):

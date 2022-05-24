@@ -255,3 +255,11 @@ class TestGetBorderCellsOfArea(unittest.TestCase):
 
         self.assertEqual(Maze.getBorderCellsOfArea((2,1),(1,2)).sort(), [(1,1), (1,2), (2,2), (2,1)].sort())
         self.assertEqual(Maze.getBorderCellsOfArea((3,1),(1,3)).sort(), [(1,1), (1,2), (1,3), (2,3), (3,3), (3,2), (3,1), (2,1)].sort())
+
+class TestGetBorderCellsOfArea(unittest.TestCase):
+    def test_valid_input(self):
+        """Test if the Maze.getRandomEndAreaBorderCell method returns correct values."""
+
+        maze = Maze(16,16)
+        borderCells = Maze.getBorderCellsOfArea(maze.endCell1, maze.endCell2)
+        self.assertIn(maze.getRandomEndAreaBorderCell(), borderCells)
