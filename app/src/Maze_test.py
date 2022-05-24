@@ -153,7 +153,6 @@ class TestDeleteWallsBetween(unittest.TestCase):
         self.assertRaises(TypeError, maze.deleteWallsBetween, True, True)
         self.assertRaises(TypeError, maze.deleteWallsBetween, ("1", "2"), ("2", "2"))
 
-    
     def test_valid_input(self):
         """Test if the Maze.deleteWallsBetween method deletes the correct walls."""
 
@@ -227,3 +226,18 @@ class TestDeleteWallsBetween(unittest.TestCase):
             "bottom" : False,
             "left" : False 
         })
+
+class TestGetMinMaxCoordinatesOfCells(unittest.TestCase):
+    def test_invalid_input_types(self):
+        """Test if the Maze.getMinMaxCoordinatesOfCells method raises TypeError when called with the wrong parameter type."""
+        
+        self.assertRaises(TypeError, Maze.getMinMaxCoordinatesOfCells, -1)
+        self.assertRaises(TypeError, Maze.getMinMaxCoordinatesOfCells, (1,2))
+        self.assertRaises(TypeError, Maze.getMinMaxCoordinatesOfCells, [1,2,3])
+        self.assertRaises(TypeError, Maze.getMinMaxCoordinatesOfCells, [("1",2), (2,"1")])
+
+    def test_valid_input(self):
+        """Test if the Maze.getMinMaxCoordinatesOfCells method returns correct values."""
+
+        self.assertEqual(Maze.getMinMaxCoordinatesOfCells([(2,1),(1,2)]), {'minX': 1, 'maxX': 2, 'minY': 1, 'maxY': 2})
+        self.assertEqual(Maze.getMinMaxCoordinatesOfCells([(5,1),(1,2), (0,7)]), {'minX': 0, 'maxX': 5, 'minY': 1, 'maxY': 7})

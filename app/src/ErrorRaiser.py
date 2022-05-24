@@ -56,18 +56,22 @@ class ErrorRaiser:
             raise IndexError(f'No zero or negative integer are allowed. Received{name}: {type (x)} = {x}')
 
     @staticmethod
-    def raiseIsNotListOfStr(x, name=""):
+    def raiseIsNotList(x, name=""):
         name = ErrorRaiser.getNameText(name)
 
-        def raiseError():
-            raise TypeError(f'Only Lists containing strings are allowed. Received{name}: {type(x)} of {x}')
-
         if type(x) is not list:
-            raiseError()
+            raise TypeError(f'Only Lists are allowed. Received{name}: {type(x)} of {x}')
         
+        return x
+
+    @staticmethod
+    def raiseIsNotListOfType(listType, x, name=""):
+        name = ErrorRaiser.getNameText(name)
+        ErrorRaiser.raiseIsNotList(x, name)
+
         for i in x:
-            if type(i) is not str:
-                raiseError()
+            if type(i) is not listType:
+                raise TypeError(f'Only Lists containing {listType} are allowed. Received{name}: {type(x)} of {x}')
         
         return x
 
@@ -76,7 +80,7 @@ class ErrorRaiser:
         name = ErrorRaiser.getNameText(name)
 
         ErrorRaiser.raiseErrorOnlyStr(key, name)
-        ErrorRaiser.raiseIsNotListOfStr(possibleKeys, name)
+        ErrorRaiser.raiseIsNotListOfType(str, possibleKeys, name)
 
         if key not in possibleKeys:
             raise KeyError(f'{key} not a valid option. Valid options are: {possibleKeys}')

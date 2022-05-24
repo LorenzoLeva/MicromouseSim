@@ -175,9 +175,71 @@ class Maze:
 
         return (
             (self.endCell1[0] <= x <= self.endCell2[0] or self.endCell2[0] <= x <= self.endCell1[0]) and 
-            (self.endCell1[1] <= y <= self.endCell2[1] or self.endCell2[1] <= y <= self.endCell1[1])
-        )
+            (self.endCell1[1] <= y <= self.endCell2[1] or self.endCell2[1] <= y <= self.endCell1[1]))
+
+    def getRandomEndCell() -> tuple:
+        '''Returns a random cell of the end area.
+        
+        Returns:
+            tuple: A random cell of the end area.
+        '''
+
+    @staticmethod
+    def getMinMaxCoordinatesOfCells(cells: list):
+        '''Returns an dictionary containing the min max coordinates from Cells.
+
+        Note: Example
+            getMinMaxCoordinatesOfCells([(1,2), (2,1)]) -> {minX:1, maxX:2, minY:1, maxY:2}
+
+        Args:
+            cells (list(Cell)): List containing Cells or tuples from which the min and max coordinate should be derived.
+        
+        Returns:
+            dict: containing the minX, maxX, minY, maxY values of the inputted cells
+        '''
+
+        result = {}
+
+        ErrorRaiser.raiseIsNotList(cells)
+        for c in cells:
+            cell = Cell.raiseIsNotCellIfApplicable(c)
+
+            # minX
+            if "minX" in result:
+                if cell[0] < result["minX"]:
+                    result["minX"] = cell[0]
+            else:
+                result["minX"] = cell[0]
+
+            # minY
+            if "minY" in result:
+                if cell[1] < result["minY"]:
+                    result["minY"] = cell[1]
+            else:
+                result["minY"] = cell[1]
             
+            # maxX
+            if "maxX" in result:
+                if cell[0] > result["maxX"]:
+                    result["maxX"] = cell[0]
+            else:
+                result["maxX"] = cell[0]
+
+            # maxY
+            if "maxY" in result:
+                if cell[1] > result["maxY"]:
+                    result["maxY"] = cell[1]
+            else:
+                result["maxY"] = cell[1]
+
+        return result
+
+
+
+        
+
+
+
 
     def getShape(self):
         """Prints the shape of the maze.
