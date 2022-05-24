@@ -19,6 +19,26 @@ class TestErrorRaiserRaiseIsNotTuple(unittest.TestCase):
         self.assertEqual(ErrorRaiser.raiseIsNotTuple((1,-1)), (1,-1))
         self.assertEqual(ErrorRaiser.raiseIsNotTuple((-1,-1)), (-1,-1))
 
+class TestErrorRaiserRaiseIsNotType(unittest.TestCase):
+    def test_invalid_input_types(self):
+        """Test if the ErrorRaiser.raiseIsNotType method raises TypeError when called with the wrong parameter type."""
+
+        self.assertRaises(TypeError, ErrorRaiser.raiseIsNotType, int, "ABC")
+        self.assertRaises(TypeError, ErrorRaiser.raiseIsNotType, str, 1)
+        self.assertRaises(TypeError, ErrorRaiser.raiseIsNotType, bool, "ABC")
+
+
+
+    def test_valid_input(self):
+        """Test if the ErrorRaiser.raiseIsNotType method passes the tuple through correctly."""
+        self.assertEqual(ErrorRaiser.raiseIsNotType(tuple, (1,1)), (1,1))
+        self.assertEqual(ErrorRaiser.raiseIsNotType(int, 2), 2)
+        self.assertEqual(ErrorRaiser.raiseIsNotType(bool, False), False)
+        cell = Cell(1,1)
+        self.assertEqual(ErrorRaiser.raiseIsNotType(Cell, cell), cell)
+
+
+
 class TestErrorRaiserRaiseNotValidKey(unittest.TestCase):
     def test_invalid_input_types(self):
         """Test if the ErrorRaiser.raiseNotValidKey method raises TypeError when called with the wrong parameter type."""

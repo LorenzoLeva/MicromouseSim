@@ -55,12 +55,21 @@ class ErrorRaiser:
         if x <= 0:
             raise IndexError(f'No zero or negative integer are allowed. Received{name}: {type (x)} = {x}')
 
-    @staticmethod
+    @staticmethod # TODO remove and replace with raiseIsNotType
     def raiseIsNotList(x, name=""):
         name = ErrorRaiser.getNameText(name)
 
         if type(x) is not list:
             raise TypeError(f'Only Lists are allowed. Received{name}: {type(x)} of {x}')
+        
+        return x
+
+    @staticmethod
+    def raiseIsNotType(objType, x, name= ""):
+        name = ErrorRaiser.getNameText(name)
+
+        if type(x) is not objType:
+            raise TypeError(f'Only {objType} are allowed. Received{name}: {type(x)} of {x}')
         
         return x
 
