@@ -241,3 +241,17 @@ class TestGetMinMaxCoordinatesOfCells(unittest.TestCase):
 
         self.assertEqual(Maze.getMinMaxCoordinatesOfCells([(2,1),(1,2)]), {'minX': 1, 'maxX': 2, 'minY': 1, 'maxY': 2})
         self.assertEqual(Maze.getMinMaxCoordinatesOfCells([(5,1),(1,2), (0,7)]), {'minX': 0, 'maxX': 5, 'minY': 1, 'maxY': 7})
+
+class TestGetBorderCellsOfArea(unittest.TestCase):
+    def test_invalid_input_types(self):
+        """Test if the Maze.getBorderCellsOfArea method raises TypeError when called with the wrong parameter type."""
+        
+        self.assertRaises(TypeError, Maze.getBorderCellsOfArea, -1, 2)
+        self.assertRaises(TypeError, Maze.getBorderCellsOfArea, "-1", "2")
+
+
+    def test_valid_input(self):
+        """Test if the Maze.getBorderCellsOfArea method returns correct values."""
+
+        self.assertEqual(Maze.getBorderCellsOfArea((2,1),(1,2)).sort(), [(1,1), (1,2), (2,2), (2,1)].sort())
+        self.assertEqual(Maze.getBorderCellsOfArea((3,1),(1,3)).sort(), [(1,1), (1,2), (1,3), (2,3), (3,3), (3,2), (3,1), (2,1)].sort())

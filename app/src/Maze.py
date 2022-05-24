@@ -177,12 +177,34 @@ class Maze:
             (self.endCell1[0] <= x <= self.endCell2[0] or self.endCell2[0] <= x <= self.endCell1[0]) and 
             (self.endCell1[1] <= y <= self.endCell2[1] or self.endCell2[1] <= y <= self.endCell1[1]))
 
-    def getRandomEndCell() -> tuple:
-        '''Returns a random cell of the end area.
+    @staticmethod
+    def getBorderCellsOfArea(cornerCell1, cornerCell2) -> tuple:
+        '''Returns a list of tuples with the coordinates of the cells at the border of an area.
         
+        Args:
+            cornerCell1: Cell at one of the corners of the area. The two corners have to be opposite to each other so to contain the area between them.
+            cornerCell2: Cell at one of the corners of the area. The two corners have to be opposite to each other so to contain the area between them. 
+
         Returns:
-            tuple: A random cell of the end area.
+            list: of the coordinates of the cells at the border of an area.
         '''
+        cornerCell1 = Cell.raiseIsNotCellIfApplicable(cornerCell1)
+        cornerCell2 = Cell.raiseIsNotCellIfApplicable(cornerCell2)
+
+        minMaxEndArea = Maze.getMinMaxCoordinatesOfCells([cornerCell1, cornerCell2])
+
+        borderCells= []
+
+        for x in range(minMaxEndArea["minX"], minMaxEndArea["maxX"] + 1):
+            borderCells.append((x, minMaxEndArea["minY"]))
+            borderCells.append((x, minMaxEndArea["maxY"]))
+
+        for y in range(minMaxEndArea["minY"]+1, minMaxEndArea["maxY"]):
+            borderCells.append((minMaxEndArea["minX"], y))
+            borderCells.append((minMaxEndArea["maxX"], y))
+        
+        return borderCells
+
 
     @staticmethod
     def getMinMaxCoordinatesOfCells(cells: list):
@@ -233,13 +255,6 @@ class Maze:
                 result["maxY"] = cell[1]
 
         return result
-
-
-
-        
-
-
-
 
     def getShape(self):
         """Prints the shape of the maze.
