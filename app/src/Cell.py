@@ -90,8 +90,10 @@ class Cell:
         '''Deletes randomly one of the standing walls'''
 
         choices = self.getAllWalls()
-        wall = random.choice(choices)
-        self.deleteWall(wall)
+        if len(choices) > 0:
+            wall = random.choice(choices)
+            self.deleteWall(wall)
+        #TODO add warning if no wall?
         
     @staticmethod
     def raiseIsNotCellIfApplicable(cell):

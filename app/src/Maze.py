@@ -79,6 +79,7 @@ class Maze:
                 self.maze[r][c] = Cell(c,r, cellType)
         
         self.deleteWallsBetween(self.endCell1, self.endCell2)
+        self.deleteRandomEndAreaBorderWall()
     
     @staticmethod
     def getMiddleCoordinate(x):
@@ -188,6 +189,17 @@ class Maze:
         choices = Maze.getBorderCellsOfArea(self.endCell1, self.endCell2)
 
         return random.choice(choices)
+
+    def deleteRandomEndAreaBorderWall(self):
+        '''Deletes a random wall of the border of the end area.'''
+
+        cell = self.getRandomEndAreaBorderCell()
+        cell = self.maze[cell[1]][cell[0]]
+        cell2 = self.choseRandomNeighbor(cell)
+        cell2 = self.maze[cell2[1]][cell2[0]]
+
+        self.deleteWallsBetween(cell, cell2)
+
 
 
     @staticmethod
@@ -371,7 +383,7 @@ class Maze:
         return choices
 
     def choseRandomNeighbor(self, cell) -> tuple:
-        """Gets a random neighbor from a cell.
+        """Gets a random not visited neighbor from a cell.
 
         Args:
             cell (Cell): Cell from which to search a neighbor from.
