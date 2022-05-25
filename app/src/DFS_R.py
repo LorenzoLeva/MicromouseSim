@@ -6,7 +6,7 @@ class DFS_R(Maze):
     """TODO add Doc
     https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_implementation
     """
-    def __init__(self, columns: int, rows: int, seed=None) -> None:
+    def __init__(self, columns: int=16, rows: int=16, seed=None) -> None:
         super().__init__(columns, rows, seed)
         self.current = (0,0)
         self.backlog = []
