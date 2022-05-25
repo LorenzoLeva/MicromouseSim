@@ -27,7 +27,7 @@ class Maze:
             visited (bool[][]): Matrix describing if that field was visited.
             maze (Cell[][]): Matrix containing all the Cells of the maze.
     """
-    def __init__(self, columns: int, rows: int, seed = None, startCell = (0,0), endCell1 = None, endCell2 = None) -> None:
+    def __init__(self, columns: int = 16, rows: int = 16, seed = None, startCell = (0,0), endCell1 = None, endCell2 = None) -> None:
         # Random function config
         if seed is None:
             self.seed = random.randrange(sys.maxsize)
@@ -200,7 +200,29 @@ class Maze:
 
         self.deleteWallsBetween(cell, cell2)
 
+    def getStartPosition(self):
+        '''Returns the coordinates of the start position of the maze.
+        
+        Returns:
+            tuple: of the coordinates of the start position.
+        '''
+        return self.startCell
 
+    def getNextSteps(self, position):
+        '''Returns all the possible next steps for a position.
+        
+        Args:
+            position (tuple | Cell): Position from which the possible next position are requested.
+
+        Returns:
+            list: of string keys of the possible next step for the position passed.
+        '''
+
+        position = Cell.raiseIsNotCellIfApplicable(position)
+        
+        position = self.maze[position[1]][position[0]]
+
+        return position.getAllWalls(False)
 
     @staticmethod
     def getBorderCellsOfArea(cornerCell1, cornerCell2) -> tuple:

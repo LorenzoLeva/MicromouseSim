@@ -263,3 +263,35 @@ class TestGetBorderCellsOfArea(unittest.TestCase):
         maze = Maze(16,16)
         borderCells = Maze.getBorderCellsOfArea(maze.endCell1, maze.endCell2)
         self.assertIn(maze.getRandomEndAreaBorderCell(), borderCells)
+
+class TestGetNextSteps(unittest.TestCase):
+    def test_invalid_input_types(self):
+        """Test if the Maze.getNextSteps method raises TypeError when called with the wrong parameter type."""
+        
+        maze = Maze(16,16)
+
+        self.assertRaises(TypeError, maze.getNextSteps, ("a", "b"))
+        self.assertRaises(TypeError, maze.getNextSteps, ("1", "2"))
+        self.assertRaises(TypeError, maze.getNextSteps, "abc")
+
+
+
+    def test_valid_input(self):
+        """Test if the Maze.getNextSteps method returns correct values."""
+
+        maze = Maze()
+        
+        maze.deleteWallsBetween((1,1), (2,1))
+        self.assertEqual(maze.getNextSteps((1,1)).sort(), ["right"].sort())
+
+        maze.deleteWallsBetween((1,1), (1,2))
+        self.assertEqual(maze.getNextSteps((1,1)).sort(), ["right", "top"].sort())
+
+        maze.deleteWallsBetween((1,1), (1,0))
+        self.assertEqual(maze.getNextSteps((1,1)).sort(), ["right", "top", "bottom"].sort())
+
+        maze.deleteWallsBetween((1,1), (0,1))
+        self.assertEqual(maze.getNextSteps((1,1)).sort(), ["right", "top", "bottom", "left"].sort())
+
+
+
