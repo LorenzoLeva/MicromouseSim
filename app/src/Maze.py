@@ -220,7 +220,7 @@ class Maze:
 
         position = Cell.raiseIsNotCellIfApplicable(position)
         position = self.maze[position[1]][position[0]]
-        
+
         return position.isOfType("end")
 
 
@@ -379,6 +379,36 @@ class Maze:
                     cell.deleteWall("top")
                  
     # Manage Neighbors
+    def getNeighborByKey(self, cell, key):
+        ''' Returns the coordinates of the neighbor referenced by an key.
+
+        Args:
+            cell (Cell | tuple): with coordinates from cell from which the neighbor is searched.
+            key (str): that describes what neighbor is searched. Possible keys are ["top", "right", "bottom", "left"]
+
+        Returns:
+            tuple: returns a tuple with the coordinates of the neighbor.
+        
+        '''
+        key = Cell.raiseNotWallType(key)
+        cell = Cell.raiseIsNotCellIfApplicable(cell)
+
+        if key == "top":
+            cell = (cell[0], cell[1] + 1)
+
+        if key == "right":
+            cell = (cell[0] + 1, cell[1])
+
+        if key == "bottom":
+            cell = (cell[0], cell[1] - 1)
+
+        if key == "left":
+            cell = (cell[0] - 1, cell[1])
+
+        self.raiseNotInMazeIfApplicable(cell[0], cell[1])
+
+        return cell
+
     def getNotVisitedNeighbors(self, cell) -> list:
         """Gets all the not visited neighbors from a cell
 

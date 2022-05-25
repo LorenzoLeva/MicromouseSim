@@ -326,3 +326,33 @@ class TestIsEndPosition(unittest.TestCase):
         self.assertEqual(maze.isEndPosition((0,0)), False)
 
 
+class TestGetNeighborByKey(unittest.TestCase):
+    def test_invalid_input_types(self):
+        """Test if the Maze.getNeighborByKey method raises TypeError when called with the wrong parameter type."""
+        
+        maze = Maze()
+
+
+        self.assertRaises(TypeError, maze.getNeighborByKey, ("a", "b"), "top")
+
+        self.assertRaises(KeyError, maze.getNeighborByKey, (1, 1), "Cat")
+
+        self.assertRaises(IndexError, maze.getNeighborByKey, (0, 0), "bottom")
+
+
+
+
+
+    def test_valid_input(self):
+        """Test if the Maze.getNeighborByKey method returns correct values."""
+
+        maze = Maze()
+
+        self.assertEqual(maze.getNeighborByKey((1,1), "top"), (1, 2))
+        self.assertEqual(maze.getNeighborByKey((1,1), "right"), (2, 1))
+        self.assertEqual(maze.getNeighborByKey((1,1), "bottom"), (1, 0))
+        self.assertEqual(maze.getNeighborByKey((1,1), "left"), (0, 1))
+
+
+
+
