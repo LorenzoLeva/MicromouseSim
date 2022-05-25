@@ -280,7 +280,7 @@ class TestGetNextSteps(unittest.TestCase):
         """Test if the Maze.getNextSteps method returns correct values."""
 
         maze = Maze()
-        
+
         maze.deleteWallsBetween((1,1), (2,1))
         self.assertEqual(maze.getNextSteps((1,1)).sort(), ["right"].sort())
 
@@ -293,5 +293,36 @@ class TestGetNextSteps(unittest.TestCase):
         maze.deleteWallsBetween((1,1), (0,1))
         self.assertEqual(maze.getNextSteps((1,1)).sort(), ["right", "top", "bottom", "left"].sort())
 
+
+class TestGetStartPosition(unittest.TestCase):
+    def test_valid_input(self):
+        """Test if the Maze.getStartPosition method returns correct values."""
+
+        startPosition = (0,0)
+        maze = Maze(startCell=startPosition)
+
+        self.assertEqual(maze.getStartPosition(), startPosition)
+
+class TestIsEndPosition(unittest.TestCase):
+    def test_invalid_input_types(self):
+        """Test if the Maze.isEndPosition method raises TypeError when called with the wrong parameter type."""
+        
+        maze = Maze()
+
+        self.assertRaises(TypeError, maze.getNextSteps, ("a", "b"))
+        self.assertRaises(TypeError, maze.getNextSteps, ("1", "2"))
+        self.assertRaises(TypeError, maze.getNextSteps, "abc")
+
+    def test_valid_input(self):
+        """Test if the Maze.isEndPosition method returns correct values."""
+
+        maze = Maze(endCell1=(1,1), endCell2=(2,2))
+
+        self.assertEqual(maze.isEndPosition((1,1)), True)
+        self.assertEqual(maze.isEndPosition((1,2)), True)
+        self.assertEqual(maze.isEndPosition((2,2)), True)
+        self.assertEqual(maze.isEndPosition((2,1)), True)
+
+        self.assertEqual(maze.isEndPosition((0,0)), False)
 
 

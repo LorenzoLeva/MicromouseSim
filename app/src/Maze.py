@@ -208,6 +208,23 @@ class Maze:
         '''
         return self.startCell
 
+    def isEndPosition(self, position):
+        '''Returns a boolean describing if the passed position is an end position.
+
+        Args:
+            position (tuple | Cell): Position from you want to know if it is an end position.  
+
+        Return:
+            bool: describing if the passed position is an end position.      
+        '''
+
+        position = Cell.raiseIsNotCellIfApplicable(position)
+        position = self.maze[position[1]][position[0]]
+        
+        return position.isOfType("end")
+
+
+
     def getNextSteps(self, position):
         '''Returns all the possible next steps for a position.
         
