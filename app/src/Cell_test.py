@@ -241,3 +241,23 @@ class TestCellGetAllWalls(unittest.TestCase):
 
         self.assertEqual(cell.getAllWalls(True), ["bottom", "left"])
         self.assertEqual(cell.getAllWalls(False), ["top", "right"])
+
+class TestCellIsOfType(unittest.TestCase):
+    def test_invalid_input_types(self):
+        """Test if the Cell.isOfType method raises TypeError when called with the wrong parameter type."""
+        
+        cellType = "end"
+        cell = Cell(0,0, cellType)
+        
+        self.assertRaises(TypeError, cell.isOfType, 1)
+        self.assertRaises(TypeError, cell.isOfType, (0,0))
+        self.assertRaises(KeyError, cell.isOfType, "Cat")
+
+
+    def test_valid_input(self):
+        """Test if the Cell.isOfType method returns correctly the values."""
+        cellType = "end"
+        cell = Cell(0,0, cellType)
+        
+        self.assertEqual(cell.isOfType(cellType), True)
+        self.assertEqual(cell.isOfType("start"), False)

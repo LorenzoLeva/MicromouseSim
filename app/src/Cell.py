@@ -94,7 +94,21 @@ class Cell:
             wall = random.choice(choices)
             self.deleteWall(wall)
         #TODO add warning if no wall?
+    
+    def isOfType(self, type):
+        '''Returns a bool to describe if the Cell is of a type.
         
+        Args:
+            type (str): type to be checked.
+        
+        Returns:
+            bool: describing if the cell is of type type.
+        '''
+
+        type = Cell.raiseNotCellType(type)
+
+        return type == self.type
+
     @staticmethod
     def raiseIsNotCellIfApplicable(cell):
         """Raises an error if the cell is not the right type. If everything is ok it passes the cell.
