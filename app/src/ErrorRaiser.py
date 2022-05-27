@@ -74,6 +74,15 @@ class ErrorRaiser:
         return x
 
     @staticmethod
+    def raiseNotSubclass(objType, x, name=""):
+        name = ErrorRaiser.getNameText(name)
+
+        if not issubclass(type(x), objType):
+            raise TypeError(f'Only subclasses of {objType} are allowed. Received{name}: {type(x)} of {x}')
+
+        return x 
+
+    @staticmethod
     def raiseIsNotListOfType(listType, x, name=""):
         name = ErrorRaiser.getNameText(name)
         ErrorRaiser.raiseIsNotList(x, name)
