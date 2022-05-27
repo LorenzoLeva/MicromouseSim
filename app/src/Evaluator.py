@@ -1,5 +1,6 @@
 import abc
 from datetime import datetime
+from re import S
 
 from ErrorRaiser import ErrorRaiser
 from Mouse import Mouse
@@ -15,8 +16,6 @@ class Evaluator(metaclass=abc.ABCMeta):
     Attributes:
         mouse (Mouse): is the mouse to be evaluated
         maze (Maze): is the maze on which the mouse should be evaluated on.
-        startTime (datetime): is the time when the mouse starts to solve the maze.
-        endTime (datetime): is the time when the mouse finished to solve the maze.
     '''
     def __init__(self, mouse: Mouse, maze: Maze) -> None:
 
@@ -26,21 +25,31 @@ class Evaluator(metaclass=abc.ABCMeta):
         self.mouse = mouse
         self.maze = maze
 
-        self.startTime = None
-        self.endTime = None
+        self.scoreResults = None
+        self.timeToSolve = None
 
-    def evaluate(self):
+    def evaluate(self, solved: bool = False):
         '''Evaluates the mouse performance. 
+
+        Args:
+            solved (bool):  describes if the mouse already solved the maze. 
+                            - False:  the Evaluator makes the mouse solve the maze and then scores the mouse performance.
+                            - True:   the Evaluator doesn't makes the mouse solve the maze but it impiety scores the mouse performance.
 
         Returns:
             float: Score of the performance of the mouse.
         '''
+        ErrorRaiser.raiseIsNotType(bool, solved)
 
-        self.startTime = datetime.now()
-        self.mouse.solve(self.maze)
-        self.endTime = datetime.now()
+        if not solved:
+            self.mouse.solve(self.maze)
+        else:
+            if not self.mouse.hasSolution:
+                raise Exception("Mouse hasn't a solution. Set solved to False or make the mouse solve a maze prior of evaluating it.")
 
-        return self.score()
+        self.score()
+
+        return dict(score=self.scoreResults, time=self.timeToSolve)
 
     @abc.abstractclassmethod
     def score(self):

@@ -16,11 +16,9 @@ class SingleRunSimulation(Simulation):
 
     def run(self):
         self.maze = self.MazeType()
+        self.maze.generate()
+
         self.evaluator = self.EvaluatorType(self.mouse, self.maze)
         
         self.results = self.evaluator.evaluate()
-        #TODO evaluate solution
 
-
-sim = SingleRunSimulation(RandomWalker, DFS_R)
-sim.run() 

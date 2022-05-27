@@ -1,3 +1,4 @@
+from datetime import datetime
 import random
 import sys
 from Maze import Maze
@@ -10,6 +11,7 @@ class Mouse(metaclass= abc.ABCMeta):
         self.maze = None
         self.visited = None
         self.currentPosition = None
+        self.hasSolution = False
 
         if seed is None:
             self.seed = random.randrange(sys.maxsize)
@@ -33,7 +35,12 @@ class Mouse(metaclass= abc.ABCMeta):
         '''
 
         self.setMaze(maze, seed)
+        self.startTime = datetime.now()
         self.solveMaze()
+        self.endTime = datetime.now()
+
+        self.hasSolution = True
+
         return self.solution
 
     @abc.abstractclassmethod
@@ -50,6 +57,8 @@ class Mouse(metaclass= abc.ABCMeta):
 
     def setMaze(self, maze: Maze, seed: int = None) -> None:
         '''Sets up the mouse with all the Maze information it needs.'''
+        self.hasSolution = False
+
         self.maze = Maze.raiseNotMaze(maze)
         self.visited = [[False for x in range(self.maze.x)] for y in range(self.maze.y)]
 
