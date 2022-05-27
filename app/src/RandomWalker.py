@@ -13,7 +13,7 @@ class RandomWalker(Mouse):
         i=0
         while not self.maze.isEndPosition(self.currentPosition):
             i+= 1
-            if i % 10 == 0:
+            if i % 100 == 0:
                 print(".", end="")
 
             self.solution["solutionPath"].append(self.currentPosition)
@@ -22,7 +22,7 @@ class RandomWalker(Mouse):
 
             self.currentPosition = self.maze.getNeighborByKey(self.currentPosition, nextCell)
 
-
+        return self.solution
         print(f'\nArrived at:{self.currentPosition} in {len(self.solution["solutionPath"])} steps.')
 
 

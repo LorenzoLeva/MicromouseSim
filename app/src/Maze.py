@@ -1,15 +1,14 @@
 from math import floor
-import random
-from secrets import choice
-import sys
 
-from requests import delete
+import random
+import sys
+import abc
 
 from Cell import Cell
 from ErrorRaiser import ErrorRaiser
 from Visualizer import Visualizer
 
-class Maze:
+class Maze(metaclass=abc.ABCMeta):
     """Object that represents a maze.
 
         Note: The coordinates of the maze start at 0 and go up.
@@ -222,8 +221,6 @@ class Maze:
         position = self.maze[position[1]][position[0]]
 
         return position.isOfType("end")
-
-
 
     def getNextSteps(self, position):
         '''Returns all the possible next steps for a position.
@@ -500,6 +497,9 @@ class Maze:
         viz = Visualizer()
         viz.genericShapes(self.getVizShape())
 
+    @abc.abstractclassmethod
+    def generate(self, startCell= (0,0)):
+        pass
 
 # c1 = Cell(5,5)
 # c2 = Cell(7,7)

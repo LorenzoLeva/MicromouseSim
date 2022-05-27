@@ -3,8 +3,9 @@ import sys
 from Maze import Maze
 from ErrorRaiser import ErrorRaiser
 
+import abc
 
-class Mouse:
+class Mouse(metaclass= abc.ABCMeta):
     def __init__(self, seed=None) -> None:
         self.maze = None
         self.visited = None
@@ -15,7 +16,6 @@ class Mouse:
         else:
             ErrorRaiser.raiseErrorOnlyInt(seed, "mouse.seed")
             self.seed = seed
-    
        
     def solve(self, maze: Maze, seed: int = None) -> None:
         '''Makes the mouse solve the maze passed as params.
@@ -36,8 +36,7 @@ class Mouse:
         self.solveMaze()
         return self.solution
 
-        
-
+    @abc.abstractclassmethod
     def solveMaze(self):
         '''This function solves the maze and generates self.solution dictionary containing all the information about the solution.
         
@@ -47,7 +46,7 @@ class Mouse:
                     solutionPath: array of coordinates in tuple form describing the path the mouse found.
                 }
         '''
-        raise NotImplementedError("The Maze class is an abstract class. Please implement the solveMaze method in a child class to be able to call Maze.solve.")
+        pass
 
     def setMaze(self, maze: Maze, seed: int = None) -> None:
         '''Sets up the mouse with all the Maze information it needs.'''
