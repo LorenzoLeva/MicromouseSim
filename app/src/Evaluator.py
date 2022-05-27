@@ -1,43 +1,45 @@
 import abc
+from datetime import datetime
+
 from ErrorRaiser import ErrorRaiser
 from Mouse import Mouse
 from Maze import Maze
 
 class Evaluator(metaclass=abc.ABCMeta):
-    def __init__(self, mouse: Mouse, maze: Maze) -> None:
-        '''An object to evaluate the performance of an mouse in a maze. 
+    '''An object to evaluate the performance of an mouse in a maze. 
         
-        Args:
-            mouse (Mouse): is the mouse to be evaluated
-            maze (Maze): is the maze on which the mouse should be evaluated on.
-        '''
+    Args:
+        mouse (Mouse): is the mouse to be evaluated
+        maze (Maze): is the maze on which the mouse should be evaluated on.
 
-        ErrorRaiser.raiseIsNotType(Mouse, mouse, "mouse")
-        ErrorRaiser.raiseIsNotType(Maze, maze, "maze")
+    Attributes:
+        mouse (Mouse): is the mouse to be evaluated
+        maze (Maze): is the maze on which the mouse should be evaluated on.
+        startTime (datetime): is the time when the mouse starts to solve the maze.
+        endTime (datetime): is the time when the mouse finished to solve the maze.
+    '''
+    def __init__(self, mouse: Mouse, maze: Maze) -> None:
+
+        ErrorRaiser.raiseNotSubclass(Mouse, mouse, "Evaluator.mouse")
+        ErrorRaiser.raiseNotSubclass(Maze, maze, "Evaluator.maze")
 
         self.mouse = mouse
         self.maze = maze
 
-    def evaluate(self, mouse: Mouse = None, maze: Maze = None):
+        self.startTime = None
+        self.endTime = None
+
+    def evaluate(self):
         '''Evaluates the mouse performance. 
-        
-        Args:
-            mouse (Mouse): is the mouse to be evaluated
-            maze (Maze): is the maze on which the mouse should be evaluated on.
 
         Returns:
             float: Score of the performance of the mouse.
         '''
 
-        if mouse is not None:
-            ErrorRaiser.raiseIsNotType(Mouse, mouse, "mouse")
-            self.mouse = mouse
-
-        if maze is not None:
-            ErrorRaiser.raiseIsNotType(Maze, maze, "maze")
-            self.maze = maze
-
+        self.startTime = datetime.now()
         self.mouse.solve(self.maze)
+        self.endTime = datetime.now()
+
         return self.score()
 
     @abc.abstractclassmethod
