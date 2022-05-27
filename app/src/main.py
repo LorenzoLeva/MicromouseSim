@@ -1,8 +1,8 @@
 
-from SingleRunSimulation import SingleRunSimulation
-from RandomWalker import RandomWalker
-from DFS_R import DFS_R
-from PathLengthEvaluator import PathLengthEvaluator
+from Simulations.SingleRunSimulation import SingleRunSimulation
+from Mice.RandomWalker import RandomWalker
+from Mazes.DFS_R import DFS_R
+from Evaluators.PathLengthEvaluator import PathLengthEvaluator
 
 mouse = RandomWalker()
 

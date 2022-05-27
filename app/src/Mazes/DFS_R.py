@@ -1,5 +1,5 @@
-from Maze import Maze
-from Cell import Cell
+from Mazes.Maze import Maze
+from Cells.Cell import Cell
 
 
 class DFS_R(Maze):

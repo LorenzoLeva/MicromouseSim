@@ -1,5 +1,5 @@
 import unittest
-from Cell import Cell
+from Cells.Cell import Cell
 
 
 class TestCellInitialization(unittest.TestCase):

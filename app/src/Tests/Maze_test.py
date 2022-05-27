@@ -1,7 +1,7 @@
 import unittest
 
-from Cell import Cell
-from Maze import Maze
+from Cells.Cell import Cell
+from Mazes.Maze import Maze
 
 class TestMazeInitialization(unittest.TestCase):
     # TODO add tests for startCell and endCells

@@ -1,5 +1,5 @@
 
-from Cell import Cell
+from Cells.Cell import Cell
 
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots

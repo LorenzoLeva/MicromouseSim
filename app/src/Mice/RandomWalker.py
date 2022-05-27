@@ -1,8 +1,8 @@
 import random
 
 from hypothesis import seed
-from Mouse import Mouse
-from DFS_R import DFS_R
+from Mice.Mouse import Mouse
+from Mazes.DFS_R import DFS_R
 
 class RandomWalker(Mouse):
     def __init__(self, seed:int = None) -> None:

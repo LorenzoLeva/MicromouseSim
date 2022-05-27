@@ -2,9 +2,9 @@ import abc
 from datetime import datetime
 from re import S
 
-from ErrorRaiser import ErrorRaiser
-from Mouse import Mouse
-from Maze import Maze
+from Tools.ErrorRaiser import ErrorRaiser
+from Mice.Mouse import Mouse
+from Mazes.Maze import Maze
 
 class Evaluator(metaclass=abc.ABCMeta):
     '''An object to evaluate the performance of an mouse in a maze. 

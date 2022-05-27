@@ -3,7 +3,7 @@ import random
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-from ErrorRaiser import ErrorRaiser
+from Tools.ErrorRaiser import ErrorRaiser
 
 class Cell:
     """Object that represents a cell of the maze.
@@ -149,7 +149,7 @@ class Cell:
             cell (tuple | Cell): the cell to subtract from the self cell.
 
         Returns:
-            tuple: difference from the cells that is also the vector from cell to self
+            tuple: difference from the cells that is also the vector from Cells.Cell to self
         """
         cell = Cell.raiseIsNotCellIfApplicable(cell)
         return (self.x - cell[0], self.y - cell[1])

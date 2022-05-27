@@ -1,8 +1,8 @@
 from datetime import datetime
 import random
 import sys
-from Maze import Maze
-from ErrorRaiser import ErrorRaiser
+from Mazes.Maze import Maze
+from Tools.ErrorRaiser import ErrorRaiser
 
 import abc
 

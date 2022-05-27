@@ -4,9 +4,9 @@ import random
 import sys
 import abc
 
-from Cell import Cell
-from ErrorRaiser import ErrorRaiser
-from Visualizer import Visualizer
+from Cells.Cell import Cell
+from Tools.ErrorRaiser import ErrorRaiser
+from Tools.Visualizer import Visualizer
 
 class Maze(metaclass=abc.ABCMeta):
     """Object that represents a maze.
@@ -268,7 +268,7 @@ class Maze(metaclass=abc.ABCMeta):
 
     @staticmethod
     def getMinMaxCoordinatesOfCells(cells: list):
-        '''Returns an dictionary containing the min max coordinates from Cells.
+        '''Returns an dictionary containing the min max coordinates from Cells.Cells.
 
         Note: Example
             getMinMaxCoordinatesOfCells([(1,2), (2,1)]) -> {minX:1, maxX:2, minY:1, maxY:2}
@@ -380,7 +380,7 @@ class Maze(metaclass=abc.ABCMeta):
         ''' Returns the coordinates of the neighbor referenced by an key.
 
         Args:
-            cell (Cell | tuple): with coordinates from cell from which the neighbor is searched.
+            cell (Cell | tuple): with coordinates from Cells.Cell from which the neighbor is searched.
             key (str): that describes what neighbor is searched. Possible keys are ["top", "right", "bottom", "left"]
 
         Returns:

@@ -1,10 +1,9 @@
-from Simulation import Simulation
+from Simulations.Simulation import Simulation
 
-from RandomWalker import RandomWalker
-from DFS_R import DFS_R
-from Evaluator import Evaluator
-from Maze import Maze
-from Mouse import Mouse
+from Mazes.DFS_R import DFS_R
+from Evaluators.Evaluator import Evaluator
+from Mazes.Maze import Maze
+from Mice.Mouse import Mouse
 
 class SingleRunSimulation(Simulation):
     def __init__(self, mouse: Mouse, MazeType: Maze, EvaluatorType: Evaluator) -> None:

@@ -1,8 +1,8 @@
 from operator import imod
 import unittest
 
-from Mouse import Mouse
-from Maze import Maze
+from Mice.Mouse import Mouse
+from Mazes.Maze import Maze
 
 class TestMouseInitialization(unittest.TestCase):
      def test_initialization(self):

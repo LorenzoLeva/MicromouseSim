@@ -1,8 +1,7 @@
 import abc
 
-from RandomWalker import RandomWalker
-from Mouse import Mouse
-from Evaluator import Evaluator
+from Mice.Mouse import Mouse
+from Evaluators.Evaluator import Evaluator
 
 
 class Simulation(metaclass= abc.ABCMeta):
