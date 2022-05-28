@@ -10,7 +10,7 @@ Exp.: https://www.youtube.com/watch?v=NqdZ9wbXt8k
 ## The Simulator
 The Micromouse simulator is a tool that allows testing and optimizing the search algorithms for such mice. The simulator is modular, allowing for complete customization from different Mazes to different valuation functions. The following diagram depicts the different use cases of this library.
 
-![Use case diagram](/docs/img/Diagrams/UseCase_MMs.png)
+![Use case diagram](/app/docs/img/Diagrams/UseCase_MMs.png)
 
 ## The Requirements
 * [x] The App shall generate a random Maze.
@@ -34,7 +34,7 @@ The library is written in python to not only allow the developer to run simulati
 ### Packages
 The following diagram describes the package structure of the library.
 
-![Package diagram](/docs/img/Diagrams/Package_MMs.png)
+![Package diagram](/app/docs/img/Diagrams/Package_MMs.png)
 
 | Package | Description |
 |---------|-------------|
@@ -67,3 +67,5 @@ The unit tests of the code can be found in the `/app/src/Test/UnitTest` director
 | Mouse | Mouse |
 | RandomWalker | Mouse |
 | ErrorRaiser | Tools |
+
+To execute the Unit Tests cd into `/app/src` and execute `python -m unittest discover -s "./Tests/UnitTest/" -p '*_test.py'` in the terminal

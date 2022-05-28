@@ -1,10 +1,12 @@
 import unittest
+from unittest.mock import patch
 
 from Cells.Cell import Cell
 from Mazes.Maze import Maze
 
 class TestMazeInitialization(unittest.TestCase):
     # TODO add tests for startCell and endCells
+    @patch("Mazes.Maze.Maze.__abstractmethods__", set())
     def test_invalid_input_types(self):
         """Test if the Maze class raises TypeError when initialized with the wrong parameter type."""
         # No seed
@@ -30,7 +32,7 @@ class TestMazeInitialization(unittest.TestCase):
         self.assertRaises(TypeError, Maze, 3, True, True)
         self.assertRaises(TypeError, Maze, True, 3, True)
 
-
+    @patch("Mazes.Maze.Maze.__abstractmethods__", set())
     def test_invalid_input_range(self):
         """Test if the Maze class raises IndexError when initialized with negative or zero size parameter type."""
         # Negative
@@ -43,6 +45,7 @@ class TestMazeInitialization(unittest.TestCase):
         self.assertRaises(IndexError, Maze, 0, 2)
         self.assertRaises(IndexError, Maze, 0, 0)
 
+    @patch("Mazes.Maze.Maze.__abstractmethods__", set())
     def test_initialization(self):
         """Test if the Maze class initializes correctly an object with all its properties correctly."""
         columns = 3
@@ -64,6 +67,7 @@ class TestMazeInitialization(unittest.TestCase):
         self.assertEqual(type(maze.maze[0][0]), Cell)
 
 class TestMazeRaiseCellsAreNotNeighborIfApplicable(unittest.TestCase):
+    @patch("Mazes.Maze.Maze.__abstractmethods__", set())
     def test_invalid_input_types(self):
         """Test if the Maze.raiseCellsAreNotNeighborIfApplicable method raises TypeError when called with the wrong parameter type."""
         
@@ -71,6 +75,7 @@ class TestMazeRaiseCellsAreNotNeighborIfApplicable(unittest.TestCase):
         self.assertRaises(TypeError, Maze.raiseCellsAreNotNeighborIfApplicable, True, True)
         self.assertRaises(TypeError, Maze.raiseCellsAreNotNeighborIfApplicable, ("1", "2"), ("2", "2"))
 
+    @patch("Mazes.Maze.Maze.__abstractmethods__", set())
     def test_valid_input(self):
         """Test if the Maze.raiseCellsAreNotNeighborIfApplicable method passes correctly the tuple."""
         # With Cells Neighbor
@@ -98,6 +103,7 @@ class TestMazeRaiseCellsAreNotNeighborIfApplicable(unittest.TestCase):
         self.assertRaises(IndexError, Maze.raiseCellsAreNotNeighborIfApplicable, (2,2), (2,4))
 
 class TestIsCoordinateInEndArea(unittest.TestCase):
+    @patch("Mazes.Maze.Maze.__abstractmethods__", set())
     def test_invalid_input_types(self):
         """Test if the Maze.isCoordinateInEndArea method raises TypeError when called with the wrong parameter type."""
         
@@ -105,6 +111,7 @@ class TestIsCoordinateInEndArea(unittest.TestCase):
         self.assertRaises(TypeError, Maze.raiseCellsAreNotNeighborIfApplicable, True, True)
         self.assertRaises(TypeError, Maze.raiseCellsAreNotNeighborIfApplicable, ("1", "2"), ("2", "2"))
 
+    @patch("Mazes.Maze.Maze.__abstractmethods__", set())
     def test_valid_input(self):
         """Test if the Maze.raiseCellsAreNotNeighborIfApplicable method passes correctly the tuple."""
         
@@ -123,6 +130,7 @@ class TestIsCoordinateInEndArea(unittest.TestCase):
         self.assertEqual(maze.isCoordinateInEndArea(5,0), False)
 
 class TestGetMiddleCoordinate(unittest.TestCase):
+    @patch("Mazes.Maze.Maze.__abstractmethods__", set())
     def test_invalid_input_types(self):
         """Test if the Maze.getMiddleCoordinate method raises TypeError when called with the wrong parameter type."""
         
@@ -130,6 +138,7 @@ class TestGetMiddleCoordinate(unittest.TestCase):
         self.assertRaises(TypeError, Maze.getMiddleCoordinate, "1")
         self.assertRaises(TypeError, Maze.getMiddleCoordinate, True)
 
+    @patch("Mazes.Maze.Maze.__abstractmethods__", set())
     def test_valid_input(self):
         """Test if the Maze.getMiddleCoordinate method returns correct values."""
 
@@ -144,6 +153,7 @@ class TestGetMiddleCoordinate(unittest.TestCase):
         self.assertEqual(Maze.getMiddleCoordinate(31), {'min': 15, 'max': 15})
 
 class TestDeleteWallsBetween(unittest.TestCase):
+    @patch("Mazes.Maze.Maze.__abstractmethods__", set())
     def test_invalid_input_types(self):
         """Test if the Maze.deleteWallsBetween method raises TypeError when called with the wrong parameter type."""
 
@@ -153,6 +163,7 @@ class TestDeleteWallsBetween(unittest.TestCase):
         self.assertRaises(TypeError, maze.deleteWallsBetween, True, True)
         self.assertRaises(TypeError, maze.deleteWallsBetween, ("1", "2"), ("2", "2"))
 
+    @patch("Mazes.Maze.Maze.__abstractmethods__", set())
     def test_valid_input(self):
         """Test if the Maze.deleteWallsBetween method deletes the correct walls."""
 
@@ -228,6 +239,7 @@ class TestDeleteWallsBetween(unittest.TestCase):
         })
 
 class TestGetMinMaxCoordinatesOfCells(unittest.TestCase):
+    @patch("Mazes.Maze.Maze.__abstractmethods__", set())
     def test_invalid_input_types(self):
         """Test if the Maze.getMinMaxCoordinatesOfCells method raises TypeError when called with the wrong parameter type."""
         
@@ -236,6 +248,7 @@ class TestGetMinMaxCoordinatesOfCells(unittest.TestCase):
         self.assertRaises(TypeError, Maze.getMinMaxCoordinatesOfCells, [1,2,3])
         self.assertRaises(TypeError, Maze.getMinMaxCoordinatesOfCells, [("1",2), (2,"1")])
 
+    @patch("Mazes.Maze.Maze.__abstractmethods__", set())
     def test_valid_input(self):
         """Test if the Maze.getMinMaxCoordinatesOfCells method returns correct values."""
 
@@ -243,13 +256,14 @@ class TestGetMinMaxCoordinatesOfCells(unittest.TestCase):
         self.assertEqual(Maze.getMinMaxCoordinatesOfCells([(5,1),(1,2), (0,7)]), {'minX': 0, 'maxX': 5, 'minY': 1, 'maxY': 7})
 
 class TestGetBorderCellsOfArea(unittest.TestCase):
+    @patch("Mazes.Maze.Maze.__abstractmethods__", set())
     def test_invalid_input_types(self):
         """Test if the Maze.getBorderCellsOfArea method raises TypeError when called with the wrong parameter type."""
         
         self.assertRaises(TypeError, Maze.getBorderCellsOfArea, -1, 2)
         self.assertRaises(TypeError, Maze.getBorderCellsOfArea, "-1", "2")
 
-
+    @patch("Mazes.Maze.Maze.__abstractmethods__", set())
     def test_valid_input(self):
         """Test if the Maze.getBorderCellsOfArea method returns correct values."""
 
@@ -257,6 +271,7 @@ class TestGetBorderCellsOfArea(unittest.TestCase):
         self.assertEqual(Maze.getBorderCellsOfArea((3,1),(1,3)).sort(), [(1,1), (1,2), (1,3), (2,3), (3,3), (3,2), (3,1), (2,1)].sort())
 
 class TestGetBorderCellsOfArea(unittest.TestCase):
+    @patch("Mazes.Maze.Maze.__abstractmethods__", set())
     def test_valid_input(self):
         """Test if the Maze.getRandomEndAreaBorderCell method returns correct values."""
 
@@ -265,6 +280,7 @@ class TestGetBorderCellsOfArea(unittest.TestCase):
         self.assertIn(maze.getRandomEndAreaBorderCell(), borderCells)
 
 class TestGetNextSteps(unittest.TestCase):
+    @patch("Mazes.Maze.Maze.__abstractmethods__", set())
     def test_invalid_input_types(self):
         """Test if the Maze.getNextSteps method raises TypeError when called with the wrong parameter type."""
         
@@ -274,8 +290,7 @@ class TestGetNextSteps(unittest.TestCase):
         self.assertRaises(TypeError, maze.getNextSteps, ("1", "2"))
         self.assertRaises(TypeError, maze.getNextSteps, "abc")
 
-
-
+    @patch("Mazes.Maze.Maze.__abstractmethods__", set())
     def test_valid_input(self):
         """Test if the Maze.getNextSteps method returns correct values."""
 
@@ -293,8 +308,8 @@ class TestGetNextSteps(unittest.TestCase):
         maze.deleteWallsBetween((1,1), (0,1))
         self.assertEqual(maze.getNextSteps((1,1)).sort(), ["right", "top", "bottom", "left"].sort())
 
-
 class TestGetStartPosition(unittest.TestCase):
+    @patch("Mazes.Maze.Maze.__abstractmethods__", set())
     def test_valid_input(self):
         """Test if the Maze.getStartPosition method returns correct values."""
 
@@ -304,6 +319,7 @@ class TestGetStartPosition(unittest.TestCase):
         self.assertEqual(maze.getStartPosition(), startPosition)
 
 class TestIsEndPosition(unittest.TestCase):
+    @patch("Mazes.Maze.Maze.__abstractmethods__", set())
     def test_invalid_input_types(self):
         """Test if the Maze.isEndPosition method raises TypeError when called with the wrong parameter type."""
         
@@ -313,6 +329,7 @@ class TestIsEndPosition(unittest.TestCase):
         self.assertRaises(TypeError, maze.getNextSteps, ("1", "2"))
         self.assertRaises(TypeError, maze.getNextSteps, "abc")
 
+    @patch("Mazes.Maze.Maze.__abstractmethods__", set())
     def test_valid_input(self):
         """Test if the Maze.isEndPosition method returns correct values."""
 
@@ -325,8 +342,8 @@ class TestIsEndPosition(unittest.TestCase):
 
         self.assertEqual(maze.isEndPosition((0,0)), False)
 
-
 class TestGetNeighborByKey(unittest.TestCase):
+    @patch("Mazes.Maze.Maze.__abstractmethods__", set())
     def test_invalid_input_types(self):
         """Test if the Maze.getNeighborByKey method raises TypeError when called with the wrong parameter type."""
         
@@ -339,10 +356,7 @@ class TestGetNeighborByKey(unittest.TestCase):
 
         self.assertRaises(IndexError, maze.getNeighborByKey, (0, 0), "bottom")
 
-
-
-
-
+    @patch("Mazes.Maze.Maze.__abstractmethods__", set())
     def test_valid_input(self):
         """Test if the Maze.getNeighborByKey method returns correct values."""
 
