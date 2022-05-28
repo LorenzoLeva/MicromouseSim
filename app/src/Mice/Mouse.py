@@ -12,6 +12,8 @@ class Mouse(metaclass= abc.ABCMeta):
         self.visited = None
         self.currentPosition = None
         self.hasSolution = False
+        self.startTime = None
+        self.endTime = None
 
         if seed is None:
             self.seed = random.randrange(sys.maxsize)
