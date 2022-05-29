@@ -205,7 +205,7 @@ class Cell:
         # Bottom Wall
         if self.walls["bottom"]:
             shape.append(
-                dict(type="line", xref="x", yref="y", line_width=3, line_color="green",
+                dict(type="line", xref="x", yref="y", line_width=3, line_color="black",
                     x0=bottomLeft["x"], 
                     y0=bottomLeft["y"], 
                     x1=bottomRight["x"], 
@@ -216,7 +216,7 @@ class Cell:
         # Right Wall
         if self.walls["right"]:
             shape.append(
-                dict(type="line", xref="x", yref="y", line_width=3, line_color="red",
+                dict(type="line", xref="x", yref="y", line_width=3, line_color="black",
                     x0=bottomRight["x"], 
                     y0=bottomRight["y"], 
                     x1=topRight["x"], 
@@ -227,7 +227,7 @@ class Cell:
         # Top Wall
         if self.walls["top"]:
             shape.append(
-                dict(type="line", xref="x", yref="y", line_width=3, line_color="blue",
+                dict(type="line", xref="x", yref="y", line_width=3, line_color="black",
                     x0=topLeft["x"], 
                     y0=topLeft["y"], 
                     x1=topRight["x"], 
@@ -238,7 +238,7 @@ class Cell:
         # Left Wall
         if self.walls["left"]:
             shape.append(
-                dict(type="line", xref="x", yref="y", line_width=3, line_color="orange",
+                dict(type="line", xref="x", yref="y", line_width=3, line_color="black",
                     x0=bottomLeft["x"], 
                     y0=bottomLeft["y"], 
                     x1=topLeft["x"], 
