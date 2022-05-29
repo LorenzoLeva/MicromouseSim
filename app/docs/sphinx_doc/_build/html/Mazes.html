@@ -1,0 +1,390 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mazes package &#8212; MicromouseSim  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Mice package" href="Mice.html" />
+    <link rel="prev" title="Evaluators package" href="Evaluators.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="mazes-package">
+<h1>Mazes package<a class="headerlink" href="#mazes-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-Mazes.DFS_R">
+<span id="mazes-dfs-r-module"></span><h2>Mazes.DFS_R module<a class="headerlink" href="#module-Mazes.DFS_R" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="Mazes.DFS_R.DFS_R">
+<em class="property">class </em><code class="sig-prename descclassname">Mazes.DFS_R.</code><code class="sig-name descname">DFS_R</code><span class="sig-paren">(</span><em class="sig-param">columns: int = 16</em>, <em class="sig-param">rows: int = 16</em>, <em class="sig-param">seed=None</em><span class="sig-paren">)</span><a class="headerlink" href="#Mazes.DFS_R.DFS_R" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#Mazes.Maze.Maze" title="Mazes.Maze.Maze"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mazes.Maze.Maze</span></code></a></p>
+<p>TODO add Doc
+<a class="reference external" href="https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_implementation">https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_implementation</a></p>
+<dl class="method">
+<dt id="Mazes.DFS_R.DFS_R.generate">
+<code class="sig-name descname">generate</code><span class="sig-paren">(</span><em class="sig-param">startCell=(0</em>, <em class="sig-param">0)</em><span class="sig-paren">)</span><a class="headerlink" href="#Mazes.DFS_R.DFS_R.generate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-Mazes.Maze">
+<span id="mazes-maze-module"></span><h2>Mazes.Maze module<a class="headerlink" href="#module-Mazes.Maze" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="Mazes.Maze.Maze">
+<em class="property">class </em><code class="sig-prename descclassname">Mazes.Maze.</code><code class="sig-name descname">Maze</code><span class="sig-paren">(</span><em class="sig-param">columns: int = 16</em>, <em class="sig-param">rows: int = 16</em>, <em class="sig-param">seed=None</em>, <em class="sig-param">startCell=(0</em>, <em class="sig-param">0)</em>, <em class="sig-param">endCell1=None</em>, <em class="sig-param">endCell2=None</em><span class="sig-paren">)</span><a class="headerlink" href="#Mazes.Maze.Maze" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Object that represents a maze.</p>
+<p>Note: The coordinates of the maze start at 0 and go up.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>columns (int): amount of columns of the maze.
+rows (int): amount of rows of the maze.
+seed (int): seed for the random module.
+startCell: Cell from which the bot starts
+endCell1, endCell2 (Cell): corner Cells that contain the finish area of the maze. Can be the same if the finish area is a single cell.</p>
+</dd>
+<dt>Attributes:</dt><dd><p>x (int): amount of columns of the maze.
+y (int): amount of rows of the maze.
+visited (bool[][]): Matrix describing if that field was visited.
+maze (Cell[][]): Matrix containing all the Cells of the maze.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="Mazes.Maze.Maze.choseRandomNeighbor">
+<code class="sig-name descname">choseRandomNeighbor</code><span class="sig-paren">(</span><em class="sig-param">cell</em><span class="sig-paren">)</span> &#x2192; tuple<a class="headerlink" href="#Mazes.Maze.Maze.choseRandomNeighbor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a random not visited neighbor from a cell.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>cell (Cell): Cell from which to search a neighbor from.</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple: Coordinates of randomly chosen neighbor.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Mazes.Maze.Maze.deleteRandomEndAreaBorderWall">
+<code class="sig-name descname">deleteRandomEndAreaBorderWall</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Mazes.Maze.Maze.deleteRandomEndAreaBorderWall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a random wall of the border of the end area.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Mazes.Maze.Maze.deleteWallsBetween">
+<code class="sig-name descname">deleteWallsBetween</code><span class="sig-paren">(</span><em class="sig-param">cellStart</em>, <em class="sig-param">cellEnd</em><span class="sig-paren">)</span><a class="headerlink" href="#Mazes.Maze.Maze.deleteWallsBetween" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes all walls between cells.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>cellStart (Cell | tuple): First cell in one corner to remove wall from
+cellEnd (Cell | tuple): Second cell in other corner to remove wall from</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Mazes.Maze.Maze.generate">
+<em class="property">abstract classmethod </em><code class="sig-name descname">generate</code><span class="sig-paren">(</span><em class="sig-param">startCell=(0</em>, <em class="sig-param">0)</em><span class="sig-paren">)</span><a class="headerlink" href="#Mazes.Maze.Maze.generate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="Mazes.Maze.Maze.getBorderCellsOfArea">
+<em class="property">static </em><code class="sig-name descname">getBorderCellsOfArea</code><span class="sig-paren">(</span><em class="sig-param">cornerCell1</em>, <em class="sig-param">cornerCell2</em><span class="sig-paren">)</span> &#x2192; tuple<a class="headerlink" href="#Mazes.Maze.Maze.getBorderCellsOfArea" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of tuples with the coordinates of the cells at the border of an area.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>cornerCell1: Cell at one of the corners of the area. The two corners have to be opposite to each other so to contain the area between them.
+cornerCell2: Cell at one of the corners of the area. The two corners have to be opposite to each other so to contain the area between them.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: of the coordinates of the cells at the border of an area.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Mazes.Maze.Maze.getMazeCellFromTuple">
+<code class="sig-name descname">getMazeCellFromTuple</code><span class="sig-paren">(</span><em class="sig-param">cellTuple</em><span class="sig-paren">)</span> &#x2192; Cells.Cell.Cell<a class="headerlink" href="#Mazes.Maze.Maze.getMazeCellFromTuple" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the cell of the maze with the same coordinates as the inputted cell | tuple</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>Cell: the cell of the maze with the same coordinates as the inputted cell | tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Mazes.Maze.Maze.getMiddleCoordinate">
+<em class="property">static </em><code class="sig-name descname">getMiddleCoordinate</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="headerlink" href="#Mazes.Maze.Maze.getMiddleCoordinate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a object with the min and max coordinate of the middle of a size.</p>
+<dl>
+<dt>Returns:  </dt><dd><p>dict: An dictionary containing the min and max coordinate the middle of a size.</p>
+<dl class="simple">
+<dt>Note:</dt><dd><p>When the size is odd the middle is one cell wide. (Exp.: 7 =&gt; {min: 3, max: 3})
+When the size is even the middle is two cell wide. (Exp.: 8 =&gt; {min: 3, max: 4})</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Mazes.Maze.Maze.getMinMaxCoordinatesOfCells">
+<em class="property">static </em><code class="sig-name descname">getMinMaxCoordinatesOfCells</code><span class="sig-paren">(</span><em class="sig-param">cells: list</em><span class="sig-paren">)</span><a class="headerlink" href="#Mazes.Maze.Maze.getMinMaxCoordinatesOfCells" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an dictionary containing the min max coordinates from Cells.Cells.</p>
+<dl class="simple">
+<dt>Note: Example</dt><dd><p>getMinMaxCoordinatesOfCells([(1,2), (2,1)]) -&gt; {minX:1, maxX:2, minY:1, maxY:2}</p>
+</dd>
+<dt>Args:</dt><dd><p>cells (list(Cell)): List containing Cells or tuples from which the min and max coordinate should be derived.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: containing the minX, maxX, minY, maxY values of the inputted cells</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Mazes.Maze.Maze.getNeighborByKey">
+<code class="sig-name descname">getNeighborByKey</code><span class="sig-paren">(</span><em class="sig-param">cell</em>, <em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#Mazes.Maze.Maze.getNeighborByKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the coordinates of the neighbor referenced by an key.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>cell (Cell | tuple): with coordinates from Cells.Cell from which the neighbor is searched.
+key (str): that describes what neighbor is searched. Possible keys are [“top”, “right”, “bottom”, “left”]</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple: returns a tuple with the coordinates of the neighbor.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Mazes.Maze.Maze.getNextSteps">
+<code class="sig-name descname">getNextSteps</code><span class="sig-paren">(</span><em class="sig-param">position</em><span class="sig-paren">)</span><a class="headerlink" href="#Mazes.Maze.Maze.getNextSteps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all the possible next steps for a position.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>position (tuple | Cell): Position from which the possible next position are requested.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: of string keys of the possible next step for the position passed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Mazes.Maze.Maze.getNotVisitedNeighbors">
+<code class="sig-name descname">getNotVisitedNeighbors</code><span class="sig-paren">(</span><em class="sig-param">cell</em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#Mazes.Maze.Maze.getNotVisitedNeighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets all the not visited neighbors from a cell</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>cell (Cell): Cell from which to search the neighbors from.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: Returns a list of coordinates of all the neighbors, of the inputted cell, that weren’t visited.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Mazes.Maze.Maze.getRandomEndAreaBorderCell">
+<code class="sig-name descname">getRandomEndAreaBorderCell</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Mazes.Maze.Maze.getRandomEndAreaBorderCell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a random border cell coordinate of the end area.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>tuple: coordinate of a random border cell of the end area.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Mazes.Maze.Maze.getShape">
+<code class="sig-name descname">getShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Mazes.Maze.Maze.getShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints the shape of the maze.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Mazes.Maze.Maze.getStartPosition">
+<code class="sig-name descname">getStartPosition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Mazes.Maze.Maze.getStartPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the coordinates of the start position of the maze.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>tuple: of the coordinates of the start position.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Mazes.Maze.Maze.getVizShape">
+<code class="sig-name descname">getVizShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#Mazes.Maze.Maze.getVizShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates all the shape objects needed to visualize the maze with plotly.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>list: Returns a list containing all the shapes needed to visualize the maze.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Mazes.Maze.Maze.isCoordinateInEndArea">
+<code class="sig-name descname">isCoordinateInEndArea</code><span class="sig-paren">(</span><em class="sig-param">x: int</em>, <em class="sig-param">y: int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#Mazes.Maze.Maze.isCoordinateInEndArea" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if coordinate is part of the finish area of the maze.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: True if the coordinate is part of the finish area of the maze, and False if it is not.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Mazes.Maze.Maze.isCoordinateInMaze">
+<code class="sig-name descname">isCoordinateInMaze</code><span class="sig-paren">(</span><em class="sig-param">x: int</em>, <em class="sig-param">y: int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#Mazes.Maze.Maze.isCoordinateInMaze" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if coordinate is in Maze.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: True if the coordinate is in the maze, and False if it is not.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Mazes.Maze.Maze.isEndPosition">
+<code class="sig-name descname">isEndPosition</code><span class="sig-paren">(</span><em class="sig-param">position</em><span class="sig-paren">)</span><a class="headerlink" href="#Mazes.Maze.Maze.isEndPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a boolean describing if the passed position is an end position.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>position (tuple | Cell): Position from you want to know if it is an end position.</p>
+</dd>
+<dt>Return:</dt><dd><p>bool: describing if the passed position is an end position.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Mazes.Maze.Maze.raiseCellsAreNotNeighborIfApplicable">
+<em class="property">static </em><code class="sig-name descname">raiseCellsAreNotNeighborIfApplicable</code><span class="sig-paren">(</span><em class="sig-param">cellStart: Cells.Cell.Cell</em>, <em class="sig-param">cellEnd: Cells.Cell.Cell</em><span class="sig-paren">)</span><a class="headerlink" href="#Mazes.Maze.Maze.raiseCellsAreNotNeighborIfApplicable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if two cells are neighbor and if returns the vector between them. Otherwise it throws an exception.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>cellStart (tuple | Cell): First cell to check
+cellEnd (tuple | Cell): Second cell to check</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple: cellResult is the vector decribing how to come the cellStart to the cellEnd</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Mazes.Maze.Maze.raiseNotInMazeIfApplicable">
+<code class="sig-name descname">raiseNotInMazeIfApplicable</code><span class="sig-paren">(</span><em class="sig-param">x: int</em>, <em class="sig-param">y: int</em><span class="sig-paren">)</span><a class="headerlink" href="#Mazes.Maze.Maze.raiseNotInMazeIfApplicable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if coordinate is in the Maze. Otherwise it throws an error</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>x (int): x coordinate to check
+y (int): y coordinate to check</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Mazes.Maze.Maze.raiseNotMaze">
+<em class="property">static </em><code class="sig-name descname">raiseNotMaze</code><span class="sig-paren">(</span><em class="sig-param">maze</em>, <em class="sig-param">name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#Mazes.Maze.Maze.raiseNotMaze" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="Mazes.Maze.Maze.visualize">
+<code class="sig-name descname">visualize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Mazes.Maze.Maze.visualize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visualizes the maze with plotly.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-Mazes">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-Mazes" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">MicromouseSim</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Evaluators.html">Evaluators package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Mazes package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mice.html">Mice package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Simulations.html">Simulations package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tools.html">Tools package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">src</a><ul>
+      <li>Previous: <a href="Evaluators.html" title="previous chapter">Evaluators package</a></li>
+      <li>Next: <a href="Mice.html" title="next chapter">Mice package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Lorenzo D. Leva.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/Mazes.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

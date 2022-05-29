@@ -32,7 +32,7 @@ class Mouse(metaclass= abc.ABCMeta):
 
             The dict that is returned has the following structure:
                 {
-                    solutionPath: array of coordinates in tuple form describing the path the mouse found.
+                solutionPath: array of coordinates in tuple form describing the path the mouse found.
                 }
         '''
 
@@ -52,8 +52,9 @@ class Mouse(metaclass= abc.ABCMeta):
         Note:
             The self.solution dictionary has to have the following structure:
                 {
-                    solutionPath: array of coordinates in tuple form describing the path the mouse found.
+                solutionPath: array of coordinates in tuple form describing the path the mouse found.
                 }
+                
         '''
         pass
 

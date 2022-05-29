@@ -136,10 +136,10 @@ class Maze(metaclass=abc.ABCMeta):
 
     def raiseNotInMazeIfApplicable(self, x: int, y: int):
         """Checks if coordinate is in the Maze. Otherwise it throws an error
+        
         Args:
             x (int): x coordinate to check
             y (int): y coordinate to check
-        
         """
         # TODO check that coordinates are int
         if not self.isCoordinateInMaze(x, y):

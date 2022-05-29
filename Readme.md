@@ -13,6 +13,7 @@ The Micromouse simulator is a tool that allows testing and optimizing the search
 ![Use case diagram](/app/docs/img/Diagrams/UseCase_MMs.png)
 
 ## The Requirements
+The following is a list of requirements the tool fulfills or will fulfill:
 * [x] The App shall generate a random Maze.
 * [x] The App shall simulate the Mice.
 * [x] The App shall evaluate the Mice in the Maze.
@@ -29,7 +30,7 @@ Nice to have:
 * [ ] Multiple evaluation function (Exp. shortest path, min inertia, etc.)
 
 ## Architecture
-The library is written in python to not only allow the developer to run simulation quickly and easily in notebook tools like JupyterLab from any device but also to alow the use of Machine Learning frameworks like Tensorflow and PyTorch.
+The library is written in python to not only allow the developer to run simulation quickly and easily in notebook tools like JupyterLab from any device but also to allow the use of Machine Learning frameworks like Tensorflow and PyTorch.
 
 ### Packages
 The following diagram describes the package structure of the library.
@@ -51,7 +52,7 @@ The following diagram describes the package structure of the library.
 ### Classes
 The following diagram describes the classes of the packages of the library and how they relate to each other.
 
-![Class diagram](docs/img/Diagrams/Class_MMs.png)
+![Class diagram](app/docs/img/Diagrams/Class_MMs.png)
 
 # TODO describe classes
 
@@ -68,4 +69,14 @@ The unit tests of the code can be found in the `/app/src/Test/UnitTest` director
 | RandomWalker | Mouse |
 | ErrorRaiser | Tools |
 
-To execute the Unit Tests cd into `/app/src` and execute `python -m unittest discover -s "./Tests/UnitTest/" -p '*_test.py'` in the terminal
+To execute the Unit Tests cd into `/app/src` and execute `python -m unittest discover -s "./Tests/UnitTest/" -p '*_test.py'` in the terminal.
+
+
+## Documentation
+The full documentation can be found in the `./app/docs/sphinx_doc/_build/html` and can be viewed in every browser by opening the [index.html](app/docs/sphinx_doc/_build/html/index.html) file.
+
+### Documentaion convention
+In this project we use the Google documentation Style. Here an [Example](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html).
+
+### Autogenerate of Docs
+In this project the documentation is automatically generated with [sphinx](https://www.sphinx-doc.org/en/master/).
