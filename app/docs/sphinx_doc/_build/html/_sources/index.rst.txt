@@ -10,7 +10,12 @@ Welcome to MicromouseSim's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   modules
+   Cells
+   DataBases
+   Evaluators
+   Mazes
+   Mice
+   Simulations
 
 Indices and tables
 ==================
