@@ -17,10 +17,10 @@ The following is a list of requirements the tool fulfills or will fulfill:
 * [x] The App shall generate a random Maze.
 * [x] The App shall simulate the Mice.
 * [x] The App shall evaluate the Mice in the Maze.
-* [ ] The App shall keep track of all relevant simulation metrics and store them in a DataBase:
-  * [ ] Metadata of environment and mice to allow for the replication of the simulation
-  * [ ] Experiment data for debugging
-  * [ ] Results to analyze the performance
+* [x] The App shall keep track of all relevant simulation metrics and store them in a DataBase:
+  * [x] Metadata of environment and mice to allow for the replication of the simulation
+  * [x] Experiment data for debugging
+  * [x] Results to analyze the performance
 * [x] Visualization shall be generated
 
 Nice to have:
