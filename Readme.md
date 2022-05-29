@@ -75,8 +75,12 @@ To execute the Unit Tests cd into `/app/src` and execute `python -m unittest dis
 ## Documentation
 The full documentation can be found in the `./app/docs/sphinx_doc/_build/html` and can be viewed in every browser by opening the [index.html](app/docs/sphinx_doc/_build/html/index.html) file.
 
-### Documentaion convention
+### Documentation convention
 In this project we use the Google documentation Style. Here an [Example](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html).
 
 ### Autogenerate of Docs
 In this project the documentation is automatically generated with [sphinx](https://www.sphinx-doc.org/en/master/).
+
+```
+
+```
