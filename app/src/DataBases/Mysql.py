@@ -75,7 +75,7 @@ class Mysql(DataBase):
     def createDB(self):
         '''Creates the DataBase with all the needed tables if it doesn't exists.'''
 
-        f = open("./DataBases/sql_files/createDB.sql", "r")
+        f = open("./" + Mysql.__module__.replace(".Mysql", "").replace(".", "/") + "/sql_files/createDB.sql", "r")
 
         for q in f.read().replace("\n", "").split(";"):
             self.execute(q)
