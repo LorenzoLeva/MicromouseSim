@@ -45,9 +45,8 @@ The following diagram describes the package structure of the library.
 | Maze       | Contains the different types of maze generators. |
 | Cells      | Contains the different types of cells that can be used to build the mazes. |
 | Tools      | Contains the different tools that can be used in the development. |
+| DataBases  | Contains the different connectors to the different supported DataBases. |
 | Test       | Contains the different test of the classes. |
-
-# TODO describe packages better
 
 ### Classes
 The following diagram describes the classes of the packages of the library and how they relate to each other.
