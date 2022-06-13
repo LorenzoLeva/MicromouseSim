@@ -34,7 +34,7 @@ Nice to have:
     * [ ] WorstScoreSimulator
 * [ ] Multiple Maze generators with different rules
 * [ ] Multiple Mice with a variety of search algorithms
-  * [ ] RandomWithMemory
+  * [ ] RandomWalkerWithMemory
   * [ ] Mice with post solution procecing (Mice that after having complete the first run calculates a best path with the memory gained.)
     * [ ] GraphMice
 * [X] Multiple evaluation function
@@ -76,8 +76,10 @@ The following diagram describes the classes of the packages of the library and h
 | Cell | The Cell class is a class that describes the single cells of an maze. |
 | *Mouse* | All the children of the Mouse abstract class can be used to implement the search algorithms to solve the mazes. These are the algorithms to be evaluated. |
 | RandomWalker | The RandomWalker class is a child of the Mouse class and is the most naive algorithm to solve a maze. It has no memory and choses its next step completely randomly. Its a good baseline to compare against. |
+| RandomWalkerWithMemory | The RandomWalkerWithMemory class is a child of the Mouse class and is to solve a maze. It has a memory of where it was and the not taken paths and choses its next step randomly from the paths where it wasn't. Its a good baseline to compare against. |
 | *Evaluator* | All the children of the Evaluator abstract class implement a way to evaluate the mice in the simulations. (This class is an implementation of a Strategy design pattern.)|
 | PathLen | The PathLen class is a child of the Evaluator class and evaluates the mice by calculating the length of the path of the solution the mice find. |
+| ChangeDirection | The ChangeDirection class is a child of the Evaluator class and evaluates the mice by calculating the times the mouse changes its direction in its solution. |
 | *DataBase* | All the children of the DataBase abstract class are used to store the simulation data and their results into a DataBase. |
 | Mysql | The Mysql class is a child of the DataBase class and store the simulation data and their results into a Mysql DataBase. |
 | ErrorRaiser | The ErrorRaiser class implements multiple methods to check certain things (exp.: type of var) and raises errors accordingly. |
