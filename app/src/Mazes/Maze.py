@@ -499,6 +499,9 @@ class Maze(metaclass=abc.ABCMeta):
 
     @abc.abstractclassmethod
     def generate(self, startCell= (0,0)):
+        '''This is the method calles by the Simulators and is useed to generate the maze.'''
+        #TODO is already generated then block
+        #TODO add reset method
         pass
 
 # c1 = Cell(5,5)
