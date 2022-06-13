@@ -1,5 +1,5 @@
 # Micromouse Sim
-The Micromouse Sim or short MMs, is a library intended to help in the development of the software of so called micro mouses.
+The Micromouse Sim or short MMs, is a library intended to help in the development of the software of so called micro mouses. The source code can be found at the following github repository: https://github.com/LorenzoLeva/MicromouseSim
 
 ## What is a Micromouse?
 Micromouse is an event where small robot mice solve a 16×16 maze which began in the late 1970s. Events are held worldwide and are most popular in the UK, U.S., Japan, Singapore, India, and South Korea.
@@ -24,10 +24,23 @@ The following is a list of requirements the tool fulfills or will fulfill:
 * [x] Visualization shall be generated
 
 Nice to have:
-* [ ] Multiple Simulator types (Exp. SingleRunSimulator, MultiRunSimulator, ComparisonSimulator)
+* [ ] Multiple Simulator types 
+  * [x] SingleRunSimulator
+  * [ ] ComparisonSimulator
+  * [ ] MultiRunSimulator (Same maze and different mazes)
+    * [ ] AverageScoreSimulator
+    * [ ] WeightedAverageScoreSimulator
+    * [ ] BestScoreSimulator
+    * [ ] WorstScoreSimulator
 * [ ] Multiple Maze generators with different rules
 * [ ] Multiple Mice with a variety of search algorithms
-* [ ] Multiple evaluation function (Exp. shortest path, min inertia, etc.)
+  * [ ] RandomWithMemory
+  * [ ] Mice with post solution procecing (Mice that after having complete the first run calculates a best path with the memory gained.)
+    * [ ] GraphMice
+* [X] Multiple evaluation function
+  * [x] shortest path
+  * [x] direction change
+  * [ ] min inertia
 
 ## Architecture
 The library is written in python to not only allow the developer to run simulation quickly and easily in notebook tools like JupyterLab from any device but also to allow the use of Machine Learning frameworks like Tensorflow and PyTorch.
@@ -55,15 +68,15 @@ The following diagram describes the classes of the packages of the library and h
 
 | Class | Description |
 |-------|-------------|
-| *Simulator* | All the children of the Simulator abstract class can be used to run the simulations and evaluate the Mice. It receives as an input the mouse which has to be evaluated, the type of maze in which the mouse has to be evaluated in, and the type of the evaluator that is going to be used to evaluate the mouse. (This class is an implementation of an abstract factory design pattern.)|
+| *Simulator* | All the children of the Simulator abstract class can be used to run the simulations and evaluate the Mice. It receives as an input the instance of the mouse which has to be evaluated, the type of maze in which the mouse has to be evaluated in, and the type of the evaluator that is going to be used to evaluate the mouse. (This class is an implementation of an abstract factory design pattern. Instead of using the original patter it was decided to pass directly the constructor of the classes instead of a build function that returns an instance of the class to simplify the implementation of custom variants of the Evaluator and Maze classes. This class is also an implementation of a Strategy design pattern.)|
 | SingleRunSimulation | The SingleRunSimulation is a child of the Simulator class and is used to run simulations where the mouse dose only one run of the maze and then is evaluated. |
 | *MultiRunSimulation* | All the children of the MultiRunSimulation abstract class can be used to run multiple simulations and evaluate the Mice. |
-| *Maze* | All the children of the Maze abstract class can be used to generate a maze in which then a mouse can be evaluated. |
-| DFS_R | The DFS_R class is a child of the Maze class and generates a maze the "Depth first search (Recursive implementation)" method. For more information about this method please refer to the wikipedia page [Here](https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_implementation) |
+| *Maze* | All the children of the Maze abstract class can be used to generate a maze in which then a mouse can be evaluated. (This class is an implementation of a Strategy design pattern.)|
+| DFS_R | The DFS_R class is a child of the Maze class and generates a maze with the "Depth first search (Recursive implementation)" method. For more information about this method please refer to the wikipedia page [Here](https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_implementation) |
 | Cell | The Cell class is a class that describes the single cells of an maze. |
 | *Mouse* | All the children of the Mouse abstract class can be used to implement the search algorithms to solve the mazes. These are the algorithms to be evaluated. |
 | RandomWalker | The RandomWalker class is a child of the Mouse class and is the most naive algorithm to solve a maze. It has no memory and choses its next step completely randomly. Its a good baseline to compare against. |
-| *Evaluator* | All the children of the Evaluator abstract class implement a way to evaluate the mice in the simulations. |
+| *Evaluator* | All the children of the Evaluator abstract class implement a way to evaluate the mice in the simulations. (This class is an implementation of a Strategy design pattern.)|
 | PathLen | The PathLen class is a child of the Evaluator class and evaluates the mice by calculating the length of the path of the solution the mice find. |
 | *DataBase* | All the children of the DataBase abstract class are used to store the simulation data and their results into a DataBase. |
 | Mysql | The Mysql class is a child of the DataBase class and store the simulation data and their results into a Mysql DataBase. |
