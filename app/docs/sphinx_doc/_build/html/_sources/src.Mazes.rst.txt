@@ -1,21 +1,21 @@
-Mice package
-============
+src.Mazes package
+=================
 
 Submodules
 ----------
 
-Mice.Mouse module
------------------
+src.Mazes.DFS\_R module
+-----------------------
 
-.. automodule:: Mice.Mouse
+.. automodule:: src.Mazes.DFS_R
    :members:
    :undoc-members:
    :show-inheritance:
 
-Mice.RandomWalker module
-------------------------
+src.Mazes.Maze module
+---------------------
 
-.. automodule:: Mice.RandomWalker
+.. automodule:: src.Mazes.Maze
    :members:
    :undoc-members:
    :show-inheritance:
@@ -24,7 +24,7 @@ Mice.RandomWalker module
 Module contents
 ---------------
 
-.. automodule:: Mice
+.. automodule:: src.Mazes
    :members:
    :undoc-members:
    :show-inheritance:

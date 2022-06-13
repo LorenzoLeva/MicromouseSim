@@ -14,6 +14,8 @@
     <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Mice package" href="Mice.html" />
+    <link rel="prev" title="Evaluators package" href="Evaluators.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -41,12 +43,12 @@
 <dt id="Mazes.DFS_R.DFS_R">
 <em class="property">class </em><code class="sig-prename descclassname">Mazes.DFS_R.</code><code class="sig-name descname">DFS_R</code><span class="sig-paren">(</span><em class="sig-param">columns: int = 16</em>, <em class="sig-param">rows: int = 16</em>, <em class="sig-param">seed=None</em><span class="sig-paren">)</span><a class="headerlink" href="#Mazes.DFS_R.DFS_R" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#Mazes.Maze.Maze" title="Mazes.Maze.Maze"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mazes.Maze.Maze</span></code></a></p>
-<p>TODO add Doc
-<a class="reference external" href="https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_implementation">https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_implementation</a></p>
+<p>The DFS_R generates a maze with the Depth first search (Recursive implementation) algorithm. For more information please refer to <a class="reference external" href="https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_implementation">https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_implementation</a></p>
 <dl class="method">
 <dt id="Mazes.DFS_R.DFS_R.generate">
 <code class="sig-name descname">generate</code><span class="sig-paren">(</span><em class="sig-param">startCell=(0</em>, <em class="sig-param">0)</em><span class="sig-paren">)</span><a class="headerlink" href="#Mazes.DFS_R.DFS_R.generate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This is the method calles by the Simulators and is useed to generate the maze.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -104,7 +106,8 @@ cellEnd (Cell | tuple): Second cell in other corner to remove wall from</p>
 <dl class="method">
 <dt id="Mazes.Maze.Maze.generate">
 <em class="property">abstract classmethod </em><code class="sig-name descname">generate</code><span class="sig-paren">(</span><em class="sig-param">startCell=(0</em>, <em class="sig-param">0)</em><span class="sig-paren">)</span><a class="headerlink" href="#Mazes.Maze.Maze.generate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This is the method calles by the Simulators and is useed to generate the maze.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="Mazes.Maze.Maze.getBorderCellsOfArea">
@@ -323,11 +326,28 @@ y (int): y coordinate to check</p>
 
 
 <h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Cells.html">Cells package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DataBases.html">DataBases package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Evaluators.html">Evaluators package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Mazes package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-Mazes.DFS_R">Mazes.DFS_R module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-Mazes.Maze">Mazes.Maze module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-Mazes">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Mice.html">Mice package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Simulations.html">Simulations package</a></li>
+</ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Evaluators.html" title="previous chapter">Evaluators package</a></li>
+      <li>Next: <a href="Mice.html" title="next chapter">Mice package</a></li>
   </ul></li>
 </ul>
 </div>

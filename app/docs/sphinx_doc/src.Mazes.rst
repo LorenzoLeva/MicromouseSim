@@ -1,21 +1,21 @@
-Tools package
-=============
+src.Mazes package
+=================
 
 Submodules
 ----------
 
-Tools.ErrorRaiser module
-------------------------
+src.Mazes.DFS\_R module
+-----------------------
 
-.. automodule:: Tools.ErrorRaiser
+.. automodule:: src.Mazes.DFS_R
    :members:
    :undoc-members:
    :show-inheritance:
 
-Tools.Visualizer module
------------------------
+src.Mazes.Maze module
+---------------------
 
-.. automodule:: Tools.Visualizer
+.. automodule:: src.Mazes.Maze
    :members:
    :undoc-members:
    :show-inheritance:
@@ -24,7 +24,7 @@ Tools.Visualizer module
 Module contents
 ---------------
 
-.. automodule:: Tools
+.. automodule:: src.Mazes
    :members:
    :undoc-members:
    :show-inheritance:

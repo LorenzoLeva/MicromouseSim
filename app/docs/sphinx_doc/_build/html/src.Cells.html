@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>src.Cells package &#8212; MicromouseSim  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="src-cells-package">
+<h1>src.Cells package<a class="headerlink" href="#src-cells-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-src.Cells.Cell">
+<span id="src-cells-cell-module"></span><h2>src.Cells.Cell module<a class="headerlink" href="#module-src.Cells.Cell" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="src.Cells.Cell.Cell">
+<em class="property">class </em><code class="sig-prename descclassname">src.Cells.Cell.</code><code class="sig-name descname">Cell</code><span class="sig-paren">(</span><em class="sig-param">x: int</em>, <em class="sig-param">y: int</em>, <em class="sig-param">type: str = 'normal'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Cells.Cell.Cell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Object that represents a cell of the maze.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>x (int): x coordinate of the cell. Can’t be negative.
+y (int): y coordinate of the cell. Can’t be negative.
+type (str): is the type of the cell. It can be one of the following [“normal”, “start”, “end”]</p>
+</dd>
+<dt>Attributes:</dt><dd><p>x (int): x coordinate of the cell. Can’t be negative.
+y (int): y coordinate of the cell. Can’t be negative.
+walls (dict of bool): Dictionary with [“top”, “right”, “bottom”, “left”] keys that describe if there is a wall through an bool.
+width (int): is the with of a cell. Used for visualization.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="src.Cells.Cell.Cell.buildAllWalls">
+<code class="sig-name descname">buildAllWalls</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Cells.Cell.Cell.buildAllWalls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets all walls to True.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Cells.Cell.Cell.buildWall">
+<code class="sig-name descname">buildWall</code><span class="sig-paren">(</span><em class="sig-param">wall: str</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Cells.Cell.Cell.buildWall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the specified wall to True.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>wall (str): The key of the wall to delete. Possible keys are: [“top”, “right”, “bottom”, “left”]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Cells.Cell.Cell.deleteAllWalls">
+<code class="sig-name descname">deleteAllWalls</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Cells.Cell.Cell.deleteAllWalls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets all walls to False.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Cells.Cell.Cell.deleteRandomWall">
+<code class="sig-name descname">deleteRandomWall</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Cells.Cell.Cell.deleteRandomWall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes randomly one of the standing walls</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Cells.Cell.Cell.deleteWall">
+<code class="sig-name descname">deleteWall</code><span class="sig-paren">(</span><em class="sig-param">wall: str</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Cells.Cell.Cell.deleteWall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the specified wall to False.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>wall (str): The key of the wall to delete. Possible keys are: [“top”, “right”, “bottom”, “left”]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Cells.Cell.Cell.getAllWalls">
+<code class="sig-name descname">getAllWalls</code><span class="sig-paren">(</span><em class="sig-param">standing=True</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Cells.Cell.Cell.getAllWalls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all walls that are standing or not.
+Args:</p>
+<blockquote>
+<div><p>standing (bool): Type of wall either standing with True or not standing with False.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>list: of str of keys of all walls with the property set by standing.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Cells.Cell.Cell.getVizShape">
+<code class="sig-name descname">getVizShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#src.Cells.Cell.Cell.getVizShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function generates the list with 0-4 dict describing the walls so that they can be drawn in plotly.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>list: Returns a list of dir describing the walls so that they can be drawn in plotly.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Cells.Cell.Cell.isOfType">
+<code class="sig-name descname">isOfType</code><span class="sig-paren">(</span><em class="sig-param">type</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Cells.Cell.Cell.isOfType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a bool to describe if the Cell is of a type.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>type (str): type to be checked.</p>
+</dd>
+<dt>Returns:</dt><dd><p>bool: describing if the cell is of type type.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Cells.Cell.Cell.minus">
+<code class="sig-name descname">minus</code><span class="sig-paren">(</span><em class="sig-param">cell</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Cells.Cell.Cell.minus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subtracts one cell from the other.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>cell (tuple | Cell): the cell to subtract from the self cell.</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple: difference from the cells that is also the vector from Cells.Cell to self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Cells.Cell.Cell.raiseIsNotCellIfApplicable">
+<em class="property">static </em><code class="sig-name descname">raiseIsNotCellIfApplicable</code><span class="sig-paren">(</span><em class="sig-param">cell</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Cells.Cell.Cell.raiseIsNotCellIfApplicable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raises an error if the cell is not the right type. If everything is ok it passes the cell.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>cell (tuple | Cell): the cell that has to be checked the type of.</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple: if the type is correct it passes the cell as a tuple.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Cells.Cell.Cell.raiseNotCellType">
+<em class="property">static </em><code class="sig-name descname">raiseNotCellType</code><span class="sig-paren">(</span><em class="sig-param">x: str</em>, <em class="sig-param">name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Cells.Cell.Cell.raiseNotCellType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="src.Cells.Cell.Cell.raiseNotWallType">
+<em class="property">static </em><code class="sig-name descname">raiseNotWallType</code><span class="sig-paren">(</span><em class="sig-param">x: str</em>, <em class="sig-param">name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Cells.Cell.Cell.raiseNotWallType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.Cells">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src.Cells" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">MicromouseSim</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Cells.html">Cells package</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Lorenzo D. Leva.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/src.Cells.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,21 +1,21 @@
-DataBases package
+src.Tools package
 =================
 
 Submodules
 ----------
 
-DataBases.DataBase module
--------------------------
+src.Tools.ErrorRaiser module
+----------------------------
 
-.. automodule:: DataBases.DataBase
+.. automodule:: src.Tools.ErrorRaiser
    :members:
    :undoc-members:
    :show-inheritance:
 
-DataBases.Mysql module
-----------------------
+src.Tools.Visualizer module
+---------------------------
 
-.. automodule:: DataBases.Mysql
+.. automodule:: src.Tools.Visualizer
    :members:
    :undoc-members:
    :show-inheritance:
@@ -24,7 +24,7 @@ DataBases.Mysql module
 Module contents
 ---------------
 
-.. automodule:: DataBases
+.. automodule:: src.Tools
    :members:
    :undoc-members:
    :show-inheritance:
