@@ -103,4 +103,4 @@ cd app/docs/sphinx_doc # this changes the dir to sphinx_doc
 sphinx-apidoc -o . ../../src # generates the rst
 make html # generates the html files in app/docs/sphinx_doc/_build
 ```
-The rst files define the layout of the documentation pages. For more information please the sphinx [documentation](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html).
+The rst files define the layout of the documentation pages. For more information please refer to the sphinx [documentation](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html).
