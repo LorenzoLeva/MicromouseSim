@@ -16,6 +16,7 @@ Welcome to MicromouseSim's documentation!
    src.Mazes
    src.Mice
    src.Simulations
+   src.Tests
 
 Indices and tables
 ==================

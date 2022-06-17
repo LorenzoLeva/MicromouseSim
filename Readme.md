@@ -93,7 +93,7 @@ The following diagram describes the classes of the packages of the library and h
 For a more detailed information about the different implemented classes and their methods please refer to the [Documentation](#documentation).
 
 ## Testing
-All the tests of the code can be found in the `/app/src/Test` directory. The tests are grouped by type. All the code that is found in the master branch of the repository was tested and passed 100% of the test in the `/app/src/Test` directory.
+All the tests of the code can be found in the `/app/src/Test` directory. The tests are grouped by type. All the code that is found in the master branch of the repository was tested and passed 100% of the test in the `/app/src/Test` directory. For a full description of every test please refer to the [Documentation](#documentation).
 ### Unit Test
 The unit tests of the code can be found in the `/app/src/Test/UnitTest` directory and are implemented with the native `unittest` python library . All tests have the following naming convention `[ClassName]_test.py` and cover following classes:
 
@@ -108,7 +108,7 @@ To execute the Unit Tests cd into `/app/src` and execute `python -m unittest dis
 
 
 ## Documentation
-The full documentation can be found in the `./app/docs/sphinx_doc/_build/html` and can be viewed in every browser by opening the [index.html](app/docs/sphinx_doc/_build/html/index.html) file.
+The full documentation can be found in the `./app/docs/sphinx_doc/_build/html` and can be viewed in every browser by opening the [index.html](app/docs/sphinx_doc/_build/html/index.html) file. The folowing comand can be used to open the docs from the terminal `open app/docs/sphinx_doc/_build/html/index.html`
 
 ### Documentation convention
 In this project we use the Google documentation Style. Here an [Example](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html).

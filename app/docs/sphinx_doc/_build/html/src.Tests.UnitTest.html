@@ -1,0 +1,589 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>src.Tests.UnitTest package &#8212; MicromouseSim  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="src-tests-unittest-package">
+<h1>src.Tests.UnitTest package<a class="headerlink" href="#src-tests-unittest-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-src.Tests.UnitTest.Cell_test">
+<span id="src-tests-unittest-cell-test-module"></span><h2>src.Tests.UnitTest.Cell_test module<a class="headerlink" href="#module-src.Tests.UnitTest.Cell_test" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellBuildAllWallsMethod">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.Cell_test.</code><code class="sig-name descname">TestCellBuildAllWallsMethod</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellBuildAllWallsMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellBuildAllWallsMethod.test_valid_input">
+<code class="sig-name descname">test_valid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellBuildAllWallsMethod.test_valid_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Cell.buildAllWalls method builds correctly all the walls.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellBuildWallMethod">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.Cell_test.</code><code class="sig-name descname">TestCellBuildWallMethod</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellBuildWallMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellBuildWallMethod.test_invalid_input_keys">
+<code class="sig-name descname">test_invalid_input_keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellBuildWallMethod.test_invalid_input_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Cell.buildWall method raises KeyError when called with the wrong parameter key.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellBuildWallMethod.test_invalid_input_types">
+<code class="sig-name descname">test_invalid_input_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellBuildWallMethod.test_invalid_input_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Cell.buildWall method raises TypeError when called with the wrong parameter type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellBuildWallMethod.test_valid_input">
+<code class="sig-name descname">test_valid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellBuildWallMethod.test_valid_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Cell.buildWall method builds correctly the walls.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellDeleteAllWallsMethod">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.Cell_test.</code><code class="sig-name descname">TestCellDeleteAllWallsMethod</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellDeleteAllWallsMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellDeleteAllWallsMethod.test_valid_input">
+<code class="sig-name descname">test_valid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellDeleteAllWallsMethod.test_valid_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Cell.deleteAllWalls method deletes correctly all the walls.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellDeleteWallMethod">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.Cell_test.</code><code class="sig-name descname">TestCellDeleteWallMethod</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellDeleteWallMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellDeleteWallMethod.test_invalid_input_keys">
+<code class="sig-name descname">test_invalid_input_keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellDeleteWallMethod.test_invalid_input_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Cell.deleteWall method raises KeyError when called with the wrong parameter key.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellDeleteWallMethod.test_invalid_input_types">
+<code class="sig-name descname">test_invalid_input_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellDeleteWallMethod.test_invalid_input_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Cell.deleteWall method raises TypeError when called with the wrong parameter type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellDeleteWallMethod.test_valid_input">
+<code class="sig-name descname">test_valid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellDeleteWallMethod.test_valid_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Cell.deleteWall method deletes correctly the walls.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellGetAllWalls">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.Cell_test.</code><code class="sig-name descname">TestCellGetAllWalls</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellGetAllWalls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellGetAllWalls.test_invalid_input_types">
+<code class="sig-name descname">test_invalid_input_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellGetAllWalls.test_invalid_input_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Cell.getAllWalls method raises TypeError when called with the wrong parameter type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellGetAllWalls.test_valid_input">
+<code class="sig-name descname">test_valid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellGetAllWalls.test_valid_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Cell.getAllWalls method returns correctly the keys of the walls.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellInitialization">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.Cell_test.</code><code class="sig-name descname">TestCellInitialization</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellInitialization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellInitialization.test_initialization">
+<code class="sig-name descname">test_initialization</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellInitialization.test_initialization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Cell class initializes correctly an object with all its properties correctly.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellInitialization.test_invalid_input_range">
+<code class="sig-name descname">test_invalid_input_range</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellInitialization.test_invalid_input_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Cell class raises IndexError when initialized with negative coordinates parameter type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellInitialization.test_invalid_input_types">
+<code class="sig-name descname">test_invalid_input_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellInitialization.test_invalid_input_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Cell class raises TypeError when initialized with the wrong parameter type.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellIsOfType">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.Cell_test.</code><code class="sig-name descname">TestCellIsOfType</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellIsOfType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellIsOfType.test_invalid_input_types">
+<code class="sig-name descname">test_invalid_input_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellIsOfType.test_invalid_input_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Cell.isOfType method raises TypeError when called with the wrong parameter type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellIsOfType.test_valid_input">
+<code class="sig-name descname">test_valid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellIsOfType.test_valid_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Cell.isOfType method returns correctly the values.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellMinusMethod">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.Cell_test.</code><code class="sig-name descname">TestCellMinusMethod</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellMinusMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellMinusMethod.test_invalid_input_types">
+<code class="sig-name descname">test_invalid_input_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellMinusMethod.test_invalid_input_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Cell.minus method raises TypeError when called with the wrong parameter type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellMinusMethod.test_valid_input">
+<code class="sig-name descname">test_valid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellMinusMethod.test_valid_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Cell.minus method returns the correct vector.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellRaiseIsNotCellIfApplicableMethod">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.Cell_test.</code><code class="sig-name descname">TestCellRaiseIsNotCellIfApplicableMethod</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellRaiseIsNotCellIfApplicableMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellRaiseIsNotCellIfApplicableMethod.test_invalid_input_types">
+<code class="sig-name descname">test_invalid_input_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellRaiseIsNotCellIfApplicableMethod.test_invalid_input_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Cell.raiseIsNotCellIfApplicable method raises TypeError when called with the wrong parameter type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.Cell_test.TestCellRaiseIsNotCellIfApplicableMethod.test_valid_input">
+<code class="sig-name descname">test_valid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Cell_test.TestCellRaiseIsNotCellIfApplicableMethod.test_valid_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Cell.raiseIsNotCellIfApplicable method passes the value if of right type.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.Tests.UnitTest.ErrorRaiser_test">
+<span id="src-tests-unittest-errorraiser-test-module"></span><h2>src.Tests.UnitTest.ErrorRaiser_test module<a class="headerlink" href="#module-src.Tests.UnitTest.ErrorRaiser_test" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseIsNotListOfType">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.ErrorRaiser_test.</code><code class="sig-name descname">TestErrorRaiserRaiseIsNotListOfType</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseIsNotListOfType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseIsNotListOfType.test_invalid_input_types">
+<code class="sig-name descname">test_invalid_input_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseIsNotListOfType.test_invalid_input_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the ErrorRaiser.raiseIsNotListOfType method raises TypeError when called with the wrong parameter type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseIsNotListOfType.test_valid_input">
+<code class="sig-name descname">test_valid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseIsNotListOfType.test_valid_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the ErrorRaiser.raiseIsNotListOfType method passes the list through correctly.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseIsNotTuple">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.ErrorRaiser_test.</code><code class="sig-name descname">TestErrorRaiserRaiseIsNotTuple</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseIsNotTuple" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseIsNotTuple.test_invalid_input_types">
+<code class="sig-name descname">test_invalid_input_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseIsNotTuple.test_invalid_input_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the ErrorRaiser.raiseIsNotTuple method raises TypeError when called with the wrong parameter type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseIsNotTuple.test_valid_input">
+<code class="sig-name descname">test_valid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseIsNotTuple.test_valid_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the ErrorRaiser.raiseIsNotTuple method passes the tuple through correctly.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseIsNotType">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.ErrorRaiser_test.</code><code class="sig-name descname">TestErrorRaiserRaiseIsNotType</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseIsNotType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseIsNotType.test_invalid_input_types">
+<code class="sig-name descname">test_invalid_input_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseIsNotType.test_invalid_input_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the ErrorRaiser.raiseIsNotType method raises TypeError when called with the wrong parameter type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseIsNotType.test_valid_input">
+<code class="sig-name descname">test_valid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseIsNotType.test_valid_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the ErrorRaiser.raiseIsNotType method passes the tuple through correctly.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseNotValidKey">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.ErrorRaiser_test.</code><code class="sig-name descname">TestErrorRaiserRaiseNotValidKey</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseNotValidKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseNotValidKey.test_invalid_input_types">
+<code class="sig-name descname">test_invalid_input_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseNotValidKey.test_invalid_input_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the ErrorRaiser.raiseNotValidKey method raises TypeError when called with the wrong parameter type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseNotValidKey.test_valid_input">
+<code class="sig-name descname">test_valid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.ErrorRaiser_test.TestErrorRaiserRaiseNotValidKey.test_valid_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the ErrorRaiser.raiseNotValidKey method passes the key through correctly if its in the list.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.Tests.UnitTest.Maze_test">
+<span id="src-tests-unittest-maze-test-module"></span><h2>src.Tests.UnitTest.Maze_test module<a class="headerlink" href="#module-src.Tests.UnitTest.Maze_test" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="src.Tests.UnitTest.Maze_test.TestDeleteWallsBetween">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.Maze_test.</code><code class="sig-name descname">TestDeleteWallsBetween</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestDeleteWallsBetween" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.Maze_test.TestDeleteWallsBetween.test_invalid_input_types">
+<code class="sig-name descname">test_invalid_input_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestDeleteWallsBetween.test_invalid_input_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Maze.deleteWallsBetween method raises TypeError when called with the wrong parameter type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.Maze_test.TestDeleteWallsBetween.test_valid_input">
+<code class="sig-name descname">test_valid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestDeleteWallsBetween.test_valid_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Maze.deleteWallsBetween method deletes the correct walls.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.Tests.UnitTest.Maze_test.TestGetBorderCellsOfArea">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.Maze_test.</code><code class="sig-name descname">TestGetBorderCellsOfArea</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestGetBorderCellsOfArea" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.Maze_test.TestGetBorderCellsOfArea.test_valid_input">
+<code class="sig-name descname">test_valid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestGetBorderCellsOfArea.test_valid_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Maze.getRandomEndAreaBorderCell method returns correct values.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.Tests.UnitTest.Maze_test.TestGetMiddleCoordinate">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.Maze_test.</code><code class="sig-name descname">TestGetMiddleCoordinate</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestGetMiddleCoordinate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.Maze_test.TestGetMiddleCoordinate.test_invalid_input_types">
+<code class="sig-name descname">test_invalid_input_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestGetMiddleCoordinate.test_invalid_input_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Maze.getMiddleCoordinate method raises TypeError when called with the wrong parameter type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.Maze_test.TestGetMiddleCoordinate.test_valid_input">
+<code class="sig-name descname">test_valid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestGetMiddleCoordinate.test_valid_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Maze.getMiddleCoordinate method returns correct values.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.Tests.UnitTest.Maze_test.TestGetMinMaxCoordinatesOfCells">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.Maze_test.</code><code class="sig-name descname">TestGetMinMaxCoordinatesOfCells</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestGetMinMaxCoordinatesOfCells" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.Maze_test.TestGetMinMaxCoordinatesOfCells.test_invalid_input_types">
+<code class="sig-name descname">test_invalid_input_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestGetMinMaxCoordinatesOfCells.test_invalid_input_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Maze.getMinMaxCoordinatesOfCells method raises TypeError when called with the wrong parameter type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.Maze_test.TestGetMinMaxCoordinatesOfCells.test_valid_input">
+<code class="sig-name descname">test_valid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestGetMinMaxCoordinatesOfCells.test_valid_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Maze.getMinMaxCoordinatesOfCells method returns correct values.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.Tests.UnitTest.Maze_test.TestGetNeighborByKey">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.Maze_test.</code><code class="sig-name descname">TestGetNeighborByKey</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestGetNeighborByKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.Maze_test.TestGetNeighborByKey.test_invalid_input_types">
+<code class="sig-name descname">test_invalid_input_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestGetNeighborByKey.test_invalid_input_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Maze.getNeighborByKey method raises TypeError when called with the wrong parameter type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.Maze_test.TestGetNeighborByKey.test_valid_input">
+<code class="sig-name descname">test_valid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestGetNeighborByKey.test_valid_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Maze.getNeighborByKey method returns correct values.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.Tests.UnitTest.Maze_test.TestGetNextSteps">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.Maze_test.</code><code class="sig-name descname">TestGetNextSteps</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestGetNextSteps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.Maze_test.TestGetNextSteps.test_invalid_input_types">
+<code class="sig-name descname">test_invalid_input_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestGetNextSteps.test_invalid_input_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Maze.getNextSteps method raises TypeError when called with the wrong parameter type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.Maze_test.TestGetNextSteps.test_valid_input">
+<code class="sig-name descname">test_valid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestGetNextSteps.test_valid_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Maze.getNextSteps method returns correct values.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.Tests.UnitTest.Maze_test.TestGetStartPosition">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.Maze_test.</code><code class="sig-name descname">TestGetStartPosition</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestGetStartPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.Maze_test.TestGetStartPosition.test_valid_input">
+<code class="sig-name descname">test_valid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestGetStartPosition.test_valid_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Maze.getStartPosition method returns correct values.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.Tests.UnitTest.Maze_test.TestIsCoordinateInEndArea">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.Maze_test.</code><code class="sig-name descname">TestIsCoordinateInEndArea</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestIsCoordinateInEndArea" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.Maze_test.TestIsCoordinateInEndArea.test_invalid_input_types">
+<code class="sig-name descname">test_invalid_input_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestIsCoordinateInEndArea.test_invalid_input_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Maze.isCoordinateInEndArea method raises TypeError when called with the wrong parameter type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.Maze_test.TestIsCoordinateInEndArea.test_valid_input">
+<code class="sig-name descname">test_valid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestIsCoordinateInEndArea.test_valid_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Maze.raiseCellsAreNotNeighborIfApplicable method passes correctly the tuple.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.Tests.UnitTest.Maze_test.TestIsEndPosition">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.Maze_test.</code><code class="sig-name descname">TestIsEndPosition</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestIsEndPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.Maze_test.TestIsEndPosition.test_invalid_input_types">
+<code class="sig-name descname">test_invalid_input_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestIsEndPosition.test_invalid_input_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Maze.isEndPosition method raises TypeError when called with the wrong parameter type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.Maze_test.TestIsEndPosition.test_valid_input">
+<code class="sig-name descname">test_valid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestIsEndPosition.test_valid_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Maze.isEndPosition method returns correct values.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.Tests.UnitTest.Maze_test.TestMazeInitialization">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.Maze_test.</code><code class="sig-name descname">TestMazeInitialization</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestMazeInitialization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.Maze_test.TestMazeInitialization.test_initialization">
+<code class="sig-name descname">test_initialization</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestMazeInitialization.test_initialization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Maze class initializes correctly an object with all its properties correctly.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.Maze_test.TestMazeInitialization.test_invalid_input_range">
+<code class="sig-name descname">test_invalid_input_range</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestMazeInitialization.test_invalid_input_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Maze class raises IndexError when initialized with negative or zero size parameter type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.Maze_test.TestMazeInitialization.test_invalid_input_types">
+<code class="sig-name descname">test_invalid_input_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestMazeInitialization.test_invalid_input_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Maze class raises TypeError when initialized with the wrong parameter type.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.Tests.UnitTest.Maze_test.TestMazeRaiseCellsAreNotNeighborIfApplicable">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.Maze_test.</code><code class="sig-name descname">TestMazeRaiseCellsAreNotNeighborIfApplicable</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestMazeRaiseCellsAreNotNeighborIfApplicable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.Maze_test.TestMazeRaiseCellsAreNotNeighborIfApplicable.test_invalid_input_types">
+<code class="sig-name descname">test_invalid_input_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestMazeRaiseCellsAreNotNeighborIfApplicable.test_invalid_input_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Maze.raiseCellsAreNotNeighborIfApplicable method raises TypeError when called with the wrong parameter type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.Maze_test.TestMazeRaiseCellsAreNotNeighborIfApplicable.test_valid_input">
+<code class="sig-name descname">test_valid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Maze_test.TestMazeRaiseCellsAreNotNeighborIfApplicable.test_valid_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Maze.raiseCellsAreNotNeighborIfApplicable method passes correctly the tuple.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.Tests.UnitTest.Mouse_test">
+<span id="src-tests-unittest-mouse-test-module"></span><h2>src.Tests.UnitTest.Mouse_test module<a class="headerlink" href="#module-src.Tests.UnitTest.Mouse_test" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="src.Tests.UnitTest.Mouse_test.TestMouseInitialization">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.Mouse_test.</code><code class="sig-name descname">TestMouseInitialization</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Mouse_test.TestMouseInitialization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.Mouse_test.TestMouseInitialization.test_initialization">
+<code class="sig-name descname">test_initialization</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Mouse_test.TestMouseInitialization.test_initialization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Mouse class initializes correctly an object with all its properties correctly.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.Tests.UnitTest.Mouse_test.TestSetMaze">
+<em class="property">class </em><code class="sig-prename descclassname">src.Tests.UnitTest.Mouse_test.</code><code class="sig-name descname">TestSetMaze</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Mouse_test.TestSetMaze" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="src.Tests.UnitTest.Mouse_test.TestSetMaze.test_invalid_input_types">
+<code class="sig-name descname">test_invalid_input_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Mouse_test.TestSetMaze.test_invalid_input_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Mouse.setMaze method raises TypeError when called with the wrong parameter type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Tests.UnitTest.Mouse_test.TestSetMaze.test_valid_input">
+<code class="sig-name descname">test_valid_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Tests.UnitTest.Mouse_test.TestSetMaze.test_valid_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the Mouse.setMaze method stores the values correctly.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.Tests.UnitTest">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src.Tests.UnitTest" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">MicromouseSim</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="src.Cells.html">src.Cells package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="src.DataBases.html">src.DataBases package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="src.Evaluators.html">src.Evaluators package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="src.Mazes.html">src.Mazes package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="src.Mice.html">src.Mice package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="src.Simulations.html">src.Simulations package</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Lorenzo D. Leva.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/src.Tests.UnitTest.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
