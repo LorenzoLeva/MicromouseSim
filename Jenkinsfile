@@ -8,7 +8,10 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                echo 'Testing..'
+                echo 'Testing Static (pylint)..'
+            }
+            steps {
+                echo 'Testing Unit..'
             }
         }
         stage('Generate Documentaion') {

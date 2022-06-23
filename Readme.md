@@ -94,6 +94,9 @@ For more detailed information about the different implemented classes and their 
 
 ## Testing
 All code tests can be found in the `/app/src/Test` directory. The tests are grouped by type. All the code that is found in the master branch of the repository was tested and passed 100% of the test in the `/app/src/Test` directory. For a complete description of every test, please refer to the [Documentation](#documentation).
+
+### Static Test
+The whole code is tested with pylint, and every finding is analyzed and resolved.
 ### Unit Test
 The unit tests of the code can be found in the `/app/src/Test/UnitTest` directory and are implemented with the native `unittest` python library. All tests have the following naming convention `[ClassName]_test.py` and cover the following classes:
 
