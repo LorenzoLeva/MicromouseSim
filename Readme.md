@@ -1,9 +1,9 @@
 # Micromouse Sim
-The Micromouse Sim, or short MMs, is a library intended to help develop the pathfinding algorithms of so-called micro mouses. It was born as the final project of my bachelor's degree, where we had to develop an application that heavily used traditional object-oriented programming. To check out the delivered version, you use the following command: `git checkout bfe77c811ecdf3e20b3bdffe05ad9d782a339f7b`
+The Micromouse Sim, or short MMs, is a library intended to help develop the pathfinding algorithms of so-called micro mouses. It was born as the final project of my bachelor's degree, where we had to develop an application that heavily used traditional object-oriented programming. To check out the delivered version, you can use the following command: `git checkout bfe77c811ecdf3e20b3bdffe05ad9d782a339f7b`
 
-The goal for me was not only to fulfill my assignment but to create something that would become the basis of an environment where I could try out what I would learn in the future and experiment with new technologies. (And to have a fun project to work on when im bored 😆)
+My goal was not only to fulfill my assignment but to create something that would become the basis of an environment where I could try out what I would learn in the future and experiment with new technologies. (And to have a fun project to work on when I'm bored 😆)
 
-Therefore don't expect perfect code, being in most cases the first time that I try out something, but please take a look if you are interested because I would be thrilled to have any feedback on how I could have done things better and about best practices. 
+Therefore don't expect perfect code, being, in most cases, the first time I try out something (and it was probably 2 am when I wrote it). Still, please take a look if you are interested because I would be thrilled to have any feedback on how I could have done things better and about best practices. 
 
 ## What is a Micromouse?
 Micromouse is an event where small robot mice solve a 16×16 maze which began in the late 1970s. Events are held worldwide and are most popular in the U.K., U.S., Japan, Singapore, India, and South Korea.
